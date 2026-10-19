@@ -5,7 +5,8 @@ name: Keep API awake
 
 on:
   schedule:
-    - cron: "*/10 * * * *"
+    # Off the :00/:10 marks, where GitHub drops the most scheduled runs under load.
+    - cron: "3,13,23,33,43,53 * * * *"
   workflow_dispatch:
 
 jobs:
