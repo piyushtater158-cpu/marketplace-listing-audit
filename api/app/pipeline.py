@@ -115,17 +115,21 @@ def _reattach_carried_decisions(conn: sqlite3.Connection) -> None:
     conn.execute("DELETE FROM carried_decisions")
 
 
+def _error_label(slot: str, file_name: str) -> str:
+    return file_name if file_name.lower().startswith(slot) else f"{slot.capitalize()} file '{file_name}'"
+
+
 def ingest_csvs(
-    conn: sqlite3.Connection, listings_path: Path, ads_path: Path, reviews_path: Path, labels: dict | None = None
+    conn: sqlite3.Connection, listings_path: Path, ads_path: Path, reviews_path: Path, file_names: dict | None = None
 ) -> dict:
     """Replaces all data with the three files (CSV or spreadsheet) and opens a new snapshot
     in 'uploaded' state. Issues are not computed here — that is run_audit, a separate step
     the AM triggers. Live decisions are parked so the audit can re-attach them to issues
-    that still fire. `labels` names each file in validation errors."""
-    labels = labels or {}
-    listings = parse_listings(listings_path, labels.get("listings", "listings.csv"))
-    ads = parse_ads(ads_path, labels.get("ads", "ads.csv"))
-    reviews = parse_reviews(reviews_path, labels.get("reviews", "reviews.csv"))
+    that still fire. `file_names` are the names as uploaded, used in errors and the UI."""
+    names = {slot: (file_names or {}).get(slot) or f"{slot}.csv" for slot in ("listings", "ads", "reviews")}
+    listings = parse_listings(listings_path, _error_label("listings", names["listings"]))
+    ads = parse_ads(ads_path, _error_label("ads", names["ads"]))
+    reviews = parse_reviews(reviews_path, _error_label("reviews", names["reviews"]))
 
     try:
         _park_live_decisions(conn)
@@ -138,9 +142,9 @@ def ingest_csvs(
         _insert_ads(conn, ads)
         _insert_reviews(conn, reviews)
         conn.execute(
-            "INSERT INTO snapshots (status, uploaded_at, listings_rows, ads_rows, reviews_rows) "
-            "VALUES ('uploaded', ?, ?, ?, ?)",
-            (_now(), len(listings), len(ads), len(reviews)),
+            "INSERT INTO snapshots (status, uploaded_at, listings_rows, ads_rows, reviews_rows, file_names_json) "
+            "VALUES ('uploaded', ?, ?, ?, ?, ?)",
+            (_now(), len(listings), len(ads), len(reviews), json.dumps(names)),
         )
         conn.commit()
     except sqlite3.Error:

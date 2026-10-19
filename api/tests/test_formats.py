@@ -135,6 +135,9 @@ def test_excel_upload_audits_exactly_like_the_csv(client, csv_signature):
                    reviews=("reviews.xlsx", _xlsx("reviews")))
     assert resp.status_code == 200, resp.text
     assert resp.json()["listings"] == 480 and resp.json()["ads"] == 3360 and resp.json()["reviews"] == 265
+    assert client.get("/api/portfolio").json()["snapshot"]["file_names"] == {
+        "listings": "Flipkart Listings.xlsx", "ads": "ads.xlsx", "reviews": "reviews.xlsx",
+    }
     assert _audit_signature(client) == csv_signature
 
 

@@ -51,6 +51,7 @@ class SnapshotOut(BaseModel):
     uploaded_at: str
     audited_at: str | None
     row_counts: dict[str, int]
+    file_names: dict[str, str]
 
 
 class PortfolioCell(BaseModel):

@@ -107,6 +107,7 @@ _ADDED_COLUMNS = [
     ("issues", "fix_json", "TEXT NOT NULL DEFAULT '{}'"),
     ("issues", "impact_calc_text", "TEXT NOT NULL DEFAULT ''"),
     ("decisions", "undone_at", "TEXT"),
+    ("snapshots", "file_names_json", "TEXT NOT NULL DEFAULT '{}'"),
 ]
 
 

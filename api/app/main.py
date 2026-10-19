@@ -169,6 +169,7 @@ def _snapshot_out(row: sqlite3.Row | None) -> SnapshotOut | None:
         uploaded_at=row["uploaded_at"],
         audited_at=row["audited_at"],
         row_counts={"listings": row["listings_rows"], "ads": row["ads_rows"], "reviews": row["reviews_rows"]},
+        file_names=json.loads(row["file_names_json"] or "{}"),
     )
 
 
@@ -743,7 +744,7 @@ def upload(
     conn: sqlite3.Connection = Depends(db),
 ) -> UploadResultOut:
     with tempfile.TemporaryDirectory() as tmp:
-        paths, labels = {}, {}
+        paths, file_names = {}, {}
         for name, f in (("listings", listings), ("ads", ads), ("reviews", reviews)):
             original = Path(f.filename or f"{name}.csv").name
             suffix = Path(original).suffix.lower()
@@ -754,9 +755,9 @@ def upload(
             path = Path(tmp) / f"{name}{suffix}"
             path.write_bytes(f.file.read())
             paths[name] = path
-            labels[name] = original if original.lower().startswith(name) else f"{name.capitalize()} file '{original}'"
+            file_names[name] = original
         try:
-            counts = ingest_csvs(conn, paths["listings"], paths["ads"], paths["reviews"], labels)
+            counts = ingest_csvs(conn, paths["listings"], paths["ads"], paths["reviews"], file_names)
         except CsvValidationError as e:
             raise HTTPException(400, str(e)) from e
         except sqlite3.IntegrityError as e:

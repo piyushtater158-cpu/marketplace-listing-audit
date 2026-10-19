@@ -178,6 +178,26 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/samples/{name}.csv": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Sample Csv
+         * @description The bundled sample CSVs, so a reviewer can try the upload without their own exports.
+         */
+        get: operations["sample_csv_api_samples__name__csv_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/settings/ai": {
         parameters: {
             query?: never;
@@ -224,6 +244,26 @@ export interface paths {
         put?: never;
         /** Upload */
         post: operations["upload_api_upload_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/reset": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Reset To Sample
+         * @description Reloads and audits the bundled sample data in one step, dropping uploads and decisions.
+         */
+        post: operations["reset_to_sample_api_reset_post"];
         delete?: never;
         options?: never;
         head?: never;
@@ -652,6 +692,10 @@ export interface components {
             row_counts: {
                 [key: string]: number;
             };
+            /** File Names */
+            file_names: {
+                [key: string]: string;
+            };
         };
         /** SnapshotRow */
         SnapshotRow: {
@@ -1013,6 +1057,37 @@ export interface operations {
             };
         };
     };
+    sample_csv_api_samples__name__csv_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                name: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     get_ai_setting_api_settings_ai_get: {
         parameters: {
             query?: never;
@@ -1126,6 +1201,26 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    reset_to_sample_api_reset_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AuditResultOut"];
                 };
             };
         };

@@ -199,7 +199,7 @@ function AwaitingAudit({ p }: { p: Portfolio }) {
             {(["listings", "ads", "reviews"] as const).map((f) => (
               <li key={f}>
                 <Icon.Tick />
-                <span className="mono">{f}.csv</span>
+                <span className="mono">{snap.file_names[f] ?? `${f}.csv`}</span>
                 <span className="n">{plural(snap.row_counts[f] ?? 0, "row")}</span>
               </li>
             ))}
