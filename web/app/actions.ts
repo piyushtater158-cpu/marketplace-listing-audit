@@ -26,7 +26,7 @@ export async function uploadData(_prev: UploadState, formData: FormData): Promis
   for (const name of ["listings", "ads", "reviews"]) {
     const file = formData.get(name);
     if (!(file instanceof File) || file.size === 0) {
-      return { error: `Choose a ${name}.csv file. All three files are required.` };
+      return { error: `Choose a ${name} file. All three files are required.` };
     }
     body.append(name, file, file.name);
   }

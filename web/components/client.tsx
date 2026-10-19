@@ -85,6 +85,17 @@ export function AiToggle({ enabled, available }: { enabled: boolean; available: 
   );
 }
 
+const UPLOAD_ACCEPT = [
+  ".csv",
+  ".xlsx",
+  ".xls",
+  ".ods",
+  "text/csv",
+  "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+  "application/vnd.ms-excel",
+  "application/vnd.oasis.opendocument.spreadsheet",
+].join(",");
+
 const UPLOAD_FIELDS = [
   { name: "listings", label: "Listings", hint: "One row per SKU per platform, per snapshot date" },
   { name: "ads", label: "Ads", hint: "Daily spend, clicks, orders and sales by SKU" },
@@ -134,7 +145,10 @@ export function UploadPanel() {
         <form className="upl-form" action={action}>
           <div className="upl-head">
             <b>Upload audit data</b>
-            <span>Three CSVs. Replaces the current data; run the audit once the files are in.</span>
+            <span>
+              Three files, each CSV, Excel (.xlsx, .xls) or OpenDocument (.ods). Replaces the current data; run the
+              audit once the files are in.
+            </span>
           </div>
           {UPLOAD_FIELDS.map((f) => (
             <div className="field" key={f.name}>
@@ -143,7 +157,7 @@ export function UploadPanel() {
                 id={`f-${f.name}`}
                 type="file"
                 name={f.name}
-                accept=".csv,text/csv"
+                accept={UPLOAD_ACCEPT}
                 required
                 onChange={(e) => {
                   const name = e.currentTarget.files?.[0]?.name;

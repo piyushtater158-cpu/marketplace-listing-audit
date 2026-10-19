@@ -18,7 +18,7 @@ from app.config import load_config
 from app.db import clear_ingested_data, get_connection, init_db
 from app.engine import build_metrics_map
 from app.impact import cap_listing_total
-from app.ingest import CsvValidationError
+from app.ingest import ACCEPTED, SPREADSHEET_SUFFIXES, TEXT_SUFFIXES, CsvValidationError
 from app.metrics import ListingMetrics, ListingRow
 from app.pipeline import (
     get_ai_enabled,
@@ -743,13 +743,20 @@ def upload(
     conn: sqlite3.Connection = Depends(db),
 ) -> UploadResultOut:
     with tempfile.TemporaryDirectory() as tmp:
-        paths = {}
+        paths, labels = {}, {}
         for name, f in (("listings", listings), ("ads", ads), ("reviews", reviews)):
-            path = Path(tmp) / f"{name}.csv"
+            original = Path(f.filename or f"{name}.csv").name
+            suffix = Path(original).suffix.lower()
+            if suffix not in TEXT_SUFFIXES | SPREADSHEET_SUFFIXES:
+                raise HTTPException(
+                    400, f"{name.capitalize()} file '{original}': unsupported file type '{suffix}'. Upload {ACCEPTED}."
+                )
+            path = Path(tmp) / f"{name}{suffix}"
             path.write_bytes(f.file.read())
             paths[name] = path
+            labels[name] = original if original.lower().startswith(name) else f"{name.capitalize()} file '{original}'"
         try:
-            counts = ingest_csvs(conn, paths["listings"], paths["ads"], paths["reviews"])
+            counts = ingest_csvs(conn, paths["listings"], paths["ads"], paths["reviews"], labels)
         except CsvValidationError as e:
             raise HTTPException(400, str(e)) from e
         except sqlite3.IntegrityError as e:

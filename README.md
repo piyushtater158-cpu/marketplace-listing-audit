@@ -40,7 +40,7 @@ Render through `.github/workflows/deploy-api.yml`; `keep-alive.yml` pings the AP
 cd api
 python -m venv .venv && .venv/Scripts/activate      # or: source .venv/bin/activate
 pip install -e ".[dev]"
-pytest                                               # 65 tests
+pytest                                               # 73 tests
 uvicorn app.main:app --port 8010
 
 # Web (Node 20+)
@@ -133,11 +133,24 @@ around their limits (20 requests a minute, a daily cap, occasional upstream 429s
   supplied, and it may not call all issues critical when only some are. A summary that
   fails either check is replaced by the template.
 
-## CSV formats
+## Upload formats
 
-All three files are required on upload. Lines starting with `#` are ignored. Uploads are
-validated (headers, required columns, row count, value types) before anything is
-replaced, and errors name the file and column.
+All three files are required on upload, and each can be **CSV, Excel (`.xlsx`, `.xls`)
+or OpenDocument (`.ods`)**, mixed freely (Flipkart Seller Hub exports `.xlsx`). Every
+format goes through the same validation (file type, required columns, row count, value
+types) before anything is replaced, and errors name the file, sheet, row and column.
+
+Built for real exports rather than tidy files:
+
+* the header row is found anywhere in the first 20 rows, so report titles above it are
+  fine, and `Snapshot Date`, `snapshot-date` and `snapshot_date` all match;
+* in a workbook, the first sheet with the required columns is used;
+* Excel dates and numbers are read as typed cells (a stock of `200.0` is 200);
+* dates may be ISO (`2026-10-19`) or day-first (`19/10/2026`, `19-Oct-2026`); anything
+  else is rejected at upload rather than failing the audit later;
+* CSVs may be UTF-8 or Excel's Windows encoding, comma- or semicolon-separated, and lines
+  starting with `#` are ignored;
+* platform names are case-insensitive (`AMAZON`, `flipkart`).
 
 * `listings.csv`: `snapshot_date, brand, sku, platform, title, bullet_count, image_count, price, mrp, stock, rating, review_count, buybox_owner, category, status, units_sold_7d`.
   Include two snapshot dates per listing to enable change detection.

@@ -115,13 +115,17 @@ def _reattach_carried_decisions(conn: sqlite3.Connection) -> None:
     conn.execute("DELETE FROM carried_decisions")
 
 
-def ingest_csvs(conn: sqlite3.Connection, listings_path: Path, ads_path: Path, reviews_path: Path) -> dict:
-    """Replaces all data with the three CSVs and opens a new snapshot in 'uploaded' state.
-    Issues are not computed here — that is run_audit, a separate step the AM triggers.
-    Live decisions are parked so the audit can re-attach them to issues that still fire."""
-    listings = parse_listings(listings_path)
-    ads = parse_ads(ads_path)
-    reviews = parse_reviews(reviews_path)
+def ingest_csvs(
+    conn: sqlite3.Connection, listings_path: Path, ads_path: Path, reviews_path: Path, labels: dict | None = None
+) -> dict:
+    """Replaces all data with the three files (CSV or spreadsheet) and opens a new snapshot
+    in 'uploaded' state. Issues are not computed here — that is run_audit, a separate step
+    the AM triggers. Live decisions are parked so the audit can re-attach them to issues
+    that still fire. `labels` names each file in validation errors."""
+    labels = labels or {}
+    listings = parse_listings(listings_path, labels.get("listings", "listings.csv"))
+    ads = parse_ads(ads_path, labels.get("ads", "ads.csv"))
+    reviews = parse_reviews(reviews_path, labels.get("reviews", "reviews.csv"))
 
     try:
         _park_live_decisions(conn)
