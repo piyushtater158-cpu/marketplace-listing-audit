@@ -1,0 +1,17 @@
+# Render's free plan sleeps after 15 idle minutes and takes ~1 minute to wake, which a
+# reviewer opening the demo link would see as a hang. A ping every 10 minutes keeps it up;
+# one always-on free service fits inside Render's 750 free hours a month.
+name: Keep API awake
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Ping health endpoint
+        run: curl --fail --silent --show-error --max-time 120 --retry 2 https://listing-audit-api.onrender.com/api/health
