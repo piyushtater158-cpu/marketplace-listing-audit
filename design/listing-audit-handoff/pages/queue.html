@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Issue queue</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Instrument+Sans:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;display=swap">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:#F2F3EF;color:#15181C;font-family:'Instrument Sans',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;font-size:14px;line-height:1.45;-webkit-font-smoothing:antialiased}
+a{color:#1E4F5C}a:hover{color:#123540}
+h1,h2,h3,p,dl,dd,ul,ol,figure,blockquote{margin:0}
+.mono{font-family:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace}
+.app{min-height:100vh;display:flex;flex-direction:column;background:#F2F3EF}
+.hdr{display:flex;align-items:center;gap:20px;flex-wrap:wrap;padding:10px 24px;background:#FFFFFF;border-bottom:1px solid #DCDFD8;position:relative;z-index:3}
+.logo{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:#15181C}
+.logo:hover{color:#15181C}
+.logo b{font-weight:700;font-size:15px;letter-spacing:-.01em}
+.logo span{color:#5C636C;font-size:13px;padding-left:10px;border-left:1px solid #DCDFD8}
+.nav{display:flex;gap:2px;flex-wrap:wrap;align-items:center}
+.nav a{display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:0 10px;border-radius:6px;color:#3D434B;text-decoration:none;font-weight:500}
+.nav a:hover{background:#F2F3EF;color:#15181C}
+.nav a[aria-current="page"]{background:#E7E9E3;color:#15181C}
+.nav .sep{width:1px;height:20px;background:#DCDFD8;margin:0 8px}
+.count{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;line-height:16px;background:#15181C;color:#FFFFFF;border-radius:999px;padding:0 6px}
+.hdr-right{margin-left:auto;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.stamp{font-size:12.5px;color:#5C636C}
+.ai-form{margin:0}
+.switch{display:inline-flex;align-items:center;gap:8px;min-height:36px;padding:0 12px 0 8px;border:1px solid #DCDFD8;border-radius:999px;font-size:13px;font-weight:500;color:#3D434B;cursor:pointer;background:#FFFFFF}
+.switch .state{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:#1E4F5C}
+.sw{appearance:none;-webkit-appearance:none;margin:0;width:36px;height:20px;border-radius:999px;background:radial-gradient(circle at 10px 50%,#FFFFFF 6.5px,transparent 7px),#AEB3AA;cursor:pointer;flex:none}
+.sw:checked{background:radial-gradient(circle at 26px 50%,#FFFFFF 6.5px,transparent 7px),#1E4F5C}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:36px;padding:0 14px;border-radius:6px;border:1px solid #CDD1C9;background:#FFFFFF;color:#15181C;font:inherit;font-size:13.5px;font-weight:600;text-decoration:none;cursor:pointer;white-space:nowrap}
+.btn:hover{background:#F2F3EF;color:#15181C}
+.btn svg{flex:none}
+.btn-primary{background:#1E4F5C;border-color:#1E4F5C;color:#FFFFFF}
+.btn-primary:hover{background:#163E49;color:#FFFFFF}
+.btn-ghost{background:transparent;border-color:transparent;color:#4A5059}
+.btn-ghost:hover{background:#E9EBE5}
+.btn:focus-visible,summary:focus-visible,.sw:focus-visible,textarea:focus-visible{outline:2px solid #1E4F5C;outline-offset:2px}
+.upl{position:relative}
+.upl>summary{list-style:none}
+.upl>summary::-webkit-details-marker{display:none}
+.upl-pop{position:absolute;right:0;top:calc(100% + 8px);width:380px}
+.panel{background:#FFFFFF;border:1px solid #DCDFD8;border-radius:10px}
+.pop{box-shadow:0 12px 32px rgba(21,24,28,.12)}
+.upl-form{display:grid;gap:14px;padding:18px}
+.upl-head{display:grid;gap:2px}
+.upl-head b{font-size:15px}
+.upl-head span{font-size:12.5px;color:#5C636C}
+.field{display:grid;gap:5px}
+.field label{font-size:13px;font-weight:600}
+.field input[type="file"]{font:inherit;font-size:12.5px;color:#3D434B;width:100%;padding:8px;border:1px dashed #BFC4BA;border-radius:6px;background:#F7F8F5}
+.field input[type="file"]::file-selector-button{font:inherit;font-size:12.5px;font-weight:600;margin-right:10px;padding:5px 10px;border:1px solid #CDD1C9;border-radius:5px;background:#FFFFFF;color:#15181C;cursor:pointer}
+.hint{font-size:12px;color:#5C636C}
+.main{width:100%;max-width:1040px;margin:0 auto;padding:28px 24px 72px;display:flex;flex-direction:column;gap:16px}
+.sev{display:inline-flex;align-items:center;gap:5px;padding:2px 7px 2px 5px;border-radius:4px;font-size:11.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;line-height:16px;white-space:nowrap}
+.sev-crit{color:#A61B1B;background:#FBE7E4}
+.sev-high{color:#9A4205;background:#FCEBD7}
+.sev-med{color:#735C00;background:#F5EDC8}
+.sev-low{color:#38588A;background:#E4ECF7}
+.plat{display:inline-flex;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:.06em;line-height:14px;padding:2px 5px;border-radius:3px;white-space:nowrap}
+.plat-amz{background:#15181C;color:#FFFFFF}
+.plat-fk{background:#FFFFFF;color:#1C44B0;box-shadow:inset 0 0 0 1.5px #1C44B0}
+.ai-tag{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;line-height:16px;color:#5141A6;background:#EDEAF9;padding:1px 7px 1px 5px;border-radius:999px;white-space:nowrap;letter-spacing:0;text-transform:none}
+.rule-tag{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;color:#5C636C;white-space:nowrap;letter-spacing:0;text-transform:none}
+.impact{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:30px;line-height:1;letter-spacing:-.03em;color:#15181C;white-space:nowrap}
+.impact small{font-size:13px;font-weight:500;letter-spacing:0;color:#5C636C;margin-left:2px}
+.toast{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:8px 8px 8px 14px;border-radius:8px;background:#15181C;color:#EEF0EA;font-size:13.5px}
+.toast form{margin:0 0 0 auto}
+.toast .btn{min-height:30px;padding:0 12px;background:transparent;color:#FFFFFF;border-color:#4A5059}
+.toast .btn:hover{background:#2A2F35}
+.toast .plat-fk{background:transparent;color:#B9C9F5;box-shadow:inset 0 0 0 1.5px #B9C9F5}
+.page-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.page-head h1{font-size:24px;font-weight:700;letter-spacing:-.02em}
+.page-head p{color:#4A5059;margin-top:4px}
+.scope{font-size:12.5px;color:#4A5059}
+.scope b{color:#15181C;font-weight:600}
+.qlist{display:flex;flex-direction:column;gap:14px;list-style:none;padding:0;margin:0}
+.card{overflow:hidden}
+.card form{margin:0}
+.card-body{display:grid;grid-template-columns:minmax(0,1fr) 220px}
+.card-main{display:flex;flex-direction:column;gap:12px;padding:18px 22px;min-width:0}
+.meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:12.5px;color:#4A5059}
+.rank{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#6E757D}
+.sku{font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-weight:600;color:#15181C;text-decoration:none}
+.sku:hover{text-decoration:underline;color:#15181C}
+.dot{width:3px;height:3px;border-radius:999px;background:#AEB3AA}
+.issue{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.issue h2{font-size:17px;font-weight:700;letter-spacing:-.01em}
+.ev{display:flex;flex-wrap:wrap;border:1px solid #E6E8E2;border-radius:6px;width:fit-content;max-width:100%}
+.ev div{padding:6px 12px;border-left:1px solid #E6E8E2}
+.ev div:first-child{border-left:0}
+.ev dt{font-size:10.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:#5C636C}
+.ev dd{font-family:'IBM Plex Mono',monospace;font-size:13.5px;font-weight:600;color:#15181C}
+.ev dd.bad{color:#A61B1B}
+.fix{border:1px solid #E1E4DD;background:#F7F8F5;border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:8px}
+.fix-head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:#4A5059}
+.fix-head .to{font-weight:500;letter-spacing:0;text-transform:none;color:#5C636C;font-size:12px}
+.fix p{font-size:14px;line-height:1.55;color:#15181C;text-wrap:pretty}
+.fix-title{font-weight:600}
+.fix ul{margin:0;padding-left:18px;display:grid;gap:3px;font-size:13.5px;line-height:1.5}
+.fix-lbl{font-size:10.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:#5C636C}
+.card-rail{display:flex;flex-direction:column;gap:6px;padding:18px 22px;border-left:1px solid #E6E8E2;background:#FCFCFA}
+.rail-lbl{font-size:12px;color:#5C636C}
+.rail-calc{margin-top:auto;font-size:12px;line-height:1.45;color:#4A5059;border-top:1px dashed #DCDFD8;padding-top:10px}
+.card-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:10px 14px 10px 22px;border-top:1px solid #E6E8E2}
+.foot-meta{font-size:12.5px;color:#5C636C;display:flex;gap:14px;flex-wrap:wrap}
+.actions{display:flex;gap:6px;flex-wrap:wrap}
+.editing{border-color:#1E4F5C;box-shadow:0 0 0 3px #DCE8EB}
+.editing .fix{background:#FFFFFF;border-color:#9DB8BF}
+.fix textarea{font:inherit;font-size:14px;line-height:1.55;width:100%;min-height:72px;resize:vertical;border:1px solid #9DB8BF;border-radius:6px;padding:9px 11px;color:#15181C;background:#FFFFFF}
+.edit-note{font-size:12.5px;color:#1E4F5C;font-weight:600;display:inline-flex;align-items:center;gap:6px}
+.decided{border-color:#A9CDB6;background:#F5FAF7;padding:12px 14px 14px;display:flex;flex-direction:column;gap:10px}
+.decided-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:13.5px}
+.decided-top form{margin:0 0 0 auto}
+.decided-ic{width:22px;height:22px;border-radius:999px;background:#1F6B45;display:inline-flex;align-items:center;justify-content:center;flex:none}
+.decided-copy{display:flex;flex-direction:column;gap:6px}
+.lbl{font-size:10.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:#4A5059}
+.copy-row{display:flex;gap:8px;align-items:stretch;flex-wrap:wrap}
+.copy-row textarea{flex:1 1 420px;font:inherit;font-size:14px;line-height:1.5;border:1px solid #CFE2D6;border-radius:6px;padding:8px 10px;background:#FFFFFF;color:#15181C;resize:none}
+.sortnote{display:inline-flex;align-items:center;gap:6px}
+.more{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:14px 18px;font-size:13px;color:#4A5059}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="hdr">
+  <a class="logo" href="index.html">
+    <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="1" width="22" height="22" rx="6" fill="#15181C"/><path d="M6.5 8.5h11M6.5 12h7.5M6.5 15.5h4" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"/><circle cx="16.8" cy="15.5" r="1.9" fill="#E3A33B"/></svg>
+    <b>Listing Audit</b><span>Intent Farm</span>
+  </a>
+  <nav class="nav" aria-label="Main">
+    <a href="index.html">Overview</a>
+    <a href="queue.html" aria-current="page">Queue <span class="count">12</span></a>
+    <span class="sep" aria-hidden="true"></span>
+    <a href="brand.html" data-route="/brand/glowveda">GlowVeda</a>
+    <a href="brand.html" data-route="/brand/munchkraft">Munchkraft</a>
+    <a href="brand.html" data-route="/brand/vayu-home">Vayu Home</a>
+  </nav>
+  <div class="hdr-right">
+    <span class="stamp">Audited 18 Oct, 09:40 · 146 listings</span>
+    <form class="ai-form" method="post" action="/settings/ai">
+      <label class="switch"><input class="sw" type="checkbox" name="ai" checked> AI drafts <span class="state">ON</span></label>
+    </form>
+    <details class="upl">
+      <summary class="btn"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 10.5V2.5M4.8 5.6 8 2.4l3.2 3.2"/><path d="M2.5 10.5v2a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-2"/></svg>Upload data</summary>
+      <div class="upl-pop panel pop">
+        <form class="upl-form" method="post" action="/upload" enctype="multipart/form-data">
+          <div class="upl-head"><b>Upload audit data</b><span>Three CSVs. Replaces the current snapshot; the previous one is kept for comparison.</span></div>
+          <div class="field"><label for="f-listings">Listings</label><input id="f-listings" type="file" name="listings" accept=".csv"><span class="hint">One row per SKU per platform</span></div>
+          <div class="field"><label for="f-ads">Ads</label><input id="f-ads" type="file" name="ads" accept=".csv"><span class="hint">Daily spend by campaign and SKU</span></div>
+          <div class="field"><label for="f-reviews">Reviews</label><input id="f-reviews" type="file" name="reviews" accept=".csv"><span class="hint">Rating, text, date, platform</span></div>
+          <button class="btn btn-primary" type="submit">Upload files</button>
+        </form>
+      </div>
+    </details>
+  </div>
+</header>
+
+<main class="main">
+  <div class="page-head">
+    <div>
+      <h1>Issue queue</h1>
+      <p>12 open · <span class="sortnote">critical first, then highest ₹ impact/day</span></p>
+    </div>
+    <span class="scope">Showing <b>all brands</b> on <b>Amazon and Flipkart</b></span>
+  </div>
+
+  <section class="decided panel" role="status" aria-labelledby="decided-h">
+    <div class="decided-top">
+      <span class="decided-ic"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3.5 8.4 2.8 2.8 6.2-6.4"/></svg></span>
+      <span><b id="decided-h">Approved</b> · <span class="mono">MUNCH-MK-019</span> <span class="plat plat-amz">AMZ</span> Out of stock with ads running · logged 12:24</span>
+      <form method="post" action="/queue/decisions/undo"><input type="hidden" name="decision_id" value="dec_0388"><button class="btn btn-ghost" type="submit">Undo</button></form>
+    </div>
+    <div class="decided-copy">
+      <label class="lbl" for="approved-text">Approved text · send to PPC team</label>
+      <div class="copy-row">
+        <textarea id="approved-text" rows="2" readonly>Pause Sponsored Products campaign for MUNCH-MK-019 until restock — currently burning ₹420/day with zero fulfillable orders.</textarea>
+        <button class="btn btn-primary" type="button" data-copy-target="approved-text"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="2.5" width="10" height="12" rx="1.5"/><path d="M6 1.5h4v2H6z"/></svg>Copy</button>
+      </div>
+      <span class="hint">Text is pre-selected — Ctrl+C works too.</span>
+    </div>
+  </section>
+
+  <ol class="qlist">
+    <!-- 1 -->
+    <li><article class="card panel" id="iss_0142" aria-labelledby="i1">
+      <form method="post" action="/queue/decisions">
+        <input type="hidden" name="issue" value="iss_0142">
+        <div class="card-body">
+          <div class="card-main">
+            <div class="meta"><span class="rank">#1</span><a class="sku" href="sku.html">GLOWVEDA-FW-014</a><span class="plat plat-amz" title="Amazon">AMZ</span><span class="dot" aria-hidden="true"></span><span>GlowVeda</span></div>
+            <div class="issue"><h2 id="i1">Out of stock with ads running</h2><span class="sev sev-crit"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M4 .6h4L11.4 4v4L8 11.4H4L.6 8V4z" fill="currentColor"/><path d="M6 3.1v3.4M6 8.6v.1" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg>Critical</span></div>
+            <dl class="ev">
+              <div><dt>Stock</dt><dd class="bad">0</dd></div>
+              <div><dt>Ad spend</dt><dd>₹850/day</dd></div>
+              <div><dt>Running for</dt><dd>4 days</dd></div>
+              <div><dt>Daily sales avg</dt><dd>₹390</dd></div>
+            </dl>
+            <div class="fix">
+              <div class="fix-head"><span>Suggested message <span class="to">· to PPC team</span></span><span class="rule-tag">Rule OOS-ADS-01</span></div>
+              <p>Pause Sponsored Products campaign for GLOWVEDA-FW-014 until restock — currently burning ₹850/day with zero fulfillable orders.</p>
+            </div>
+          </div>
+          <div class="card-rail">
+            <div class="impact">₹1,240<small>/day</small></div>
+            <div class="rail-lbl">estimated loss</div>
+            <div class="rail-calc">₹850 wasted ad spend + ₹390 missed sales</div>
+          </div>
+        </div>
+        <div class="card-foot">
+          <span class="foot-meta"><span>Detected 14 Oct</span><span>Open 4 days</span></span>
+          <div class="actions" role="group" aria-label="Decision for GLOWVEDA-FW-014">
+            <button class="btn btn-ghost" type="submit" name="decision" value="dismiss"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="m4 4 8 8M12 4l-8 8"/></svg>Dismiss</button>
+            <a class="btn" href="queue.html" data-route="/queue?edit=iss_0142#iss_0142"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.5 2.5l3 3L6 13H3v-3z"/><path d="m9 4 3 3"/></svg>Edit text</a>
+            <button class="btn btn-primary" type="submit" name="decision" value="approve"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="2.5" width="10" height="12" rx="1.5"/><path d="M6 1.5h4v2H6z"/><path d="m5.8 9 1.6 1.6 3-3.2"/></svg>Approve &amp; copy</button>
+          </div>
+        </div>
+      </form>
+    </article></li>
+
+    <!-- 2 -->
+    <li><article class="card panel" id="iss_0147" aria-labelledby="i2">
+      <form method="post" action="/queue/decisions">
+        <input type="hidden" name="issue" value="iss_0147">
+        <div class="card-body">
+          <div class="card-main">
+            <div class="meta"><span class="rank">#2</span><a class="sku" href="sku.html">VAYU-AF-220</a><span class="plat plat-fk" title="Flipkart">FK</span><span class="dot" aria-hidden="true"></span><span>Vayu Home</span></div>
+            <div class="issue"><h2 id="i2">Buy Box lost to another seller</h2><span class="sev sev-crit"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M4 .6h4L11.4 4v4L8 11.4H4L.6 8V4z" fill="currentColor"/><path d="M6 3.1v3.4M6 8.6v.1" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg>Critical</span></div>
+            <dl class="ev">
+              <div><dt>Winning seller</dt><dd>RetailNet Traders</dd></div>
+              <div><dt>Their price</dt><dd>₹4,149</dd></div>
+              <div><dt>Our price</dt><dd>₹4,299</dd></div>
+              <div><dt>Lost for</dt><dd>2 days</dd></div>
+            </dl>
+            <div class="fix">
+              <div class="fix-head"><span>Suggested message <span class="to">· to Vayu Home</span></span><span class="ai-tag"><svg width="11" height="11" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8c.4 2.6 1.6 3.8 4.2 4.2v.1C7.6 5.5 6.4 6.7 6 9.3h-.1C5.5 6.7 4.3 5.5 1.7 5.1V5C4.3 4.6 5.5 3.4 5.9.8z" fill="currentColor"/><circle cx="10" cy="10" r="1.2" fill="currentColor"/></svg>AI draft</span></div>
+              <p>Hi Vayu team — the 4.2L air fryer (VAYU-AF-220) lost the featured-seller slot on Flipkart two days ago to RetailNet Traders at ₹4,149, ₹150 under us. Can we match to ₹4,149, or run a ₹150 coupon through Sunday? We're losing roughly ₹980/day in sales while the slot is gone.</p>
+            </div>
+          </div>
+          <div class="card-rail">
+            <div class="impact">₹980<small>/day</small></div>
+            <div class="rail-lbl">estimated loss</div>
+            <div class="rail-calc">₹4,260 sales/day × 23% featured-slot share</div>
+          </div>
+        </div>
+        <div class="card-foot">
+          <span class="foot-meta"><span>Detected 16 Oct</span><span>Open 2 days</span></span>
+          <div class="actions" role="group" aria-label="Decision for VAYU-AF-220">
+            <button class="btn btn-ghost" type="submit" name="decision" value="dismiss"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="m4 4 8 8M12 4l-8 8"/></svg>Dismiss</button>
+            <a class="btn" href="queue.html" data-route="/queue?edit=iss_0147#iss_0147"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.5 2.5l3 3L6 13H3v-3z"/><path d="m9 4 3 3"/></svg>Edit text</a>
+            <button class="btn btn-primary" type="submit" name="decision" value="approve"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="2.5" width="10" height="12" rx="1.5"/><path d="M6 1.5h4v2H6z"/><path d="m5.8 9 1.6 1.6 3-3.2"/></svg>Approve &amp; copy</button>
+          </div>
+        </div>
+      </form>
+    </article></li>
+
+    <!-- 3: editing state -->
+    <li><article class="card panel editing" id="iss_0131" aria-labelledby="i3">
+      <form method="post" action="/queue/decisions">
+        <input type="hidden" name="issue" value="iss_0131">
+        <div class="card-body">
+          <div class="card-main">
+            <div class="meta"><span class="rank">#3</span><a class="sku" href="sku.html">MUNCH-MK-031</a><span class="plat plat-amz" title="Amazon">AMZ</span><span class="dot" aria-hidden="true"></span><span>Munchkraft</span></div>
+            <div class="issue"><h2 id="i3">Price mismatch across platforms</h2><span class="sev sev-high"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8l5.6 10H.4z" fill="currentColor" stroke="currentColor" stroke-width=".8" stroke-linejoin="round"/><path d="M6 4.3v2.9M6 9v.1" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>High</span></div>
+            <dl class="ev">
+              <div><dt>Amazon</dt><dd>₹349</dd></div>
+              <div><dt>Flipkart</dt><dd>₹299</dd></div>
+              <div><dt>Gap</dt><dd class="bad">₹50 · 14%</dd></div>
+              <div><dt>Since</dt><dd>16 Oct</dd></div>
+            </dl>
+            <div class="fix">
+              <div class="fix-head"><label for="fix-3">Suggested message <span class="to">· to Munchkraft · editing</span></label><span class="rule-tag">Rule PRICE-GAP-02</span></div>
+              <textarea id="fix-3" name="fix_text">Align the Amazon price for MUNCH-MK-031 (Peri Peri Makhana, 200 g) to ₹299 to match Flipkart — or confirm the Flipkart price is a promo ending this week, and we'll leave Amazon as is.</textarea>
+              <span class="edit-note"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.5 2.5l3 3L6 13H3v-3z"/></svg>Your edited text is what gets copied and logged</span>
+            </div>
+          </div>
+          <div class="card-rail">
+            <div class="impact">₹610<small>/day</small></div>
+            <div class="rail-lbl">estimated loss</div>
+            <div class="rail-calc">₹50 price gap × 12.2 Amazon units/day avg</div>
+          </div>
+        </div>
+        <div class="card-foot">
+          <span class="foot-meta"><span>Detected 16 Oct</span><span>Open 2 days</span></span>
+          <div class="actions" role="group" aria-label="Decision for MUNCH-MK-031">
+            <a class="btn btn-ghost" href="queue.html" data-route="/queue#iss_0131">Cancel edit</a>
+            <button class="btn btn-primary" type="submit" name="decision" value="approve_edited"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="2.5" width="10" height="12" rx="1.5"/><path d="M6 1.5h4v2H6z"/><path d="m5.8 9 1.6 1.6 3-3.2"/></svg>Approve edited &amp; copy</button>
+          </div>
+        </div>
+      </form>
+    </article></li>
+
+    <!-- 4 -->
+    <li><article class="card panel" id="iss_0128" aria-labelledby="i4">
+      <form method="post" action="/queue/decisions">
+        <input type="hidden" name="issue" value="iss_0128">
+        <div class="card-body">
+          <div class="card-main">
+            <div class="meta"><span class="rank">#4</span><a class="sku" href="sku.html">GLOWVEDA-SR-007</a><span class="plat plat-fk" title="Flipkart">FK</span><span class="dot" aria-hidden="true"></span><span>GlowVeda</span></div>
+            <div class="issue"><h2 id="i4">Rating dropped below 4.0</h2><span class="sev sev-high"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8l5.6 10H.4z" fill="currentColor" stroke="currentColor" stroke-width=".8" stroke-linejoin="round"/><path d="M6 4.3v2.9M6 9v.1" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>High</span></div>
+            <dl class="ev">
+              <div><dt>Rating</dt><dd class="bad">4.3 → 3.8</dd></div>
+              <div><dt>New reviews</dt><dd>31 in 7 days</dd></div>
+              <div><dt>Top complaint</dt><dd>Packaging leak · 12</dd></div>
+            </dl>
+            <div class="fix">
+              <div class="fix-head"><span>Suggested message <span class="to">· to GlowVeda ops</span></span><span class="ai-tag"><svg width="11" height="11" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8c.4 2.6 1.6 3.8 4.2 4.2v.1C7.6 5.5 6.4 6.7 6 9.3h-.1C5.5 6.7 4.3 5.5 1.7 5.1V5C4.3 4.6 5.5 3.4 5.9.8z" fill="currentColor"/><circle cx="10" cy="10" r="1.2" fill="currentColor"/></svg>AI draft</span></div>
+              <p>12 of the 31 reviews this week on the Vitamin C Serum mention the dropper bottle leaking in transit. Can we switch Flipkart shipments to the sealed-cap pack and reply to the 1★ and 2★ reviews by Friday?</p>
+            </div>
+          </div>
+          <div class="card-rail">
+            <div class="impact">₹420<small>/day</small></div>
+            <div class="rail-lbl">estimated loss</div>
+            <div class="rail-calc">₹3,500 sales/day × 12% sub-4.0 rating penalty</div>
+          </div>
+        </div>
+        <div class="card-foot">
+          <span class="foot-meta"><span>Detected 15 Oct</span><span>Open 3 days</span></span>
+          <div class="actions" role="group" aria-label="Decision for GLOWVEDA-SR-007">
+            <button class="btn btn-ghost" type="submit" name="decision" value="dismiss"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="m4 4 8 8M12 4l-8 8"/></svg>Dismiss</button>
+            <a class="btn" href="queue.html" data-route="/queue?edit=iss_0128#iss_0128"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.5 2.5l3 3L6 13H3v-3z"/><path d="m9 4 3 3"/></svg>Edit text</a>
+            <button class="btn btn-primary" type="submit" name="decision" value="approve"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="2.5" width="10" height="12" rx="1.5"/><path d="M6 1.5h4v2H6z"/><path d="m5.8 9 1.6 1.6 3-3.2"/></svg>Approve &amp; copy</button>
+          </div>
+        </div>
+      </form>
+    </article></li>
+
+    <!-- 5: content fix -->
+    <li><article class="card panel" id="iss_0120" aria-labelledby="i5">
+      <form method="post" action="/queue/decisions">
+        <input type="hidden" name="issue" value="iss_0120">
+        <div class="card-body">
+          <div class="card-main">
+            <div class="meta"><span class="rank">#5</span><a class="sku" href="sku-one-platform.html">VAYU-KT-105</a><span class="plat plat-amz" title="Amazon">AMZ</span><span class="dot" aria-hidden="true"></span><span>Vayu Home</span></div>
+            <div class="issue"><h2 id="i5">Title cut off on mobile</h2><span class="sev sev-med"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .6 11.4 6 6 11.4.6 6z" fill="currentColor"/><path d="M3.8 6h4.4" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>Medium</span></div>
+            <dl class="ev">
+              <div><dt>Title length</dt><dd class="bad">214 chars</dd></div>
+              <div><dt>Mobile cutoff</dt><dd>~80 chars</dd></div>
+              <div><dt>"1.8L" appears at</dt><dd>char 131</dd></div>
+            </dl>
+            <div class="fix">
+              <div class="fix-head"><span>Suggested rewrite <span class="to">· title + top bullets</span></span><span class="ai-tag"><svg width="11" height="11" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8c.4 2.6 1.6 3.8 4.2 4.2v.1C7.6 5.5 6.4 6.7 6 9.3h-.1C5.5 6.7 4.3 5.5 1.7 5.1V5C4.3 4.6 5.5 3.4 5.9.8z" fill="currentColor"/><circle cx="10" cy="10" r="1.2" fill="currentColor"/></svg>AI draft</span></div>
+              <span class="fix-lbl">Title · 68 chars</span>
+              <p class="fix-title">Vayu Home 1.8L Electric Kettle, 1500W Stainless Steel, Auto Shut-Off</p>
+              <span class="fix-lbl">Bullets</span>
+              <ul>
+                <li>1.8 litre capacity — six to seven cups in one boil</li>
+                <li>1500W element with auto shut-off and boil-dry protection</li>
+                <li>Food-grade stainless steel interior, cool-touch handle</li>
+              </ul>
+            </div>
+          </div>
+          <div class="card-rail">
+            <div class="impact">₹180<small>/day</small></div>
+            <div class="rail-lbl">estimated loss</div>
+            <div class="rail-calc">₹3,000 mobile sales/day × 6% truncated-title penalty</div>
+          </div>
+        </div>
+        <div class="card-foot">
+          <span class="foot-meta"><span>Detected 10 Oct</span><span>Open 8 days</span></span>
+          <div class="actions" role="group" aria-label="Decision for VAYU-KT-105">
+            <button class="btn btn-ghost" type="submit" name="decision" value="dismiss"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="m4 4 8 8M12 4l-8 8"/></svg>Dismiss</button>
+            <a class="btn" href="queue.html" data-route="/queue?edit=iss_0120#iss_0120"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.5 2.5l3 3L6 13H3v-3z"/><path d="m9 4 3 3"/></svg>Edit text</a>
+            <button class="btn btn-primary" type="submit" name="decision" value="approve"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="2.5" width="10" height="12" rx="1.5"/><path d="M6 1.5h4v2H6z"/><path d="m5.8 9 1.6 1.6 3-3.2"/></svg>Approve &amp; copy</button>
+          </div>
+        </div>
+      </form>
+    </article></li>
+
+    <!-- 6 -->
+    <li><article class="card panel" id="iss_0117" aria-labelledby="i6">
+      <form method="post" action="/queue/decisions">
+        <input type="hidden" name="issue" value="iss_0117">
+        <div class="card-body">
+          <div class="card-main">
+            <div class="meta"><span class="rank">#6</span><a class="sku" href="sku.html">MUNCH-MK-044</a><span class="plat plat-amz" title="Amazon">AMZ</span><span class="dot" aria-hidden="true"></span><span>Munchkraft</span></div>
+            <div class="issue"><h2 id="i6">Too few product images</h2><span class="sev sev-med"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .6 11.4 6 6 11.4.6 6z" fill="currentColor"/><path d="M3.8 6h4.4" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>Medium</span></div>
+            <dl class="ev">
+              <div><dt>Images</dt><dd class="bad">2</dd></div>
+              <div><dt>Category minimum</dt><dd>6</dd></div>
+              <div><dt>Missing</dt><dd>Back of pack, nutrition</dd></div>
+            </dl>
+            <div class="fix">
+              <div class="fix-head"><span>Suggested message <span class="to">· to Munchkraft</span></span><span class="rule-tag">Rule IMG-MIN-01</span></div>
+              <p>Please send 4 more images for MUNCH-MK-044: back of pack with the nutrition panel, pack-in-hand for scale, a close-up of the product out of the pack, and one serving shot.</p>
+            </div>
+          </div>
+          <div class="card-rail">
+            <div class="impact">₹140<small>/day</small></div>
+            <div class="rail-lbl">estimated loss</div>
+            <div class="rail-calc">₹1,270 sales/day × 11% low-image penalty</div>
+          </div>
+        </div>
+        <div class="card-foot">
+          <span class="foot-meta"><span>Detected 12 Oct</span><span>Open 6 days</span></span>
+          <div class="actions" role="group" aria-label="Decision for MUNCH-MK-044">
+            <button class="btn btn-ghost" type="submit" name="decision" value="dismiss"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="m4 4 8 8M12 4l-8 8"/></svg>Dismiss</button>
+            <a class="btn" href="queue.html" data-route="/queue?edit=iss_0117#iss_0117"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.5 2.5l3 3L6 13H3v-3z"/><path d="m9 4 3 3"/></svg>Edit text</a>
+            <button class="btn btn-primary" type="submit" name="decision" value="approve"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="2.5" width="10" height="12" rx="1.5"/><path d="M6 1.5h4v2H6z"/><path d="m5.8 9 1.6 1.6 3-3.2"/></svg>Approve &amp; copy</button>
+          </div>
+        </div>
+      </form>
+    </article></li>
+  </ol>
+
+  <div class="more panel">
+    <span>Showing 6 of 12 · the other 6 are each under ₹140/day, ₹840/day combined</span>
+    <a class="btn" href="queue.html" data-route="/queue?all=1">Show all 12</a>
+  </div>
+</main>
+</div>
+</body>
+</html>

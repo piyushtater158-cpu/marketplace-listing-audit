@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SKU detail — GLOWVEDA-FW-014</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Instrument+Sans:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;display=swap">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:#F2F3EF;color:#15181C;font-family:'Instrument Sans',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;font-size:14px;line-height:1.45;-webkit-font-smoothing:antialiased}
+a{color:#1E4F5C}a:hover{color:#123540}
+h1,h2,h3,p,dl,dd,ul,ol,figure,blockquote{margin:0}
+.mono{font-family:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace}
+.app{min-height:100vh;display:flex;flex-direction:column;background:#F2F3EF}
+.hdr{display:flex;align-items:center;gap:20px;flex-wrap:wrap;padding:10px 24px;background:#FFFFFF;border-bottom:1px solid #DCDFD8;position:relative;z-index:3}
+.logo{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:#15181C}
+.logo:hover{color:#15181C}
+.logo b{font-weight:700;font-size:15px;letter-spacing:-.01em}
+.logo span{color:#5C636C;font-size:13px;padding-left:10px;border-left:1px solid #DCDFD8}
+.nav{display:flex;gap:2px;flex-wrap:wrap;align-items:center}
+.nav a{display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:0 10px;border-radius:6px;color:#3D434B;text-decoration:none;font-weight:500}
+.nav a:hover{background:#F2F3EF;color:#15181C}
+.nav a[aria-current="page"]{background:#E7E9E3;color:#15181C}
+.nav .sep{width:1px;height:20px;background:#DCDFD8;margin:0 8px}
+.count{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;line-height:16px;background:#15181C;color:#FFFFFF;border-radius:999px;padding:0 6px}
+.hdr-right{margin-left:auto;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.stamp{font-size:12.5px;color:#5C636C}
+.ai-form{margin:0}
+.switch{display:inline-flex;align-items:center;gap:8px;min-height:36px;padding:0 12px 0 8px;border:1px solid #DCDFD8;border-radius:999px;font-size:13px;font-weight:500;color:#3D434B;cursor:pointer;background:#FFFFFF}
+.switch .state{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:#1E4F5C}
+.sw{appearance:none;-webkit-appearance:none;margin:0;width:36px;height:20px;border-radius:999px;background:radial-gradient(circle at 10px 50%,#FFFFFF 6.5px,transparent 7px),#AEB3AA;cursor:pointer;flex:none}
+.sw:checked{background:radial-gradient(circle at 26px 50%,#FFFFFF 6.5px,transparent 7px),#1E4F5C}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:36px;padding:0 14px;border-radius:6px;border:1px solid #CDD1C9;background:#FFFFFF;color:#15181C;font:inherit;font-size:13.5px;font-weight:600;text-decoration:none;cursor:pointer;white-space:nowrap}
+.btn:hover{background:#F2F3EF;color:#15181C}
+.btn svg{flex:none}
+.btn-primary{background:#1E4F5C;border-color:#1E4F5C;color:#FFFFFF}
+.btn-primary:hover{background:#163E49;color:#FFFFFF}
+.btn:focus-visible,summary:focus-visible,.sw:focus-visible,.oi:focus-visible{outline:2px solid #1E4F5C;outline-offset:2px}
+.upl{position:relative}
+.upl>summary{list-style:none}
+.upl>summary::-webkit-details-marker{display:none}
+.upl-pop{position:absolute;right:0;top:calc(100% + 8px);width:380px}
+.panel{background:#FFFFFF;border:1px solid #DCDFD8;border-radius:10px}
+.pop{box-shadow:0 12px 32px rgba(21,24,28,.12)}
+.upl-form{display:grid;gap:14px;padding:18px}
+.upl-head{display:grid;gap:2px}
+.upl-head b{font-size:15px}
+.upl-head span{font-size:12.5px;color:#5C636C}
+.field{display:grid;gap:5px}
+.field label{font-size:13px;font-weight:600}
+.field input[type="file"]{font:inherit;font-size:12.5px;color:#3D434B;width:100%;padding:8px;border:1px dashed #BFC4BA;border-radius:6px;background:#F7F8F5}
+.field input[type="file"]::file-selector-button{font:inherit;font-size:12.5px;font-weight:600;margin-right:10px;padding:5px 10px;border:1px solid #CDD1C9;border-radius:5px;background:#FFFFFF;color:#15181C;cursor:pointer}
+.hint{font-size:12px;color:#5C636C}
+.main{width:100%;max-width:1240px;margin:0 auto;padding:24px 24px 72px;display:flex;flex-direction:column;gap:18px}
+.sev{display:inline-flex;align-items:center;gap:5px;padding:2px 7px 2px 5px;border-radius:4px;font-size:11.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;line-height:16px;white-space:nowrap}
+.sev-crit{color:#A61B1B;background:#FBE7E4}
+.sev-high{color:#9A4205;background:#FCEBD7}
+.sev-med{color:#735C00;background:#F5EDC8}
+.sev-low{color:#38588A;background:#E4ECF7}
+.plat{display:inline-flex;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:.06em;line-height:14px;padding:2px 5px;border-radius:3px;white-space:nowrap}
+.plat-amz{background:#15181C;color:#FFFFFF}
+.plat-fk{background:#FFFFFF;color:#1C44B0;box-shadow:inset 0 0 0 1.5px #1C44B0}
+.ai-tag{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;line-height:16px;color:#5141A6;background:#EDEAF9;padding:1px 7px 1px 5px;border-radius:999px;white-space:nowrap;letter-spacing:0;text-transform:none}
+.crumbs{display:flex;gap:6px;align-items:center;font-size:12.5px;color:#5C636C;flex-wrap:wrap}
+.crumbs a{color:#3D434B;text-decoration:none}
+.crumbs a:hover{text-decoration:underline}
+.sku-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap}
+.sku-head h1{font-size:24px;font-weight:700;letter-spacing:-.02em}
+.sku-id{font-family:'IBM Plex Mono',monospace;font-size:13px;color:#4A5059;margin-top:4px}
+.open-issues{display:flex;gap:8px;flex-wrap:wrap}
+.oi{display:inline-flex;align-items:center;gap:8px;min-height:38px;padding:0 12px;border:1px solid #DCDFD8;border-radius:6px;background:#FFFFFF;text-decoration:none;color:#15181C;font-size:13px;font-weight:500}
+.oi:hover{border-color:#AEB4AA;color:#15181C}
+.oi .num{font-family:'IBM Plex Mono',monospace;font-weight:600}
+.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.col{overflow:hidden}
+.col-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 18px;border-bottom:1px solid #E6E8E2}
+.col-head h2{font-size:15px;font-weight:700;display:flex;align-items:center;gap:8px}
+.col-id{font-family:'IBM Plex Mono',monospace;font-size:12px;color:#5C636C}
+.attrs{display:grid;grid-template-columns:150px minmax(0,1fr)}
+.attrs dt,.attrs dd{padding:9px 18px;border-top:1px solid #EEF0EA;font-size:13.5px}
+.attrs dt{color:#5C636C;padding-right:0}
+.attrs dd{font-weight:500;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.attrs .first{border-top:0}
+.attrs .ttl{font-weight:500;line-height:1.5;display:block}
+.attrs .ttl small{display:block;font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#5C636C;margin-top:2px}
+.v{font-family:'IBM Plex Mono',monospace;font-weight:600}
+.bad{color:#A61B1B}
+.differs{font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#735C00;background:#F5EDC8;border-radius:3px;padding:1px 6px}
+.st{display:inline-flex;align-items:center;gap:6px}
+.st-dot{width:8px;height:8px;border-radius:999px;flex:none}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:16px 18px 12px}
+.sec-head h2{font-size:15px;font-weight:700}
+.sec-head span{font-size:12.5px;color:#5C636C}
+.tbl-wrap{overflow-x:auto}
+.snap{width:100%;border-collapse:collapse;min-width:820px;font-size:13.5px}
+.snap th,.snap td{padding:9px 14px;border-top:1px solid #EEF0EA;text-align:left;white-space:nowrap}
+.snap thead th{font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:#5C636C;border-top:1px solid #E6E8E2}
+.snap thead tr:first-child th{border-top:0;font-size:12.5px;letter-spacing:0;text-transform:none;color:#15181C}
+.snap .grp{border-left:1px solid #E6E8E2}
+.snap td.n{font-family:'IBM Plex Mono',monospace}
+.snap th[scope="row"]{font-weight:500;color:#3D434B;padding-left:18px}
+.snap tr.chg td,.snap tr.chg th{background:#FCFCF7}
+.d{display:inline-flex;font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-weight:600;padding:1px 7px;border-radius:4px}
+.d-bad{color:#A61B1B;background:#FBE7E4}
+.d-chg{color:#38588A;background:#E4ECF7}
+.d-same{color:#6E757D;padding:1px 0}
+.rev{display:grid;grid-template-columns:300px minmax(0,1fr);border-top:1px solid #E6E8E2}
+.stars{padding:16px 18px 20px;border-right:1px solid #E6E8E2;display:flex;flex-direction:column;gap:10px}
+.avg{display:flex;align-items:baseline;gap:8px}
+.avg b{font-family:'IBM Plex Mono',monospace;font-size:32px;font-weight:600;letter-spacing:-.03em}
+.avg span{font-size:12.5px;color:#5C636C}
+.srow{display:grid;grid-template-columns:28px minmax(0,1fr) 72px;align-items:center;gap:10px;font-size:12.5px}
+.srow .lbl{font-family:'IBM Plex Mono',monospace;color:#3D434B}
+.track{height:8px;border-radius:999px;background:#ECEEE8;overflow:hidden}
+.fill{height:100%;background:#4A5059;border-radius:999px}
+.fill.lo{background:#B44D0A}
+.srow .c{font-family:'IBM Plex Mono',monospace;color:#4A5059;text-align:right}
+.quotes{padding:16px 18px 20px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.q{border:1px solid #E6E8E2;border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:6px}
+.q-meta{display:flex;align-items:center;gap:8px;font-size:12px;color:#5C636C;flex-wrap:wrap}
+.q-stars{color:#B44D0A;letter-spacing:1px;font-size:13px}
+.q-stars.hi{color:#3D434B}
+.q blockquote{font-size:14.5px;line-height:1.5;color:#15181C}
+.q .tr{font-size:13px;color:#4A5059;display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
+.themes{display:flex;flex-direction:column;gap:10px;padding:14px 18px 18px;border-top:1px solid #E6E8E2}
+.themes-h{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;color:#3D434B;flex-wrap:wrap}
+.themes-h span.m{font-weight:400;color:#5C636C}
+.chips{display:flex;gap:8px;flex-wrap:wrap;list-style:none;padding:0;margin:0}
+.chip{display:inline-flex;align-items:center;gap:7px;min-height:30px;padding:0 10px 0 6px;border:1px solid #DCDFD8;border-radius:999px;font-size:13px;font-weight:500;background:#FFFFFF}
+.chip .g{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:999px;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;line-height:1}
+.chip.neg .g{color:#9A4205;background:#FCEBD7}
+.chip.pos .g{color:#1F6B45;background:#E1F0E6}
+.chip .n{font-family:'IBM Plex Mono',monospace;font-size:12px;color:#5C636C}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="hdr">
+  <a class="logo" href="index.html">
+    <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="1" width="22" height="22" rx="6" fill="#15181C"/><path d="M6.5 8.5h11M6.5 12h7.5M6.5 15.5h4" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"/><circle cx="16.8" cy="15.5" r="1.9" fill="#E3A33B"/></svg>
+    <b>Listing Audit</b><span>Intent Farm</span>
+  </a>
+  <nav class="nav" aria-label="Main">
+    <a href="index.html">Overview</a>
+    <a href="queue.html">Queue <span class="count">12</span></a>
+    <span class="sep" aria-hidden="true"></span>
+    <a href="brand.html" data-route="/brand/glowveda">GlowVeda</a>
+    <a href="brand.html" data-route="/brand/munchkraft">Munchkraft</a>
+    <a href="brand.html" data-route="/brand/vayu-home">Vayu Home</a>
+  </nav>
+  <div class="hdr-right">
+    <span class="stamp">Audited 18 Oct, 09:40 · 146 listings</span>
+    <form class="ai-form" method="post" action="/settings/ai">
+      <label class="switch"><input class="sw" type="checkbox" name="ai" checked> AI drafts <span class="state">ON</span></label>
+    </form>
+    <details class="upl">
+      <summary class="btn"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 10.5V2.5M4.8 5.6 8 2.4l3.2 3.2"/><path d="M2.5 10.5v2a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-2"/></svg>Upload data</summary>
+      <div class="upl-pop panel pop">
+        <form class="upl-form" method="post" action="/upload" enctype="multipart/form-data">
+          <div class="upl-head"><b>Upload audit data</b><span>Three CSVs. Replaces the current snapshot; the previous one is kept for comparison.</span></div>
+          <div class="field"><label for="f-listings">Listings</label><input id="f-listings" type="file" name="listings" accept=".csv"><span class="hint">One row per SKU per platform</span></div>
+          <div class="field"><label for="f-ads">Ads</label><input id="f-ads" type="file" name="ads" accept=".csv"><span class="hint">Daily spend by campaign and SKU</span></div>
+          <div class="field"><label for="f-reviews">Reviews</label><input id="f-reviews" type="file" name="reviews" accept=".csv"><span class="hint">Rating, text, date, platform</span></div>
+          <button class="btn btn-primary" type="submit">Upload files</button>
+        </form>
+      </div>
+    </details>
+  </div>
+</header>
+
+<main class="main">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Overview</a><span aria-hidden="true">/</span><a href="brand.html" data-route="/brand/glowveda">GlowVeda</a><span aria-hidden="true">/</span><span aria-current="page" class="mono">GLOWVEDA-FW-014</span></nav>
+
+  <div class="sku-head">
+    <div>
+      <h1>Neem &amp; Tulsi Foaming Face Wash, 150 ml</h1>
+      <div class="sku-id">GLOWVEDA-FW-014 · GlowVeda · listed on Amazon and Flipkart</div>
+    </div>
+    <div class="open-issues" aria-label="Open issues on this SKU">
+      <a class="oi" href="queue.html" data-route="/queue#iss_0142"><span class="sev sev-crit"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M4 .6h4L11.4 4v4L8 11.4H4L.6 8V4z" fill="currentColor"/><path d="M6 3.1v3.4M6 8.6v.1" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg>Critical</span><span class="plat plat-amz">AMZ</span>Out of stock with ads running<span class="num">₹1,240/day</span></a>
+      <a class="oi" href="queue.html"><span class="sev sev-low"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="4.6" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="6" cy="6" r="1.7" fill="currentColor"/></svg>Low</span><span class="plat plat-fk">FK</span>Low stock<span class="num">₹60/day</span></a>
+    </div>
+  </div>
+
+  <div class="cols">
+    <section class="col panel" aria-labelledby="c-amz">
+      <div class="col-head"><h2 id="c-amz"><span class="plat plat-amz">AMZ</span>Amazon</h2><span class="col-id">ASIN B0C7X2M9QF</span></div>
+      <dl class="attrs">
+        <dt class="first">Title</dt><dd class="first"><span class="ttl">GlowVeda Neem &amp; Tulsi Foaming Face Wash for Oily, Acne-Prone Skin, Soap-Free, 150 ml<small>86 characters</small></span></dd>
+        <dt>Images</dt><dd><span class="v">7</span></dd>
+        <dt>Bullets</dt><dd><span class="v">5</span></dd>
+        <dt>Price</dt><dd><span class="v">₹299</span><span class="differs">Differs</span></dd>
+        <dt>MRP</dt><dd><span class="v">₹399</span><span class="hint">25% off</span></dd>
+        <dt>Stock</dt><dd><span class="v bad">0 units</span><span class="sev sev-crit"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M4 .6h4L11.4 4v4L8 11.4H4L.6 8V4z" fill="currentColor"/><path d="M6 3.1v3.4M6 8.6v.1" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg>Out of stock</span></dd>
+        <dt>Rating</dt><dd><span class="v">4.1</span><span class="hint">1,284 reviews</span></dd>
+        <dt>Buy Box owner</dt><dd>GlowVeda Official</dd>
+        <dt>Status</dt><dd><span class="st"><span class="st-dot" style="background: #B44D0A" aria-hidden="true"></span>Active · not purchasable</span></dd>
+      </dl>
+    </section>
+    <section class="col panel" aria-labelledby="c-fk">
+      <div class="col-head"><h2 id="c-fk"><span class="plat plat-fk">FK</span>Flipkart</h2><span class="col-id">FSN FCWGV7Z3QHJ</span></div>
+      <dl class="attrs">
+        <dt class="first">Title</dt><dd class="first"><span class="ttl">GlowVeda Neem Tulsi Face Wash 150 ml<small>36 characters</small></span></dd>
+        <dt>Images</dt><dd><span class="v">4</span></dd>
+        <dt>Bullets</dt><dd><span class="v">3</span><span class="hint">Key features</span></dd>
+        <dt>Price</dt><dd><span class="v">₹279</span><span class="differs">Differs</span></dd>
+        <dt>MRP</dt><dd><span class="v">₹399</span><span class="hint">30% off</span></dd>
+        <dt>Stock</dt><dd><span class="v">5 units</span><span class="sev sev-low"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="4.6" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="6" cy="6" r="1.7" fill="currentColor"/></svg>Low</span></dd>
+        <dt>Rating</dt><dd><span class="v">4.0</span><span class="hint">612 reviews</span></dd>
+        <dt>Featured seller</dt><dd>GlowVeda Official</dd>
+        <dt>Status</dt><dd><span class="st"><span class="st-dot" style="background: #1F6B45" aria-hidden="true"></span>Active</span></dd>
+      </dl>
+    </section>
+  </div>
+
+  <section class="panel" aria-labelledby="snap-h">
+    <div class="sec-head"><h2 id="snap-h">What changed between snapshots</h2><span>14 Oct upload → 18 Oct upload · changed rows highlighted</span></div>
+    <div class="tbl-wrap">
+      <table class="snap">
+        <thead>
+          <tr><th scope="col"></th><th scope="colgroup" colspan="3" class="grp"><span class="plat plat-amz">AMZ</span> Amazon</th><th scope="colgroup" colspan="3" class="grp"><span class="plat plat-fk">FK</span> Flipkart</th></tr>
+          <tr><th scope="col" style="padding-left: 18px">Metric</th><th scope="col" class="grp">14 Oct</th><th scope="col">18 Oct</th><th scope="col">Change</th><th scope="col" class="grp">14 Oct</th><th scope="col">18 Oct</th><th scope="col">Change</th></tr>
+        </thead>
+        <tbody>
+          <tr class="chg"><th scope="row">Price</th><td class="n grp">₹299</td><td class="n">₹299</td><td><span class="d d-same">No change</span></td><td class="n grp">₹299</td><td class="n">₹279</td><td><span class="d d-chg">▼ ₹20</span></td></tr>
+          <tr class="chg"><th scope="row">Stock</th><td class="n grp">46</td><td class="n">0</td><td><span class="d d-bad">▼ 46</span></td><td class="n grp">38</td><td class="n">5</td><td><span class="d d-bad">▼ 33</span></td></tr>
+          <tr class="chg"><th scope="row">Rating</th><td class="n grp">4.2</td><td class="n">4.1</td><td><span class="d d-bad">▼ 0.1</span></td><td class="n grp">4.0</td><td class="n">4.0</td><td><span class="d d-same">No change</span></td></tr>
+          <tr><th scope="row">Reviews</th><td class="n grp">1,262</td><td class="n">1,284</td><td><span class="d d-same">+22</span></td><td class="n grp">598</td><td class="n">612</td><td><span class="d d-same">+14</span></td></tr>
+          <tr><th scope="row">Buy Box / featured</th><td class="grp">GlowVeda Official</td><td>GlowVeda Official</td><td><span class="d d-same">No change</span></td><td class="grp">GlowVeda Official</td><td>GlowVeda Official</td><td><span class="d d-same">No change</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="panel" aria-labelledby="rev-h">
+    <div class="sec-head"><h2 id="rev-h">Reviews</h2><span>Both platforms · 1,896 reviews</span></div>
+    <div class="rev">
+      <div class="stars">
+        <div class="avg"><b>4.1</b><span>average · weighted across platforms</span></div>
+        <div class="srow"><span class="lbl">5★</span><div class="track"><div class="fill" style="width: 52%"></div></div><span class="c">980 · 52%</span></div>
+        <div class="srow"><span class="lbl">4★</span><div class="track"><div class="fill" style="width: 18%"></div></div><span class="c">343 · 18%</span></div>
+        <div class="srow"><span class="lbl">3★</span><div class="track"><div class="fill" style="width: 9%"></div></div><span class="c">171 · 9%</span></div>
+        <div class="srow"><span class="lbl">2★</span><div class="track"><div class="fill lo" style="width: 8%"></div></div><span class="c">152 · 8%</span></div>
+        <div class="srow"><span class="lbl">1★</span><div class="track"><div class="fill lo" style="width: 13%"></div></div><span class="c">250 · 13%</span></div>
+      </div>
+      <div class="quotes">
+        <figure class="q">
+          <div class="q-meta"><span class="q-stars" role="img" aria-label="2 out of 5 stars">★★☆☆☆</span><span class="plat plat-amz">AMZ</span><span>17 Oct · verified purchase</span></div>
+          <blockquote>Product acha tha pehle, ab box leak ho ke aaya, bahut ghatiya packaging 😡</blockquote>
+          <div class="tr"><span class="ai-tag"><svg width="11" height="11" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8c.4 2.6 1.6 3.8 4.2 4.2v.1C7.6 5.5 6.4 6.7 6 9.3h-.1C5.5 6.7 4.3 5.5 1.7 5.1V5C4.3 4.6 5.5 3.4 5.9.8z" fill="currentColor"/><circle cx="10" cy="10" r="1.2" fill="currentColor"/></svg>AI translation</span>“The product was good before; now the box arrived leaking. Really poor packaging.”</div>
+        </figure>
+        <figure class="q">
+          <div class="q-meta"><span class="q-stars hi" role="img" aria-label="5 out of 5 stars">★★★★★</span><span class="plat plat-fk">FK</span><span>16 Oct · certified buyer</span></div>
+          <blockquote>Skin feels clean without that tight, dry feeling. Third bottle now.</blockquote>
+        </figure>
+        <figure class="q">
+          <div class="q-meta"><span class="q-stars" role="img" aria-label="2 out of 5 stars">★★☆☆☆</span><span class="plat plat-fk">FK</span><span>15 Oct · certified buyer</span></div>
+          <blockquote>Pump stopped working after a week, had to unscrew the cap and pour it out.</blockquote>
+        </figure>
+      </div>
+    </div>
+    <div class="themes">
+      <div class="themes-h">Complaint and praise themes <span class="ai-tag"><svg width="11" height="11" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8c.4 2.6 1.6 3.8 4.2 4.2v.1C7.6 5.5 6.4 6.7 6 9.3h-.1C5.5 6.7 4.3 5.5 1.7 5.1V5C4.3 4.6 5.5 3.4 5.9.8z" fill="currentColor"/><circle cx="10" cy="10" r="1.2" fill="currentColor"/></svg>AI-clustered</span><span class="m">from 212 reviews in the last 30 days</span></div>
+      <ul class="chips">
+        <li class="chip neg"><span class="g" aria-label="Complaint">−</span>Packaging leaks<span class="n">24</span></li>
+        <li class="chip neg"><span class="g" aria-label="Complaint">−</span>Pump stops working<span class="n">11</span></li>
+        <li class="chip neg"><span class="g" aria-label="Complaint">−</span>Fragrance too strong<span class="n">6</span></li>
+        <li class="chip pos"><span class="g" aria-label="Praise">+</span>Gentle on skin<span class="n">38</span></li>
+        <li class="chip pos"><span class="g" aria-label="Praise">+</span>Controls oil<span class="n">21</span></li>
+      </ul>
+    </div>
+  </section>
+</main>
+</div>
+</body>
+</html>

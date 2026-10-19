@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Components — Listing Audit</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Instrument+Sans:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;display=swap">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:#F2F3EF;color:#15181C;font-family:'Instrument Sans',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;font-size:14px;line-height:1.45;-webkit-font-smoothing:antialiased}
+a{color:#1E4F5C}a:hover{color:#123540}
+h1,h2,h3,p,dl,dd,ul,ol,figure,blockquote{margin:0}
+.mono{font-family:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace}
+.switch{display:inline-flex;align-items:center;gap:8px;min-height:36px;padding:0 12px 0 8px;border:1px solid #DCDFD8;border-radius:999px;font-size:13px;font-weight:500;color:#3D434B;cursor:pointer;background:#FFFFFF}
+.switch .state{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:#1E4F5C}
+.switch .state.off{color:#5C636C}
+.sw{appearance:none;-webkit-appearance:none;margin:0;width:36px;height:20px;border-radius:999px;background:radial-gradient(circle at 10px 50%,#FFFFFF 6.5px,transparent 7px),#AEB3AA;cursor:pointer;flex:none}
+.sw:checked{background:radial-gradient(circle at 26px 50%,#FFFFFF 6.5px,transparent 7px),#1E4F5C}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:36px;padding:0 14px;border-radius:6px;border:1px solid #CDD1C9;background:#FFFFFF;color:#15181C;font:inherit;font-size:13.5px;font-weight:600;text-decoration:none;cursor:pointer;white-space:nowrap}
+.btn:hover{background:#F2F3EF;color:#15181C}
+.btn svg{flex:none}
+.btn-primary{background:#1E4F5C;border-color:#1E4F5C;color:#FFFFFF}
+.btn-primary:hover{background:#163E49;color:#FFFFFF}
+.btn-ghost{background:transparent;border-color:transparent;color:#4A5059}
+.btn-ghost:hover{background:#E9EBE5}
+.btn[disabled]{cursor:progress;opacity:.8}
+.panel{background:#FFFFFF;border:1px solid #DCDFD8;border-radius:10px}
+.pop{box-shadow:0 12px 32px rgba(21,24,28,.12)}
+.upl-form{display:grid;gap:14px;padding:18px}
+.upl-head{display:grid;gap:2px}
+.upl-head b{font-size:15px}
+.upl-head span{font-size:12.5px;color:#5C636C}
+.field{display:grid;gap:5px}
+.field label{font-size:13px;font-weight:600}
+.field input[type="file"]{font:inherit;font-size:12.5px;color:#3D434B;width:100%;padding:8px;border:1px dashed #BFC4BA;border-radius:6px;background:#F7F8F5}
+.field input[type="file"]::file-selector-button{font:inherit;font-size:12.5px;font-weight:600;margin-right:10px;padding:5px 10px;border:1px solid #CDD1C9;border-radius:5px;background:#FFFFFF;color:#15181C;cursor:pointer}
+.field input[disabled]{opacity:.6}
+.hint{font-size:12px;color:#5C636C}
+.sev{display:inline-flex;align-items:center;gap:5px;padding:2px 7px 2px 5px;border-radius:4px;font-size:11.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;line-height:16px;white-space:nowrap}
+.sev-crit{color:#A61B1B;background:#FBE7E4}
+.sev-high{color:#9A4205;background:#FCEBD7}
+.sev-med{color:#735C00;background:#F5EDC8}
+.sev-low{color:#38588A;background:#E4ECF7}
+.plat{display:inline-flex;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:.06em;line-height:14px;padding:2px 5px;border-radius:3px;white-space:nowrap}
+.plat-amz{background:#15181C;color:#FFFFFF}
+.plat-fk{background:#FFFFFF;color:#1C44B0;box-shadow:inset 0 0 0 1.5px #1C44B0}
+.ai-tag{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;line-height:16px;color:#5141A6;background:#EDEAF9;padding:1px 7px 1px 5px;border-radius:999px;white-space:nowrap;letter-spacing:0;text-transform:none}
+.rule-tag{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;color:#5C636C;white-space:nowrap;letter-spacing:0;text-transform:none}
+.impact{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:30px;line-height:1;letter-spacing:-.03em;color:#15181C;white-space:nowrap}
+.impact small{font-size:13px;font-weight:500;letter-spacing:0;color:#5C636C;margin-left:2px}
+.toast{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:8px 8px 8px 14px;border-radius:8px;background:#15181C;color:#EEF0EA;font-size:13.5px}
+.toast form{margin:0 0 0 auto}
+.toast .btn{min-height:30px;padding:0 12px;background:transparent;color:#FFFFFF;border-color:#4A5059}
+.toast .plat-amz{background:#EEF0EA;color:#15181C}
+.toast .plat-fk{background:transparent;color:#B9C9F5;box-shadow:inset 0 0 0 1.5px #B9C9F5}
+.tip-pop{width:340px;padding:14px 16px;font-size:13px;line-height:1.5;color:#2A2F35}
+.tip-pop b{display:block;margin-bottom:4px;color:#15181C}
+.tipbtn{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:999px;border:1px solid #1E4F5C;color:#1E4F5C;background:#E0EBEE}
+.fix{border:1px solid #E1E4DD;background:#F7F8F5;border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:8px}
+.fix-head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:#4A5059}
+.fix-head .to{font-weight:500;letter-spacing:0;text-transform:none;color:#5C636C;font-size:12px}
+.fix p{font-size:14px;line-height:1.55;color:#15181C}
+.fix textarea{font:inherit;font-size:14px;line-height:1.55;width:100%;min-height:64px;resize:vertical;border:1px solid #9DB8BF;border-radius:6px;padding:9px 11px;color:#15181C;background:#FFFFFF}
+.cc{display:inline-flex;align-items:center;gap:5px;min-width:42px;padding:3px 8px 3px 6px;border-radius:4px;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;line-height:16px}
+.cc.is-zero{background:transparent;color:#6E757D;box-shadow:inset 0 0 0 1px #E1E4DD}
+.cell{display:flex;flex-direction:column;justify-content:space-between;gap:12px;min-height:104px;padding:14px 16px;border:1px solid #E1E4DD;border-radius:8px;background:#FAFAF8;text-decoration:none;color:#15181C}
+.cell-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.counts{display:flex;gap:6px;flex-wrap:wrap}
+.cell-amt{font-family:'IBM Plex Mono',monospace;font-size:16px;font-weight:600;white-space:nowrap}
+.cell-amt small{font-size:11.5px;color:#5C636C;font-weight:500}
+.cell-line{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:13px;color:#3D434B}
+.cell-line b{color:#15181C;font-weight:600}
+.cell-go{color:#1E4F5C;font-weight:600}
+.cell-ok{background:#F0F6F2;border-color:#D1E5D8}
+.ok-row{display:flex;align-items:center;gap:8px;font-weight:700;color:#1F6B45;font-size:15px}
+.cell-wait{background:#FFFFFF;border-style:dashed;border-color:#BFC4BA}
+.wait-row{display:flex;align-items:center;gap:8px;font-weight:600;color:#3D434B;font-size:14px}
+.sheet{width:1440px;min-height:2000px;padding:48px;display:flex;flex-direction:column;gap:24px;background:#F2F3EF}
+.sheet-h{display:flex;align-items:flex-end;justify-content:space-between;gap:24px}
+.sheet-h h1{font-size:28px;font-weight:700;letter-spacing:-.02em}
+.sheet-h p{color:#4A5059;margin-top:4px}
+.g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.span2{grid-column:span 2}
+.span3{grid-column:span 3}
+.blk{padding:20px 22px 22px;display:flex;flex-direction:column;gap:16px}
+.blk-h{display:flex;align-items:baseline;justify-content:space-between;gap:12px;border-bottom:1px solid #EEF0EA;padding-bottom:10px}
+.blk-h h2{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#3D434B}
+.blk-h span{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#5C636C}
+.row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.spec{display:grid;grid-template-columns:120px minmax(0,1fr);gap:10px 16px;align-items:center;font-size:13px;color:#3D434B}
+.note{font-size:12.5px;color:#5C636C;line-height:1.5}
+.lbl{font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:#5C636C}
+.sw-row{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:12px}
+.swatch{display:flex;flex-direction:column;gap:6px;font-size:12px}
+.chip-c{height:44px;border-radius:6px;border:1px solid rgba(21,24,28,.1)}
+.swatch b{font-weight:600}
+.swatch span{font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5C636C}
+.type-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;border-top:1px solid #EEF0EA;padding-top:16px}
+.type-row div{display:flex;flex-direction:column;gap:4px}
+.list-demo{display:flex;flex-direction:column;border:1px solid #E6E8E2;border-radius:6px}
+.list-demo div{display:flex;align-items:center;gap:10px;padding:7px 10px;border-top:1px solid #EEF0EA;font-size:13px}
+.list-demo div:first-child{border-top:0}
+.list-demo .sku{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;width:130px}
+.rail{display:flex;flex-direction:column;gap:6px;padding:16px 18px;border:1px solid #E6E8E2;border-radius:8px;background:#FCFCFA;width:220px}
+.rail-lbl{font-size:12px;color:#5C636C}
+.rail-calc{font-size:12px;color:#4A5059;border-top:1px dashed #DCDFD8;padding-top:8px;margin-top:6px}
+.hero-demo{display:flex;flex-direction:column;gap:10px}
+.eyebrow{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#4A5059}
+.hero-num{font-family:'IBM Plex Mono',monospace;font-size:56px;font-weight:600;line-height:1;letter-spacing:-.04em}
+.hero-num small{font-size:18px;font-weight:500;color:#5C636C;letter-spacing:0;margin-left:4px}
+.prog{height:4px;border-radius:999px;background:#E6E8E2;overflow:hidden}
+.prog i{display:block;height:100%;width:64%;background:#1E4F5C;border-radius:999px}
+.files-st{display:flex;flex-direction:column;gap:4px;font-size:12.5px;color:#3D434B}
+.files-st span{display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:12px}
+.decided{border:1px solid #A9CDB6;border-radius:10px;background:#F5FAF7;padding:12px 14px 14px;display:flex;flex-direction:column;gap:10px}
+.decided-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:13.5px}
+.decided-top form{margin:0 0 0 auto}
+.decided-ic{width:22px;height:22px;border-radius:999px;background:#1F6B45;display:inline-flex;align-items:center;justify-content:center;flex:none}
+.decided-copy{display:flex;flex-direction:column;gap:6px}
+.copy-row{display:flex;gap:8px;align-items:stretch;flex-wrap:wrap}
+.copy-row textarea{flex:1 1 420px;font:inherit;font-size:14px;line-height:1.5;border:1px solid #CFE2D6;border-radius:6px;padding:8px 10px;background:#FFFFFF;color:#15181C;resize:none}
+.prose{font-family:'Newsreader',Georgia,serif;font-size:17px;line-height:1.6;color:#1E2227}
+</style>
+</helmet>
+<div class="sheet">
+  <div class="sheet-h">
+    <div>
+      <h1>Listing Audit — components</h1>
+      <p>Shared parts for every screen. Plain HTML + CSS; every control is a native form element.</p>
+    </div>
+    <span class="rule-tag">v1 · 18 Oct 2026</span>
+  </div>
+
+  <section class="panel blk" aria-label="Tokens">
+    <div class="blk-h"><h2>Tokens</h2><span>color · type</span></div>
+    <div class="sw-row">
+      <div class="swatch"><div class="chip-c" style="background: #F2F3EF"></div><b>Ground</b><span>#F2F3EF</span></div>
+      <div class="swatch"><div class="chip-c" style="background: #FFFFFF"></div><b>Surface</b><span>#FFFFFF</span></div>
+      <div class="swatch"><div class="chip-c" style="background: #15181C"></div><b>Ink</b><span>#15181C</span></div>
+      <div class="swatch"><div class="chip-c" style="background: #5C636C"></div><b>Muted</b><span>#5C636C</span></div>
+      <div class="swatch"><div class="chip-c" style="background: #DCDFD8"></div><b>Line</b><span>#DCDFD8</span></div>
+      <div class="swatch"><div class="chip-c" style="background: #1E4F5C"></div><b>Action</b><span>#1E4F5C</span></div>
+      <div class="swatch"><div class="chip-c" style="background: #5141A6"></div><b>AI</b><span>#5141A6 / #EDEAF9</span></div>
+      <div class="swatch"><div class="chip-c" style="background: #1F6B45"></div><b>Clear</b><span>#1F6B45 / #F0F6F2</span></div>
+    </div>
+    <div class="type-row">
+      <div><span class="lbl">UI · Instrument Sans</span><span style="font-size: 22px; font-weight: 600">Out of stock with ads running</span><span class="note">400 / 500 / 600 / 700 · 12–24 px</span></div>
+      <div><span class="lbl">Numbers · IBM Plex Mono</span><span class="mono" style="font-size: 22px; font-weight: 600">₹1,240/day · GLOWVEDA-FW-014</span><span class="note">All ₹, counts, SKUs, IDs — tabular, aligns in columns</span></div>
+      <div><span class="lbl">Report · Newsreader</span><span style="font-family: 'Newsreader', Georgia, serif; font-size: 24px">A rough week for the face wash.</span><span class="note">Brand weekly summary only</span></div>
+    </div>
+  </section>
+
+  <div class="g3">
+    <section class="panel blk" aria-label="Severity">
+      <div class="blk-h"><h2>Severity</h2><span>.sev .sev-crit|high|med|low</span></div>
+      <div class="spec">
+        <span class="sev sev-crit"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M4 .6h4L11.4 4v4L8 11.4H4L.6 8V4z" fill="currentColor"/><path d="M6 3.1v3.4M6 8.6v.1" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg>Critical</span><span>Octagon · act today</span>
+        <span class="sev sev-high"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8l5.6 10H.4z" fill="currentColor" stroke="currentColor" stroke-width=".8" stroke-linejoin="round"/><path d="M6 4.3v2.9M6 9v.1" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>High</span><span>Triangle · this week</span>
+        <span class="sev sev-med"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .6 11.4 6 6 11.4.6 6z" fill="currentColor"/><path d="M3.8 6h4.4" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>Medium</span><span>Diamond · batch-fix</span>
+        <span class="sev sev-low"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="4.6" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="6" cy="6" r="1.7" fill="currentColor"/></svg>Low</span><span>Ring · when convenient</span>
+      </div>
+      <span class="lbl">Count chips (health grid)</span>
+      <div class="row">
+        <span class="cc sev-crit"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M4 .6h4L11.4 4v4L8 11.4H4L.6 8V4z" fill="currentColor"/><path d="M6 3.1v3.4M6 8.6v.1" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg>2</span>
+        <span class="cc sev-high"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8l5.6 10H.4z" fill="currentColor" stroke="currentColor" stroke-width=".8" stroke-linejoin="round"/><path d="M6 4.3v2.9M6 9v.1" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>1</span>
+        <span class="cc sev-med"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .6 11.4 6 6 11.4.6 6z" fill="currentColor"/><path d="M3.8 6h4.4" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>3</span>
+        <span class="cc is-zero"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="4.6" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>0</span>
+      </div>
+      <p class="note">Shape and label carry meaning on their own; color only reinforces. Zero counts drop to an outline so non-zero ones pop.</p>
+    </section>
+
+    <section class="panel blk" aria-label="Platform badge">
+      <div class="blk-h"><h2>Platform</h2><span>.plat .plat-amz|fk</span></div>
+      <div class="row"><span class="plat plat-amz">AMZ</span><span>Amazon — solid ink</span></div>
+      <div class="row"><span class="plat plat-fk">FK</span><span>Flipkart — outlined blue</span></div>
+      <span class="lbl">Down a long list</span>
+      <div class="list-demo">
+        <div><span class="sku">GLOWVEDA-FW-014</span><span class="plat plat-amz">AMZ</span><span>Out of stock, ads on</span></div>
+        <div><span class="sku">VAYU-AF-220</span><span class="plat plat-fk">FK</span><span>Buy Box lost</span></div>
+        <div><span class="sku">MUNCH-MK-031</span><span class="plat plat-amz">AMZ</span><span>Price mismatch</span></div>
+        <div><span class="sku">GLOWVEDA-SR-007</span><span class="plat plat-fk">FK</span><span>Rating below 4.0</span></div>
+      </div>
+      <p class="note">Filled vs outlined differs in lightness, so it still separates in greyscale. No marketplace logos.</p>
+    </section>
+
+    <section class="panel blk" aria-label="Provenance">
+      <div class="blk-h"><h2>Provenance</h2><span>.ai-tag · .rule-tag</span></div>
+      <div class="row">
+        <span class="ai-tag"><svg width="11" height="11" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8c.4 2.6 1.6 3.8 4.2 4.2v.1C7.6 5.5 6.4 6.7 6 9.3h-.1C5.5 6.7 4.3 5.5 1.7 5.1V5C4.3 4.6 5.5 3.4 5.9.8z" fill="currentColor"/><circle cx="10" cy="10" r="1.2" fill="currentColor"/></svg>AI draft</span>
+        <span class="ai-tag"><svg width="11" height="11" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8c.4 2.6 1.6 3.8 4.2 4.2v.1C7.6 5.5 6.4 6.7 6 9.3h-.1C5.5 6.7 4.3 5.5 1.7 5.1V5C4.3 4.6 5.5 3.4 5.9.8z" fill="currentColor"/><circle cx="10" cy="10" r="1.2" fill="currentColor"/></svg>AI-clustered</span>
+        <span class="rule-tag">Rule OOS-ADS-01</span>
+      </div>
+      <span class="lbl">AI off — same slot, template text</span>
+      <div class="fix">
+        <div class="fix-head"><span>Suggested message <span class="to">· to Vayu Home</span></span><span class="rule-tag">Rule BUYBOX-01</span></div>
+        <p>VAYU-AF-220 lost the Flipkart featured-seller slot to RetailNet Traders (₹4,149 vs our ₹4,299). Match price or add a ₹150 coupon to win it back.</p>
+      </div>
+      <span class="lbl">Brand summary, AI off</span>
+      <p class="prose">This week GlowVeda had 11 new issues, 4 approved and 1 dismissed, with 6 still open. Estimated loss: ₹9,870. Biggest item: GLOWVEDA-FW-014 out of stock on Amazon with ads running, ₹1,240/day.</p>
+      <p class="note">Rule-based text carries its rule ID instead of a badge: provenance without apology. The AI tag never renders when AI is off.</p>
+    </section>
+
+    <section class="panel blk span2" aria-label="Impact number">
+      <div class="blk-h"><h2>₹ impact</h2><span>.impact (card) · .hero-num (portfolio)</span></div>
+      <div class="row" style="align-items: flex-start; gap: 40px">
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <span class="lbl">Per issue · queue card rail</span>
+          <div class="rail">
+            <div class="impact">₹1,240<small>/day</small></div>
+            <div class="rail-lbl">estimated loss</div>
+            <div class="rail-calc">₹850 wasted ad spend + ₹390 missed sales</div>
+          </div>
+        </div>
+        <div class="hero-demo">
+          <span class="lbl">Capped portfolio total · shown once, on Overview</span>
+          <div class="eyebrow">Estimated daily loss <span class="tipbtn" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 5.2v3.6M6 3.1v.1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span><span class="rule-tag">(open)</span></div>
+          <div class="hero-num">₹3,870<small>/day</small></div>
+          <div class="tip-pop panel pop"><b>Deduplicated, capped per listing</b>Each listing's issues are summed, then capped at that listing's average daily sales plus daily ad spend — so one SKU failing three ways isn't counted three times. Uncapped sum: <span class="mono">₹4,410/day</span>.</div>
+        </div>
+      </div>
+      <p class="note">Tooltip is a native &lt;details&gt;/&lt;summary&gt; — opens on click or keyboard with no JS.</p>
+    </section>
+
+    <section class="panel blk" aria-label="AI toggle">
+      <div class="blk-h"><h2>AI toggle</h2><span>header · input[type=checkbox]</span></div>
+      <div class="row"><label class="switch"><input class="sw" type="checkbox" name="ai_demo_on" checked> AI drafts <span class="state">ON</span></label><span class="note">AI tags, drafts, translations and themes render</span></div>
+      <div class="row"><label class="switch"><input class="sw" type="checkbox" name="ai_demo_off"> AI drafts <span class="state off">OFF</span></label><span class="note">Rules and templates only</span></div>
+      <p class="note">Always in the global header. State is written as text next to the switch, not only shown by knob position.</p>
+    </section>
+
+    <section class="panel blk span2" aria-label="Action control">
+      <div class="blk-h"><h2>Decision</h2><span>button[name=decision] · approve | edit | dismiss</span></div>
+      <span class="lbl">Default</span>
+      <form class="row" method="post" action="/queue/decisions" style="margin: 0">
+        <button class="btn btn-ghost" type="submit" name="decision" value="dismiss"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="m4 4 8 8M12 4l-8 8"/></svg>Dismiss</button>
+        <a class="btn" href="Queue.dc.html" data-route="/queue?edit=iss_0142#iss_0142"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.5 2.5l3 3L6 13H3v-3z"/><path d="m9 4 3 3"/></svg>Edit text</a>
+        <button class="btn btn-primary" type="submit" name="decision" value="approve"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="2.5" width="10" height="12" rx="1.5"/><path d="M6 1.5h4v2H6z"/><path d="m5.8 9 1.6 1.6 3-3.2"/></svg>Approve &amp; copy</button>
+        <span class="note">Approve / Dismiss = POST, redirect to /queue?decided=… . Edit = GET link to /queue?edit=&lt;id&gt;#&lt;id&gt; so the page returns to the card.</span>
+      </form>
+      <span class="lbl">Editing</span>
+      <form method="post" action="/queue/decisions" style="margin: 0; display: flex; flex-direction: column; gap: 10px">
+        <div class="fix" style="background: #FFFFFF; border-color: #9DB8BF">
+          <div class="fix-head"><label for="demo-fix">Suggested message <span class="to">· editing</span></label><span class="rule-tag">Rule PRICE-GAP-02</span></div>
+          <textarea id="demo-fix" name="fix_text">Align the Amazon price for MUNCH-MK-031 to ₹299 to match Flipkart — or confirm the Flipkart price is a promo ending this week.</textarea>
+        </div>
+        <div class="row">
+          <a class="btn btn-ghost" href="Queue.dc.html" data-route="/queue#iss_0131">Cancel edit</a>
+          <button class="btn btn-primary" type="submit" name="decision" value="approve_edited"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="2.5" width="10" height="12" rx="1.5"/><path d="M6 1.5h4v2H6z"/><path d="m5.8 9 1.6 1.6 3-3.2"/></svg>Approve edited &amp; copy</button>
+        </div>
+      </form>
+      <span class="lbl">After approve — card leaves the queue; approved text shown, pre-selected, with Copy</span>
+      <section class="decided" role="status" aria-label="Approved">
+        <div class="decided-top">
+          <span class="decided-ic"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3.5 8.4 2.8 2.8 6.2-6.4"/></svg></span>
+          <span><b>Approved</b> · <span class="mono">GLOWVEDA-FW-014</span> <span class="plat plat-amz">AMZ</span> Out of stock with ads running · logged 12:24</span>
+          <form method="post" action="/queue/decisions/undo"><input type="hidden" name="decision_id" value="dec_0388"><button class="btn btn-ghost" type="submit">Undo</button></form>
+        </div>
+        <div class="decided-copy">
+          <label class="lbl" for="c-approved">Approved text · send to PPC team</label>
+          <div class="copy-row">
+            <textarea id="c-approved" rows="2" readonly>Pause Sponsored Products campaign for GLOWVEDA-FW-014 until restock — currently burning ₹850/day with zero fulfillable orders.</textarea>
+            <button class="btn btn-primary" type="button" data-copy-target="c-approved"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="2.5" width="10" height="12" rx="1.5"/><path d="M6 1.5h4v2H6z"/></svg>Copy</button>
+          </div>
+          <span class="hint">Text is pre-selected — Ctrl+C works too.</span>
+        </div>
+      </section>
+      <span class="lbl">After dismiss</span>
+      <div class="toast" role="status">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3.5 8.4 2.8 2.8 6.2-6.4"/></svg>
+        <span><b>Dismissed</b> · <span class="mono">VAYU-MX-301</span> <span class="plat plat-fk">FK</span> Low stock · logged to decision history</span>
+        <form method="post" action="/queue/decisions/undo"><input type="hidden" name="decision_id" value="dec_0387"><button class="btn" type="submit">Undo</button></form>
+      </div>
+    </section>
+
+    <section class="panel blk" aria-label="Upload form">
+      <div class="blk-h"><h2>Upload</h2><span>multipart form · 3 inputs</span></div>
+      <div class="panel" style="border-color: #E6E8E2">
+        <form class="upl-form" method="post" action="/upload" enctype="multipart/form-data">
+          <div class="upl-head"><b>Upload audit data</b><span>Three CSVs. Replaces the current snapshot; the previous one is kept for comparison.</span></div>
+          <div class="field"><label for="c-listings">Listings</label><input id="c-listings" type="file" name="listings" accept=".csv"><span class="hint">One row per SKU per platform</span></div>
+          <div class="field"><label for="c-ads">Ads</label><input id="c-ads" type="file" name="ads" accept=".csv"><span class="hint">Daily spend by campaign and SKU</span></div>
+          <div class="field"><label for="c-reviews">Reviews</label><input id="c-reviews" type="file" name="reviews" accept=".csv"><span class="hint">Rating, text, date, platform</span></div>
+          <button class="btn btn-primary" type="submit">Upload files</button>
+        </form>
+      </div>
+      <span class="lbl">Submitting — the only loading state</span>
+      <div class="panel" style="border-color: #E6E8E2; padding: 16px 18px; display: flex; flex-direction: column; gap: 10px">
+        <div class="files-st"><span><span>listings.csv</span><span>146 rows ✓</span></span><span><span>ads.csv</span><span>88 rows ✓</span></span><span><span>reviews.csv</span><span>uploading…</span></span></div>
+        <div class="prog" role="progressbar" aria-label="Upload progress" aria-valuenow="64" aria-valuemin="0" aria-valuemax="100"><i></i></div>
+        <button class="btn btn-primary" type="submit" disabled>Uploading 3 files…</button>
+      </div>
+    </section>
+
+    <section class="panel blk span3" aria-label="Health cell states">
+      <div class="blk-h"><h2>Health cell</h2><span>a.cell · issues | .cell-ok | .cell-wait</span></div>
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px">
+        <div class="cell">
+          <div class="cell-top">
+            <div class="counts">
+              <span class="cc sev-crit"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M4 .6h4L11.4 4v4L8 11.4H4L.6 8V4z" fill="currentColor"/><path d="M6 3.1v3.4M6 8.6v.1" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg>1</span>
+              <span class="cc is-zero"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8l5.6 10H.4z" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>0</span>
+              <span class="cc sev-med"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .6 11.4 6 6 11.4.6 6z" fill="currentColor"/><path d="M3.8 6h4.4" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>1</span>
+              <span class="cc sev-low"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="4.6" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="6" cy="6" r="1.7" fill="currentColor"/></svg>1</span>
+            </div>
+            <span class="cell-amt">₹1,290<small>/day</small></span>
+          </div>
+          <div class="cell-line"><span><b>1 critical</b>, 1 medium, 1 low</span><span class="cell-go">View →</span></div>
+        </div>
+        <div class="cell cell-ok">
+          <div class="ok-row"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="8" fill="#1F6B45"/><path d="m5.4 9.2 2.4 2.4 4.8-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>All clear</div>
+          <div class="cell-line"><span>31 listings checked · last issue closed 15 Oct</span></div>
+        </div>
+        <div class="cell cell-wait">
+          <div class="wait-row"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#4A5059" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="9" r="7.2" stroke-dasharray="2.6 2.4"/><path d="M9 5.5V9l2.4 1.6"/></svg>Awaiting audit</div>
+          <div class="cell-line"><span>28 listings loaded · not checked yet</span></div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2000}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

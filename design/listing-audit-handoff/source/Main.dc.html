@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Portfolio overview</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Instrument+Sans:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;display=swap">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:#F2F3EF;color:#15181C;font-family:'Instrument Sans',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;font-size:14px;line-height:1.45;-webkit-font-smoothing:antialiased}
+a{color:#1E4F5C}a:hover{color:#123540}
+h1,h2,h3,p,dl,dd,ul,ol,figure,blockquote{margin:0}
+.mono{font-family:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace}
+.app{min-height:100vh;display:flex;flex-direction:column;background:#F2F3EF}
+.hdr{display:flex;align-items:center;gap:20px;flex-wrap:wrap;padding:10px 24px;background:#FFFFFF;border-bottom:1px solid #DCDFD8;position:relative;z-index:3}
+.logo{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:#15181C}
+.logo:hover{color:#15181C}
+.logo b{font-weight:700;font-size:15px;letter-spacing:-.01em}
+.logo span{color:#5C636C;font-size:13px;padding-left:10px;border-left:1px solid #DCDFD8}
+.nav{display:flex;gap:2px;flex-wrap:wrap;align-items:center}
+.nav a{display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:0 10px;border-radius:6px;color:#3D434B;text-decoration:none;font-weight:500}
+.nav a:hover{background:#F2F3EF;color:#15181C}
+.nav a[aria-current="page"]{background:#E7E9E3;color:#15181C}
+.nav .sep{width:1px;height:20px;background:#DCDFD8;margin:0 8px}
+.count{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;line-height:16px;background:#15181C;color:#FFFFFF;border-radius:999px;padding:0 6px}
+.hdr-right{margin-left:auto;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.stamp{font-size:12.5px;color:#5C636C}
+.ai-form{margin:0}
+.switch{display:inline-flex;align-items:center;gap:8px;min-height:36px;padding:0 12px 0 8px;border:1px solid #DCDFD8;border-radius:999px;font-size:13px;font-weight:500;color:#3D434B;cursor:pointer;background:#FFFFFF}
+.switch .state{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:#1E4F5C}
+.sw{appearance:none;-webkit-appearance:none;margin:0;width:36px;height:20px;border-radius:999px;background:radial-gradient(circle at 10px 50%,#FFFFFF 6.5px,transparent 7px),#AEB3AA;cursor:pointer;flex:none}
+.sw:checked{background:radial-gradient(circle at 26px 50%,#FFFFFF 6.5px,transparent 7px),#1E4F5C}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:36px;padding:0 14px;border-radius:6px;border:1px solid #CDD1C9;background:#FFFFFF;color:#15181C;font:inherit;font-size:13.5px;font-weight:600;text-decoration:none;cursor:pointer;white-space:nowrap}
+.btn:hover{background:#F2F3EF;color:#15181C}
+.btn svg{flex:none}
+.btn-primary{background:#1E4F5C;border-color:#1E4F5C;color:#FFFFFF}
+.btn-primary:hover{background:#163E49;color:#FFFFFF}
+.btn-ghost{background:transparent;border-color:transparent;color:#4A5059}
+.btn-ghost:hover{background:#E9EBE5}
+.btn-lg{min-height:44px;padding:0 18px;font-size:14.5px}
+.btn:focus-visible,.cell:focus-visible,summary:focus-visible,.sw:focus-visible{outline:2px solid #1E4F5C;outline-offset:2px}
+.upl{position:relative}
+.upl>summary,.tip>summary{list-style:none}
+.upl>summary::-webkit-details-marker,.tip>summary::-webkit-details-marker{display:none}
+.upl-pop{position:absolute;right:0;top:calc(100% + 8px);width:380px}
+.panel{background:#FFFFFF;border:1px solid #DCDFD8;border-radius:10px}
+.pop{box-shadow:0 12px 32px rgba(21,24,28,.12)}
+.upl-form{display:grid;gap:14px;padding:18px}
+.upl-head{display:grid;gap:2px}
+.upl-head b{font-size:15px}
+.upl-head span{font-size:12.5px;color:#5C636C}
+.field{display:grid;gap:5px}
+.field label{font-size:13px;font-weight:600}
+.field input[type="file"]{font:inherit;font-size:12.5px;color:#3D434B;width:100%;padding:8px;border:1px dashed #BFC4BA;border-radius:6px;background:#F7F8F5}
+.field input[type="file"]::file-selector-button{font:inherit;font-size:12.5px;font-weight:600;margin-right:10px;padding:5px 10px;border:1px solid #CDD1C9;border-radius:5px;background:#FFFFFF;color:#15181C;cursor:pointer}
+.hint{font-size:12px;color:#5C636C}
+.main{width:100%;max-width:1240px;margin:0 auto;padding:28px 24px 72px;display:flex;flex-direction:column;gap:20px}
+.sev{display:inline-flex;align-items:center;gap:5px;padding:2px 7px 2px 5px;border-radius:4px;font-size:11.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;line-height:16px;white-space:nowrap}
+.sev-crit{color:#A61B1B;background:#FBE7E4}
+.sev-high{color:#9A4205;background:#FCEBD7}
+.sev-med{color:#735C00;background:#F5EDC8}
+.sev-low{color:#38588A;background:#E4ECF7}
+.plat{display:inline-flex;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:.06em;line-height:14px;padding:2px 5px;border-radius:3px;white-space:nowrap}
+.plat-amz{background:#15181C;color:#FFFFFF}
+.plat-fk{background:#FFFFFF;color:#1C44B0;box-shadow:inset 0 0 0 1.5px #1C44B0}
+.tip{position:relative;display:inline-block}
+.tip>summary{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:999px;border:1px solid #CDD1C9;color:#4A5059;cursor:pointer;background:#FFFFFF}
+.tip-pop{position:absolute;left:-8px;top:calc(100% + 8px);width:340px;padding:14px 16px;font-size:13px;line-height:1.5;color:#2A2F35;text-transform:none;letter-spacing:0;font-weight:400;z-index:4}
+.tip-pop b{display:block;margin-bottom:4px;color:#15181C}
+.hero{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px;padding:26px 28px}
+.eyebrow{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#4A5059}
+.hero-num{font-family:'IBM Plex Mono',monospace;font-size:64px;font-weight:600;line-height:1;letter-spacing:-.04em;margin-top:12px}
+.hero-num small{font-size:20px;font-weight:500;color:#5C636C;letter-spacing:0;margin-left:4px}
+.hero-sub{margin-top:12px;color:#4A5059}
+.hero-r{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:12px}
+.tile{display:flex;flex-direction:column;gap:12px;padding:16px 18px;text-decoration:none;color:#15181C}
+.tile:hover{border-color:#B9BEB5;color:#15181C}
+.tile-n{font-family:'IBM Plex Mono',monospace;font-size:34px;font-weight:600;line-height:1;letter-spacing:-.03em}
+.tile-f{display:flex;justify-content:space-between;gap:8px;font-size:12.5px;color:#5C636C}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:18px 20px 14px}
+.sec-head h2{font-size:15px;font-weight:700}
+.sec-head span{font-size:12.5px;color:#5C636C}
+.hgrid-wrap{overflow-x:auto;padding-bottom:10px}
+.hgrid{width:100%;border-collapse:collapse;min-width:760px}
+.hgrid th,.hgrid td{border-top:1px solid #E6E8E2;padding:10px;vertical-align:top;text-align:left}
+.hgrid thead th{border-top:0;padding-top:0;padding-bottom:8px;font-size:12.5px;font-weight:600;color:#3D434B}
+.th-plat{display:inline-flex;align-items:center;gap:8px}
+.hgrid th[scope="row"]{width:22%;padding-left:20px;padding-top:18px;font-weight:400}
+.hgrid td:last-child{padding-right:20px}
+.b-name{font-size:15px;font-weight:700}
+.b-cat{font-size:12.5px;color:#5C636C;margin-top:2px}
+.b-link{display:inline-flex;margin-top:10px;font-size:12.5px;font-weight:600}
+.cell{display:flex;flex-direction:column;justify-content:space-between;gap:12px;min-height:104px;padding:14px 16px;border:1px solid #E1E4DD;border-radius:8px;background:#FAFAF8;text-decoration:none;color:#15181C}
+.cell:hover{border-color:#AEB4AA;background:#FFFFFF;color:#15181C}
+.cell-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.counts{display:flex;gap:6px;flex-wrap:wrap}
+.cc{display:inline-flex;align-items:center;gap:5px;min-width:42px;padding:3px 8px 3px 6px;border-radius:4px;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;line-height:16px}
+.cc.is-zero{background:transparent;color:#6E757D;box-shadow:inset 0 0 0 1px #E1E4DD}
+.cell-amt{font-family:'IBM Plex Mono',monospace;font-size:16px;font-weight:600;white-space:nowrap}
+.cell-amt small{font-size:11.5px;color:#5C636C;font-weight:500}
+.cell-line{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:13px;color:#3D434B}
+.cell-line b{color:#15181C;font-weight:600}
+.cell-go{color:#1E4F5C;font-weight:600;white-space:nowrap}
+.cell-ok{background:#F0F6F2;border-color:#D1E5D8}
+.cell-ok:hover{background:#F5FAF7;border-color:#A9CDB6}
+.ok-row{display:flex;align-items:center;gap:8px;font-weight:700;color:#1F6B45;font-size:15px}
+</style>
+</helmet>
+<div class="app">
+<header class="hdr">
+  <a class="logo" href="Main.dc.html">
+    <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="1" width="22" height="22" rx="6" fill="#15181C"/><path d="M6.5 8.5h11M6.5 12h7.5M6.5 15.5h4" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"/><circle cx="16.8" cy="15.5" r="1.9" fill="#E3A33B"/></svg>
+    <b>Listing Audit</b><span>Intent Farm</span>
+  </a>
+  <nav class="nav" aria-label="Main">
+    <a href="Main.dc.html" aria-current="page">Overview</a>
+    <a href="Queue.dc.html">Queue <span class="count">12</span></a>
+    <span class="sep" aria-hidden="true"></span>
+    <a href="Brand.dc.html" data-route="/brand/glowveda">GlowVeda</a>
+    <a href="Brand.dc.html" data-route="/brand/munchkraft">Munchkraft</a>
+    <a href="Brand.dc.html" data-route="/brand/vayu-home">Vayu Home</a>
+  </nav>
+  <div class="hdr-right">
+    <span class="stamp">Audited 18 Oct, 09:40 · 146 listings</span>
+    <form class="ai-form" method="post" action="/settings/ai">
+      <label class="switch"><input class="sw" type="checkbox" name="ai" checked> AI drafts <span class="state">ON</span></label>
+    </form>
+    <details class="upl">
+      <summary class="btn"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 10.5V2.5M4.8 5.6 8 2.4l3.2 3.2"/><path d="M2.5 10.5v2a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-2"/></svg>Upload data</summary>
+      <div class="upl-pop panel pop">
+        <form class="upl-form" method="post" action="/upload" enctype="multipart/form-data">
+          <div class="upl-head"><b>Upload audit data</b><span>Three CSVs. Replaces the current snapshot; the previous one is kept for comparison.</span></div>
+          <div class="field"><label for="f-listings">Listings</label><input id="f-listings" type="file" name="listings" accept=".csv"><span class="hint">One row per SKU per platform</span></div>
+          <div class="field"><label for="f-ads">Ads</label><input id="f-ads" type="file" name="ads" accept=".csv"><span class="hint">Daily spend by campaign and SKU</span></div>
+          <div class="field"><label for="f-reviews">Reviews</label><input id="f-reviews" type="file" name="reviews" accept=".csv"><span class="hint">Rating, text, date, platform</span></div>
+          <button class="btn btn-primary" type="submit">Upload files</button>
+        </form>
+      </div>
+    </details>
+  </div>
+</header>
+
+<main class="main">
+  <section class="hero panel" aria-labelledby="loss-label">
+    <div>
+      <div class="eyebrow"><span id="loss-label">Estimated daily loss</span>
+        <details class="tip">
+          <summary aria-label="How this total is calculated"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 5.2v3.6M6 3.1v.1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></summary>
+          <div class="tip-pop panel pop"><b>Deduplicated, capped per listing</b>Each listing's issues are summed, then capped at that listing's average daily sales plus daily ad spend — so one SKU failing three ways isn't counted three times. Uncapped sum: <span class="mono">₹4,410/day</span>.</div>
+        </details>
+      </div>
+      <div class="hero-num">₹3,870<small>/day</small></div>
+      <p class="hero-sub">12 open issues across 9 listings · 3 brands · Amazon and Flipkart</p>
+    </div>
+    <div class="hero-r">
+      <a class="btn btn-primary btn-lg" href="Queue.dc.html" data-route="/queue">View issue queue <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      <span class="stamp">Critical first, then by ₹ impact · 2 critical need action today</span>
+    </div>
+  </section>
+
+  <section class="tiles" aria-label="Open issues by severity">
+    <a class="tile panel" href="Queue.dc.html" data-route="/queue?severity=critical">
+      <span class="sev sev-crit"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M4 .6h4L11.4 4v4L8 11.4H4L.6 8V4z" fill="currentColor"/><path d="M6 3.1v3.4M6 8.6v.1" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg>Critical</span>
+      <span class="tile-n">2</span>
+      <span class="tile-f"><span>Oldest open 4d</span><span>Act today</span></span>
+    </a>
+    <a class="tile panel" href="Queue.dc.html" data-route="/queue?severity=high">
+      <span class="sev sev-high"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8l5.6 10H.4z" fill="currentColor" stroke="currentColor" stroke-width=".8" stroke-linejoin="round"/><path d="M6 4.3v2.9M6 9v.1" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>High</span>
+      <span class="tile-n">2</span>
+      <span class="tile-f"><span>Oldest open 3d</span><span>This week</span></span>
+    </a>
+    <a class="tile panel" href="Queue.dc.html" data-route="/queue?severity=medium">
+      <span class="sev sev-med"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .6 11.4 6 6 11.4.6 6z" fill="currentColor"/><path d="M3.8 6h4.4" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>Medium</span>
+      <span class="tile-n">5</span>
+      <span class="tile-f"><span>Oldest open 8d</span><span>Batch-fix</span></span>
+    </a>
+    <a class="tile panel" href="Queue.dc.html" data-route="/queue?severity=low">
+      <span class="sev sev-low"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="4.6" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="6" cy="6" r="1.7" fill="currentColor"/></svg>Low</span>
+      <span class="tile-n">3</span>
+      <span class="tile-f"><span>Oldest open 6d</span><span>When convenient</span></span>
+    </a>
+  </section>
+
+  <section class="panel" aria-labelledby="grid-h">
+    <div class="sec-head"><h2 id="grid-h">Health by brand and platform</h2><span>Select a cell to open its issues in the queue</span></div>
+    <div class="hgrid-wrap">
+      <table class="hgrid">
+        <thead>
+          <tr>
+            <th scope="col"><span style="padding-left: 10px">Brand</span></th>
+            <th scope="col"><span class="th-plat"><span class="plat plat-amz">AMZ</span>Amazon</span></th>
+            <th scope="col"><span class="th-plat"><span class="plat plat-fk">FK</span>Flipkart</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><div class="b-name">GlowVeda</div><div class="b-cat">Skincare · 52 listings</div><a class="b-link" href="Brand.dc.html" data-route="/brand/glowveda">Weekly summary →</a></th>
+            <td>
+              <a class="cell" href="Queue.dc.html" data-route="/queue?brand=glowveda&amp;platform=amazon" aria-label="GlowVeda on Amazon: 1 critical, 1 medium, 1 low. ₹1,290 per day. View issues.">
+                <div class="cell-top">
+                  <div class="counts">
+                    <span class="cc sev-crit"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M4 .6h4L11.4 4v4L8 11.4H4L.6 8V4z" fill="currentColor"/><path d="M6 3.1v3.4M6 8.6v.1" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg>1</span>
+                    <span class="cc is-zero"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8l5.6 10H.4z" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>0</span>
+                    <span class="cc sev-med"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .6 11.4 6 6 11.4.6 6z" fill="currentColor"/><path d="M3.8 6h4.4" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>1</span>
+                    <span class="cc sev-low"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="4.6" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="6" cy="6" r="1.7" fill="currentColor"/></svg>1</span>
+                  </div>
+                  <span class="cell-amt">₹1,290<small>/day</small></span>
+                </div>
+                <div class="cell-line"><span><b>1 critical</b>, 1 medium, 1 low</span><span class="cell-go">View →</span></div>
+              </a>
+            </td>
+            <td>
+              <a class="cell" href="Queue.dc.html" data-route="/queue?brand=glowveda&amp;platform=flipkart" aria-label="GlowVeda on Flipkart: 1 high, 1 medium, 1 low. ₹590 per day. View issues.">
+                <div class="cell-top">
+                  <div class="counts">
+                    <span class="cc is-zero"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M4 .6h4L11.4 4v4L8 11.4H4L.6 8V4z" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>0</span>
+                    <span class="cc sev-high"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8l5.6 10H.4z" fill="currentColor" stroke="currentColor" stroke-width=".8" stroke-linejoin="round"/><path d="M6 4.3v2.9M6 9v.1" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>1</span>
+                    <span class="cc sev-med"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .6 11.4 6 6 11.4.6 6z" fill="currentColor"/><path d="M3.8 6h4.4" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>1</span>
+                    <span class="cc sev-low"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="4.6" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="6" cy="6" r="1.7" fill="currentColor"/></svg>1</span>
+                  </div>
+                  <span class="cell-amt">₹590<small>/day</small></span>
+                </div>
+                <div class="cell-line"><span><b>1 high</b>, 1 medium, 1 low</span><span class="cell-go">View →</span></div>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row"><div class="b-name">Munchkraft</div><div class="b-cat">Snacks · 62 listings</div><a class="b-link" href="Brand.dc.html" data-route="/brand/munchkraft">Weekly summary →</a></th>
+            <td>
+              <a class="cell" href="Queue.dc.html" data-route="/queue?brand=munchkraft&amp;platform=amazon" aria-label="Munchkraft on Amazon: 1 high, 2 medium. ₹780 per day. View issues.">
+                <div class="cell-top">
+                  <div class="counts">
+                    <span class="cc is-zero"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M4 .6h4L11.4 4v4L8 11.4H4L.6 8V4z" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>0</span>
+                    <span class="cc sev-high"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8l5.6 10H.4z" fill="currentColor" stroke="currentColor" stroke-width=".8" stroke-linejoin="round"/><path d="M6 4.3v2.9M6 9v.1" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>1</span>
+                    <span class="cc sev-med"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .6 11.4 6 6 11.4.6 6z" fill="currentColor"/><path d="M3.8 6h4.4" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>2</span>
+                    <span class="cc is-zero"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="4.6" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>0</span>
+                  </div>
+                  <span class="cell-amt">₹780<small>/day</small></span>
+                </div>
+                <div class="cell-line"><span><b>1 high</b>, 2 medium</span><span class="cell-go">View →</span></div>
+              </a>
+            </td>
+            <td>
+              <a class="cell cell-ok" href="QueueEmpty.dc.html" data-route="/queue?brand=munchkraft&amp;platform=flipkart" aria-label="Munchkraft on Flipkart: all clear, no open issues.">
+                <div class="ok-row"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="8" fill="#1F6B45"/><path d="m5.4 9.2 2.4 2.4 4.8-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>All clear</div>
+                <div class="cell-line"><span>31 listings checked · last issue closed 15 Oct</span></div>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row"><div class="b-name">Vayu Home</div><div class="b-cat">Home appliances · 32 listings</div><a class="b-link" href="Brand.dc.html" data-route="/brand/vayu-home">Weekly summary →</a></th>
+            <td>
+              <a class="cell" href="Queue.dc.html" data-route="/queue?brand=vayu-home&amp;platform=amazon" aria-label="Vayu Home on Amazon: 1 medium, 1 low. ₹230 per day. View issues.">
+                <div class="cell-top">
+                  <div class="counts">
+                    <span class="cc is-zero"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M4 .6h4L11.4 4v4L8 11.4H4L.6 8V4z" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>0</span>
+                    <span class="cc is-zero"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8l5.6 10H.4z" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>0</span>
+                    <span class="cc sev-med"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .6 11.4 6 6 11.4.6 6z" fill="currentColor"/><path d="M3.8 6h4.4" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>1</span>
+                    <span class="cc sev-low"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="4.6" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="6" cy="6" r="1.7" fill="currentColor"/></svg>1</span>
+                  </div>
+                  <span class="cell-amt">₹230<small>/day</small></span>
+                </div>
+                <div class="cell-line"><span><b>1 medium</b>, 1 low</span><span class="cell-go">View →</span></div>
+              </a>
+            </td>
+            <td>
+              <a class="cell" href="Queue.dc.html" data-route="/queue?brand=vayu-home&amp;platform=flipkart" aria-label="Vayu Home on Flipkart: 1 critical. ₹980 per day. View issues.">
+                <div class="cell-top">
+                  <div class="counts">
+                    <span class="cc sev-crit"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M4 .6h4L11.4 4v4L8 11.4H4L.6 8V4z" fill="currentColor"/><path d="M6 3.1v3.4M6 8.6v.1" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg>1</span>
+                    <span class="cc is-zero"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8l5.6 10H.4z" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>0</span>
+                    <span class="cc is-zero"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .6 11.4 6 6 11.4.6 6z" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>0</span>
+                    <span class="cc is-zero"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="4.6" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>0</span>
+                  </div>
+                  <span class="cell-amt">₹980<small>/day</small></span>
+                </div>
+                <div class="cell-line"><span><b>1 critical</b></span><span class="cell-go">View →</span></div>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1040}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

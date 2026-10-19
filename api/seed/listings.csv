@@ -1,0 +1,482 @@
+# SAMPLE DATA — synthetic, generated for the Marketplace Listing Audit demo
+snapshot_date,brand,sku,platform,title,bullet_count,image_count,price,mrp,stock,rating,review_count,buybox_owner,category,status,units_sold_7d
+2026-10-18,GlowVeda,GLOWVEDA-001,Amazon,"GlowVeda Vitamin C Face Serum for Glowing Skin - 30ml, Pack of 1",6,6,499.0,549.0,67,4.3,227,GlowVeda Official Store,skincare,active,62.7
+2026-10-19,GlowVeda,GLOWVEDA-001,Amazon,"GlowVeda Vitamin C Face Serum for Glowing Skin - 30ml, Pack of 1",6,6,499.0,549.0,67,4.3,227,GlowVeda Official Store,skincare,active,62.7
+2026-10-18,GlowVeda,GLOWVEDA-001,Flipkart,"GlowVeda Vitamin C Face Serum for Glowing Skin - 30ml, Pack of 1",6,6,513.97,549.0,0,4.3,227,GlowVeda Official Store,skincare,active,62.7
+2026-10-19,GlowVeda,GLOWVEDA-001,Flipkart,"GlowVeda Vitamin C Face Serum for Glowing Skin - 30ml, Pack of 1",6,6,513.97,549.0,0,4.3,227,GlowVeda Official Store,skincare,active,62.7
+2026-10-18,GlowVeda,GLOWVEDA-002,Amazon,GlowVeda Neem & Tulsi Foaming Face Wash for Oily Skin - 150ml,6,6,299.0,349.0,0,4.2,279,GlowVeda Official Store,skincare,active,83.4
+2026-10-19,GlowVeda,GLOWVEDA-002,Amazon,GlowVeda Neem & Tulsi Foaming Face Wash for Oily Skin - 150ml,6,6,299.0,349.0,0,4.2,279,GlowVeda Official Store,skincare,active,83.4
+2026-10-18,GlowVeda,GLOWVEDA-002,Flipkart,GlowVeda Neem & Tulsi Foaming Face Wash for Oily Skin - 150ml,6,6,307.97,349.0,89,4.2,279,GlowVeda Official Store,skincare,active,83.4
+2026-10-19,GlowVeda,GLOWVEDA-002,Flipkart,GlowVeda Neem & Tulsi Foaming Face Wash for Oily Skin - 150ml,6,6,307.97,349.0,89,4.2,279,GlowVeda Official Store,skincare,active,83.4
+2026-10-18,GlowVeda,GLOWVEDA-003,Amazon,GlowVeda Hyaluronic Acid Moisturising Face Cream - 50g,6,6,449.0,499.0,60,4.4,210,GlowVeda Official Store,skincare,active,56.0
+2026-10-19,GlowVeda,GLOWVEDA-003,Amazon,GlowVeda Hyaluronic Acid Moisturising Face Cream - 50g,6,6,449.0,499.0,60,4.4,210,GlowVeda Official Store,skincare,active,56.0
+2026-10-18,GlowVeda,GLOWVEDA-003,Flipkart,GlowVeda Hyaluronic Acid Moisturising Face Cream - 50g,6,6,462.47,499.0,0,4.4,210,GlowVeda Official Store,skincare,active,56.0
+2026-10-19,GlowVeda,GLOWVEDA-003,Flipkart,GlowVeda Hyaluronic Acid Moisturising Face Cream - 50g,6,6,462.47,499.0,0,4.4,210,GlowVeda Official Store,skincare,active,56.0
+2026-10-18,GlowVeda,GLOWVEDA-004,Amazon,"GlowVeda SPF 50 Sunscreen Lotion for Face, Matte Finish - 50ml",6,6,599.0,699.0,0,4.1,262,GlowVeda Official Store,skincare,active,76.7
+2026-10-19,GlowVeda,GLOWVEDA-004,Amazon,"GlowVeda SPF 50 Sunscreen Lotion for Face, Matte Finish - 50ml",6,6,599.0,699.0,0,4.1,262,GlowVeda Official Store,skincare,active,76.7
+2026-10-18,GlowVeda,GLOWVEDA-004,Flipkart,"GlowVeda SPF 50 Sunscreen Lotion for Face, Matte Finish - 50ml",6,6,616.97,699.0,82,4.1,262,GlowVeda Official Store,skincare,active,76.7
+2026-10-19,GlowVeda,GLOWVEDA-004,Flipkart,"GlowVeda SPF 50 Sunscreen Lotion for Face, Matte Finish - 50ml",6,6,616.97,699.0,82,4.1,262,GlowVeda Official Store,skincare,active,76.7
+2026-10-18,GlowVeda,GLOWVEDA-005,Amazon,GlowVeda Aloe Vera Skin Soothing Gel for Face and Body - 200ml,6,6,249.0,299.0,53,4.5,193,GlowVeda Official Store,skincare,active,49.3
+2026-10-19,GlowVeda,GLOWVEDA-005,Amazon,GlowVeda Aloe Vera Skin Soothing Gel for Face and Body - 200ml,6,6,249.0,299.0,53,4.5,193,GlowVeda Official Store,skincare,active,49.3
+2026-10-18,GlowVeda,GLOWVEDA-005,Flipkart,GlowVeda Aloe Vera Skin Soothing Gel for Face and Body - 200ml,6,6,256.47,299.0,10,4.5,193,GlowVeda Official Store,skincare,active,49.3
+2026-10-19,GlowVeda,GLOWVEDA-005,Flipkart,GlowVeda Aloe Vera Skin Soothing Gel for Face and Body - 200ml,6,6,256.47,299.0,10,4.5,193,GlowVeda Official Store,skincare,active,49.3
+2026-10-18,GlowVeda,GLOWVEDA-006,Amazon,GlowVeda Niacinamide 10% Face Serum for Clear Skin - 30ml,6,6,549.0,649.0,15,4.3,245,GlowVeda Official Store,skincare,active,70.0
+2026-10-19,GlowVeda,GLOWVEDA-006,Amazon,GlowVeda Niacinamide 10% Face Serum for Clear Skin - 30ml,6,6,549.0,649.0,15,4.3,245,GlowVeda Official Store,skincare,active,70.0
+2026-10-18,GlowVeda,GLOWVEDA-006,Flipkart,GlowVeda Niacinamide 10% Face Serum for Clear Skin - 30ml,6,6,565.47,649.0,75,4.3,245,GlowVeda Official Store,skincare,active,70.0
+2026-10-19,GlowVeda,GLOWVEDA-006,Flipkart,GlowVeda Niacinamide 10% Face Serum for Clear Skin - 30ml,6,6,565.47,649.0,75,4.3,245,GlowVeda Official Store,skincare,active,70.0
+2026-10-18,GlowVeda,GLOWVEDA-007,Amazon,GlowVeda Kumkumadi Night Face Oil for Radiant Skin - 15ml,6,6,799.0,899.0,46,4.6,176,GlowVeda Official Store,skincare,active,42.6
+2026-10-19,GlowVeda,GLOWVEDA-007,Amazon,GlowVeda Kumkumadi Night Face Oil for Radiant Skin - 15ml,6,6,799.0,899.0,46,4.6,176,GlowVeda Official Store,skincare,active,42.6
+2026-10-18,GlowVeda,GLOWVEDA-007,Flipkart,GlowVeda Kumkumadi Night Face Oil for Radiant Skin - 15ml,6,6,822.97,899.0,9,4.6,176,GlowVeda Official Store,skincare,active,42.6
+2026-10-19,GlowVeda,GLOWVEDA-007,Flipkart,GlowVeda Kumkumadi Night Face Oil for Radiant Skin - 15ml,6,6,822.97,899.0,9,4.6,176,GlowVeda Official Store,skincare,active,42.6
+2026-10-18,GlowVeda,GLOWVEDA-008,Amazon,GlowVeda Ubtan Face Pack for Tan Removal and Glow - 100g,6,6,416.99,542.09,68,4.2,228,GlowVeda Official Store,skincare,active,63.3
+2026-10-19,GlowVeda,GLOWVEDA-008,Amazon,GlowVeda Ubtan Face Pack for Tan Removal and Glow - 100g,6,6,416.99,542.09,68,4.2,228,GlowVeda Official Store,skincare,active,63.3
+2026-10-18,GlowVeda,GLOWVEDA-008,Flipkart,GlowVeda Ubtan Face Pack for Tan Removal and Glow - 100g,6,6,359.47,399.0,68,4.2,228,GlowVeda Official Store,skincare,active,63.3
+2026-10-19,GlowVeda,GLOWVEDA-008,Flipkart,GlowVeda Ubtan Face Pack for Tan Removal and Glow - 100g,6,6,359.47,399.0,68,4.2,228,GlowVeda Official Store,skincare,active,63.3
+2026-10-18,GlowVeda,GLOWVEDA-009,Amazon,"GlowVeda Vitamin C Face Serum for Glowing Skin - 30ml, Pack of 1",6,6,499.0,549.0,90,4.3,280,GlowVeda Official Store,skincare,active,84.0
+2026-10-19,GlowVeda,GLOWVEDA-009,Amazon,"GlowVeda Vitamin C Face Serum for Glowing Skin - 30ml, Pack of 1",6,6,499.0,549.0,90,4.3,280,GlowVeda Official Store,skincare,active,84.0
+2026-10-18,GlowVeda,GLOWVEDA-009,Flipkart,"GlowVeda Vitamin C Face Serum for Glowing Skin - 30ml, Pack of 1",6,6,578.84,752.49,90,4.3,280,GlowVeda Official Store,skincare,active,84.0
+2026-10-19,GlowVeda,GLOWVEDA-009,Flipkart,"GlowVeda Vitamin C Face Serum for Glowing Skin - 30ml, Pack of 1",6,6,578.84,752.49,90,4.3,280,GlowVeda Official Store,skincare,active,84.0
+2026-10-18,GlowVeda,GLOWVEDA-010,Amazon,GlowVeda Neem & Tulsi Foaming Face Wash for Oily Skin - 150ml,6,6,357.25,464.43,61,4.2,211,GlowVeda Official Store,skincare,active,56.6
+2026-10-19,GlowVeda,GLOWVEDA-010,Amazon,GlowVeda Neem & Tulsi Foaming Face Wash for Oily Skin - 150ml,6,6,357.25,464.43,61,4.2,211,GlowVeda Official Store,skincare,active,56.6
+2026-10-18,GlowVeda,GLOWVEDA-010,Flipkart,GlowVeda Neem & Tulsi Foaming Face Wash for Oily Skin - 150ml,6,6,307.97,349.0,61,4.2,211,GlowVeda Official Store,skincare,active,56.6
+2026-10-19,GlowVeda,GLOWVEDA-010,Flipkart,GlowVeda Neem & Tulsi Foaming Face Wash for Oily Skin - 150ml,6,6,307.97,349.0,61,4.2,211,GlowVeda Official Store,skincare,active,56.6
+2026-10-18,GlowVeda,GLOWVEDA-011,Amazon,GlowVeda Hyaluronic Acid Moisturising Face Cream - 50g,6,6,538.92,499.0,83,4.4,263,GlowVeda Official Store,skincare,active,77.3
+2026-10-19,GlowVeda,GLOWVEDA-011,Amazon,GlowVeda Hyaluronic Acid Moisturising Face Cream - 50g,6,6,538.92,499.0,83,4.4,263,GlowVeda Official Store,skincare,active,77.3
+2026-10-18,GlowVeda,GLOWVEDA-011,Flipkart,GlowVeda Hyaluronic Acid Moisturising Face Cream - 50g,6,6,538.92,499.0,83,4.4,263,GlowVeda Official Store,skincare,active,77.3
+2026-10-19,GlowVeda,GLOWVEDA-011,Flipkart,GlowVeda Hyaluronic Acid Moisturising Face Cream - 50g,6,6,538.92,499.0,83,4.4,263,GlowVeda Official Store,skincare,active,77.3
+2026-10-18,GlowVeda,GLOWVEDA-012,Amazon,"GlowVeda SPF 50 Sunscreen Lotion for Face, Matte Finish - 50ml",6,6,754.92,699.0,53,4.1,195,GlowVeda Official Store,skincare,active,49.8
+2026-10-19,GlowVeda,GLOWVEDA-012,Amazon,"GlowVeda SPF 50 Sunscreen Lotion for Face, Matte Finish - 50ml",6,6,754.92,699.0,53,4.1,195,GlowVeda Official Store,skincare,active,49.8
+2026-10-18,GlowVeda,GLOWVEDA-012,Flipkart,"GlowVeda SPF 50 Sunscreen Lotion for Face, Matte Finish - 50ml",6,6,754.92,699.0,53,4.1,195,GlowVeda Official Store,skincare,active,49.8
+2026-10-19,GlowVeda,GLOWVEDA-012,Flipkart,"GlowVeda SPF 50 Sunscreen Lotion for Face, Matte Finish - 50ml",6,6,754.92,699.0,53,4.1,195,GlowVeda Official Store,skincare,active,49.8
+2026-10-18,GlowVeda,GLOWVEDA-013,Amazon,GlowVeda Aloe Vera Skin Soothing Gel for Face and Body - 200ml,6,6,249.0,299.0,76,4.5,246,GlowVeda Official Store,skincare,active,70.6
+2026-10-19,GlowVeda,GLOWVEDA-013,Amazon,GlowVeda Aloe Vera Skin Soothing Gel for Face and Body - 200ml,6,6,186.75,299.0,76,4.5,246,GlowVeda Official Store,skincare,active,70.6
+2026-10-18,GlowVeda,GLOWVEDA-013,Flipkart,GlowVeda Aloe Vera Skin Soothing Gel for Face and Body - 200ml,6,6,256.47,299.0,76,4.5,246,GlowVeda Official Store,skincare,active,70.6
+2026-10-19,GlowVeda,GLOWVEDA-013,Flipkart,GlowVeda Aloe Vera Skin Soothing Gel for Face and Body - 200ml,6,6,192.35,299.0,76,4.5,246,GlowVeda Official Store,skincare,active,70.6
+2026-10-18,GlowVeda,GLOWVEDA-014,Amazon,GlowVeda Niacinamide 10% Face Serum for Clear Skin - 30ml,6,6,549.0,649.0,46,4.3,178,GlowVeda Official Store,skincare,active,43.1
+2026-10-19,GlowVeda,GLOWVEDA-014,Amazon,GlowVeda Niacinamide 10% Face Serum for Clear Skin - 30ml,6,6,411.75,649.0,46,4.3,178,GlowVeda Official Store,skincare,active,43.1
+2026-10-18,GlowVeda,GLOWVEDA-014,Flipkart,GlowVeda Niacinamide 10% Face Serum for Clear Skin - 30ml,6,6,565.47,649.0,46,4.3,178,GlowVeda Official Store,skincare,active,43.1
+2026-10-19,GlowVeda,GLOWVEDA-014,Flipkart,GlowVeda Niacinamide 10% Face Serum for Clear Skin - 30ml,6,6,424.1,649.0,46,4.3,178,GlowVeda Official Store,skincare,active,43.1
+2026-10-18,GlowVeda,GLOWVEDA-015,Amazon,GlowVeda Kumkumadi Night Face Oil for Radiant Skin - 15ml,6,6,799.0,899.0,68,4.6,230,GlowVeda Official Store,skincare,active,63.8
+2026-10-19,GlowVeda,GLOWVEDA-015,Amazon,GlowVeda Kumkumadi Night Face Oil for Radiant Skin - 15ml,6,6,799.0,899.0,68,4.6,230,GlowVeda Official Store,skincare,active,63.8
+2026-10-18,GlowVeda,GLOWVEDA-015,Flipkart,New Product Item,3,2,822.97,899.0,68,4.6,230,GlowVeda Official Store,skincare,active,63.8
+2026-10-19,GlowVeda,GLOWVEDA-015,Flipkart,New Product Item,3,2,822.97,899.0,68,4.6,230,GlowVeda Official Store,skincare,active,63.8
+2026-10-18,GlowVeda,GLOWVEDA-016,Amazon,New Product Item,3,2,349.0,399.0,91,4.2,281,GlowVeda Official Store,skincare,active,84.6
+2026-10-19,GlowVeda,GLOWVEDA-016,Amazon,New Product Item,3,2,349.0,399.0,91,4.2,281,GlowVeda Official Store,skincare,active,84.6
+2026-10-18,GlowVeda,GLOWVEDA-016,Flipkart,GlowVeda Ubtan Face Pack for Tan Removal and Glow - 100g,6,6,359.47,399.0,91,4.2,281,GlowVeda Official Store,skincare,active,84.6
+2026-10-19,GlowVeda,GLOWVEDA-016,Flipkart,GlowVeda Ubtan Face Pack for Tan Removal and Glow - 100g,6,6,359.47,399.0,91,4.2,281,GlowVeda Official Store,skincare,active,84.6
+2026-10-18,GlowVeda,GLOWVEDA-017,Amazon,"GlowVeda Vitamin C Face Serum for Glowing Skin - 30ml, Pack of 1",6,6,499.0,549.0,61,4.3,213,GlowVeda Official Store,skincare,active,57.1
+2026-10-19,GlowVeda,GLOWVEDA-017,Amazon,"GlowVeda Vitamin C Face Serum for Glowing Skin - 30ml, Pack of 1",6,6,499.0,549.0,61,4.3,213,GlowVeda Official Store,skincare,active,57.1
+2026-10-18,GlowVeda,GLOWVEDA-017,Flipkart,New Product Item,3,2,513.97,549.0,61,4.3,213,GlowVeda Official Store,skincare,active,57.1
+2026-10-19,GlowVeda,GLOWVEDA-017,Flipkart,New Product Item,3,2,513.97,549.0,61,4.3,213,GlowVeda Official Store,skincare,active,57.1
+2026-10-18,GlowVeda,GLOWVEDA-018,Amazon,GlowVeda Neem & Tulsi Foaming Face Wash for Oily Skin - 150ml,6,6,299.0,349.0,83,4.5,265,GlowVeda Official Store,skincare,active,77.8
+2026-10-19,GlowVeda,GLOWVEDA-018,Amazon,GlowVeda Neem & Tulsi Foaming Face Wash for Oily Skin - 150ml,6,6,299.0,349.0,83,4.1,265,GlowVeda Official Store,skincare,active,77.8
+2026-10-18,GlowVeda,GLOWVEDA-018,Flipkart,GlowVeda Neem & Tulsi Foaming Face Wash for Oily Skin - 150ml,6,6,307.97,349.0,83,4.2,265,GlowVeda Official Store,skincare,active,77.8
+2026-10-19,GlowVeda,GLOWVEDA-018,Flipkart,GlowVeda Neem & Tulsi Foaming Face Wash for Oily Skin - 150ml,6,6,307.97,349.0,83,4.2,265,GlowVeda Official Store,skincare,active,77.8
+2026-10-18,GlowVeda,GLOWVEDA-019,Amazon,GlowVeda Hyaluronic Acid Moisturising Face Cream - 50g,6,6,449.0,499.0,54,4.4,196,GlowVeda Official Store,skincare,active,50.4
+2026-10-19,GlowVeda,GLOWVEDA-019,Amazon,GlowVeda Hyaluronic Acid Moisturising Face Cream - 50g,6,6,449.0,499.0,54,4.4,196,GlowVeda Official Store,skincare,active,50.4
+2026-10-18,GlowVeda,GLOWVEDA-019,Flipkart,GlowVeda Hyaluronic Acid Moisturising Face Cream - 50g,6,6,462.47,499.0,54,4.5,196,GlowVeda Official Store,skincare,active,50.4
+2026-10-19,GlowVeda,GLOWVEDA-019,Flipkart,GlowVeda Hyaluronic Acid Moisturising Face Cream - 50g,6,6,462.47,499.0,54,4.1,196,GlowVeda Official Store,skincare,active,50.4
+2026-10-18,GlowVeda,GLOWVEDA-020,Amazon,"GlowVeda SPF 50 Sunscreen Lotion for Face, Matte Finish - 50ml",6,6,599.0,699.0,76,4.1,248,GlowVeda Official Store,skincare,active,71.1
+2026-10-19,GlowVeda,GLOWVEDA-020,Amazon,"GlowVeda SPF 50 Sunscreen Lotion for Face, Matte Finish - 50ml",6,6,599.0,699.0,76,4.1,248,GlowVeda Official Store,skincare,active,71.1
+2026-10-18,GlowVeda,GLOWVEDA-020,Flipkart,"GlowVeda SPF 50 Sunscreen Lotion for Face, Matte Finish - 50ml",6,6,616.97,699.0,76,4.1,248,GlowVeda Official Store,skincare,active,71.1
+2026-10-19,GlowVeda,GLOWVEDA-020,Flipkart,"GlowVeda SPF 50 Sunscreen Lotion for Face, Matte Finish - 50ml",6,6,616.97,699.0,76,4.1,248,GlowVeda Official Store,skincare,active,71.1
+2026-10-18,GlowVeda,GLOWVEDA-021,Amazon,GlowVeda Aloe Vera Skin Soothing Gel for Face and Body - 200ml,6,6,249.0,299.0,47,4.5,179,GlowVeda Official Store,skincare,active,43.7
+2026-10-19,GlowVeda,GLOWVEDA-021,Amazon,GlowVeda Aloe Vera Skin Soothing Gel for Face and Body - 200ml,6,6,249.0,299.0,47,4.5,179,GlowVeda Official Store,skincare,active,43.7
+2026-10-18,GlowVeda,GLOWVEDA-021,Flipkart,GlowVeda Aloe Vera Skin Soothing Gel for Face and Body - 200ml,6,6,256.47,299.0,47,4.5,179,Shree Retail Traders,skincare,active,43.7
+2026-10-19,GlowVeda,GLOWVEDA-021,Flipkart,GlowVeda Aloe Vera Skin Soothing Gel for Face and Body - 200ml,6,6,256.47,299.0,47,4.5,179,Shree Retail Traders,skincare,active,43.7
+2026-10-18,GlowVeda,GLOWVEDA-022,Amazon,GlowVeda Niacinamide 10% Face Serum for Clear Skin - 30ml,6,6,549.0,649.0,69,4.3,231,Shree Retail Traders,skincare,active,64.4
+2026-10-19,GlowVeda,GLOWVEDA-022,Amazon,GlowVeda Niacinamide 10% Face Serum for Clear Skin - 30ml,6,6,549.0,649.0,69,4.3,231,Shree Retail Traders,skincare,active,64.4
+2026-10-18,GlowVeda,GLOWVEDA-022,Flipkart,GlowVeda Niacinamide 10% Face Serum for Clear Skin - 30ml,6,6,565.47,649.0,69,4.3,231,GlowVeda Official Store,skincare,active,64.4
+2026-10-19,GlowVeda,GLOWVEDA-022,Flipkart,GlowVeda Niacinamide 10% Face Serum for Clear Skin - 30ml,6,6,565.47,649.0,69,4.3,231,GlowVeda Official Store,skincare,active,64.4
+2026-10-18,GlowVeda,GLOWVEDA-023,Amazon,GlowVeda Kumkumadi Night Face Oil for Radiant Skin - 15ml,6,6,799.0,899.0,91,4.6,283,GlowVeda Official Store,skincare,active,85.1
+2026-10-19,GlowVeda,GLOWVEDA-023,Amazon,GlowVeda Kumkumadi Night Face Oil for Radiant Skin - 15ml,6,6,799.0,899.0,91,4.6,283,GlowVeda Official Store,skincare,active,85.1
+2026-10-18,GlowVeda,GLOWVEDA-023,Flipkart,GlowVeda Kumkumadi Night Face Oil for Radiant Skin - 15ml,6,6,822.97,899.0,91,4.6,283,Shree Retail Traders,skincare,active,85.1
+2026-10-19,GlowVeda,GLOWVEDA-023,Flipkart,GlowVeda Kumkumadi Night Face Oil for Radiant Skin - 15ml,6,6,822.97,899.0,91,4.6,283,Shree Retail Traders,skincare,active,85.1
+2026-10-18,GlowVeda,GLOWVEDA-024,Amazon,GlowVeda Ubtan Face Pack for Tan Removal and Glow - 100g,6,6,349.0,399.0,62,4.2,214,Shree Retail Traders,skincare,active,57.7
+2026-10-19,GlowVeda,GLOWVEDA-024,Amazon,GlowVeda Ubtan Face Pack for Tan Removal and Glow - 100g,6,6,349.0,399.0,62,4.2,214,Shree Retail Traders,skincare,active,57.7
+2026-10-18,GlowVeda,GLOWVEDA-024,Flipkart,GlowVeda Ubtan Face Pack for Tan Removal and Glow - 100g,6,6,359.47,399.0,62,4.2,214,GlowVeda Official Store,skincare,active,57.7
+2026-10-19,GlowVeda,GLOWVEDA-024,Flipkart,GlowVeda Ubtan Face Pack for Tan Removal and Glow - 100g,6,6,359.47,399.0,62,4.2,214,GlowVeda Official Store,skincare,active,57.7
+2026-10-18,GlowVeda,GLOWVEDA-025,Amazon,"GlowVeda Vitamin C Face Serum for Glowing Skin - 30ml, Pack of 1",6,6,499.0,549.0,84,4.3,266,GlowVeda Official Store,skincare,active,78.4
+2026-10-19,GlowVeda,GLOWVEDA-025,Amazon,"GlowVeda Vitamin C Face Serum for Glowing Skin - 30ml, Pack of 1",6,6,499.0,549.0,84,4.3,266,GlowVeda Official Store,skincare,active,78.4
+2026-10-18,GlowVeda,GLOWVEDA-025,Flipkart,"GlowVeda Vitamin C Face Serum for Glowing Skin - 30ml, Pack of 1",6,6,513.97,549.0,84,4.3,266,GlowVeda Official Store,skincare,active,78.4
+2026-10-19,GlowVeda,GLOWVEDA-025,Flipkart,"GlowVeda Vitamin C Face Serum for Glowing Skin - 30ml, Pack of 1",6,6,513.97,549.0,84,4.3,266,GlowVeda Official Store,skincare,active,78.4
+2026-10-18,GlowVeda,GLOWVEDA-026,Amazon,GlowVeda Neem & Tulsi Foaming Face Wash for Oily Skin - 150ml,6,6,299.0,349.0,55,4.2,197,GlowVeda Official Store,skincare,active,51.0
+2026-10-19,GlowVeda,GLOWVEDA-026,Amazon,GlowVeda Neem & Tulsi Foaming Face Wash for Oily Skin - 150ml,6,6,299.0,349.0,55,4.2,197,GlowVeda Official Store,skincare,active,51.0
+2026-10-18,GlowVeda,GLOWVEDA-026,Flipkart,GlowVeda Neem & Tulsi Foaming Face Wash for Oily Skin - 150ml,6,6,307.97,349.0,55,4.2,197,GlowVeda Official Store,skincare,active,51.0
+2026-10-19,GlowVeda,GLOWVEDA-026,Flipkart,GlowVeda Neem & Tulsi Foaming Face Wash for Oily Skin - 150ml,6,6,307.97,349.0,55,4.2,197,GlowVeda Official Store,skincare,active,51.0
+2026-10-18,GlowVeda,GLOWVEDA-027,Amazon,GlowVeda Hyaluronic Acid Moisturising Face Cream - 50g,6,6,449.0,499.0,77,4.4,249,GlowVeda Official Store,skincare,active,71.7
+2026-10-19,GlowVeda,GLOWVEDA-027,Amazon,GlowVeda Hyaluronic Acid Moisturising Face Cream - 50g,6,6,449.0,499.0,77,4.4,249,GlowVeda Official Store,skincare,active,71.7
+2026-10-18,GlowVeda,GLOWVEDA-027,Flipkart,GlowVeda Hyaluronic Acid Moisturising Face Cream - 50g,6,6,462.47,499.0,77,4.4,249,GlowVeda Official Store,skincare,active,71.7
+2026-10-19,GlowVeda,GLOWVEDA-027,Flipkart,GlowVeda Hyaluronic Acid Moisturising Face Cream - 50g,6,6,462.47,499.0,77,4.4,249,GlowVeda Official Store,skincare,active,71.7
+2026-10-18,GlowVeda,GLOWVEDA-028,Amazon,"GlowVeda SPF 50 Sunscreen Lotion for Face, Matte Finish - 50ml",6,6,599.0,699.0,47,4.1,181,GlowVeda Official Store,skincare,inactive,44.2
+2026-10-19,GlowVeda,GLOWVEDA-028,Amazon,"GlowVeda SPF 50 Sunscreen Lotion for Face, Matte Finish - 50ml",6,6,599.0,699.0,47,4.1,181,GlowVeda Official Store,skincare,inactive,44.2
+2026-10-18,GlowVeda,GLOWVEDA-028,Flipkart,"GlowVeda SPF 50 Sunscreen Lotion for Face, Matte Finish - 50ml",6,6,616.97,699.0,47,4.1,181,GlowVeda Official Store,skincare,active,44.2
+2026-10-19,GlowVeda,GLOWVEDA-028,Flipkart,"GlowVeda SPF 50 Sunscreen Lotion for Face, Matte Finish - 50ml",6,6,616.97,699.0,47,4.1,181,GlowVeda Official Store,skincare,active,44.2
+2026-10-18,GlowVeda,GLOWVEDA-029,Amazon,GlowVeda Aloe Vera Skin Soothing Gel for Face and Body - 200ml,6,6,249.0,299.0,70,4.5,232,GlowVeda Official Store,skincare,active,65.0
+2026-10-19,GlowVeda,GLOWVEDA-029,Amazon,GlowVeda Aloe Vera Skin Soothing Gel for Face and Body - 200ml,6,6,249.0,299.0,70,4.5,232,GlowVeda Official Store,skincare,active,65.0
+2026-10-18,GlowVeda,GLOWVEDA-029,Flipkart,GlowVeda Aloe Vera Skin Soothing Gel for Face and Body - 200ml,6,6,256.47,299.0,70,4.5,232,GlowVeda Official Store,skincare,blocked,65.0
+2026-10-19,GlowVeda,GLOWVEDA-029,Flipkart,GlowVeda Aloe Vera Skin Soothing Gel for Face and Body - 200ml,6,6,256.47,299.0,70,4.5,232,GlowVeda Official Store,skincare,blocked,65.0
+2026-10-18,GlowVeda,GLOWVEDA-030,Amazon,GlowVeda Niacinamide 10% Face Serum for Clear Skin - 30ml,6,6,549.0,649.0,92,4.3,284,GlowVeda Official Store,skincare,suppressed,85.7
+2026-10-19,GlowVeda,GLOWVEDA-030,Amazon,GlowVeda Niacinamide 10% Face Serum for Clear Skin - 30ml,6,6,549.0,649.0,92,4.3,284,GlowVeda Official Store,skincare,suppressed,85.7
+2026-10-18,GlowVeda,GLOWVEDA-030,Flipkart,GlowVeda Niacinamide 10% Face Serum for Clear Skin - 30ml,6,6,565.47,649.0,92,4.3,284,GlowVeda Official Store,skincare,active,85.7
+2026-10-19,GlowVeda,GLOWVEDA-030,Flipkart,GlowVeda Niacinamide 10% Face Serum for Clear Skin - 30ml,6,6,565.47,649.0,92,4.3,284,GlowVeda Official Store,skincare,active,85.7
+2026-10-18,GlowVeda,GLOWVEDA-031,Amazon,GlowVeda Kumkumadi Night Face Oil for Radiant Skin - 15ml,6,6,799.0,899.0,62,4.6,216,GlowVeda Official Store,skincare,active,58.2
+2026-10-19,GlowVeda,GLOWVEDA-031,Amazon,GlowVeda Kumkumadi Night Face Oil for Radiant Skin - 15ml,6,6,799.0,899.0,62,4.6,216,GlowVeda Official Store,skincare,active,58.2
+2026-10-18,GlowVeda,GLOWVEDA-031,Flipkart,GlowVeda Kumkumadi Night Face Oil for Radiant Skin - 15ml,6,6,822.97,899.0,0,4.6,216,Shree Retail Traders,skincare,active,58.2
+2026-10-19,GlowVeda,GLOWVEDA-031,Flipkart,GlowVeda Kumkumadi Night Face Oil for Radiant Skin - 15ml,6,6,822.97,899.0,0,4.6,216,Shree Retail Traders,skincare,active,58.2
+2026-10-18,GlowVeda,GLOWVEDA-032,Amazon,GlowVeda Ubtan Face Pack for Tan Removal and Glow - 100g,6,6,349.0,399.0,85,4.2,267,GlowVeda Official Store,skincare,active,79.0
+2026-10-19,GlowVeda,GLOWVEDA-032,Amazon,GlowVeda Ubtan Face Pack for Tan Removal and Glow - 100g,6,6,349.0,399.0,85,4.2,267,GlowVeda Official Store,skincare,active,79.0
+2026-10-18,GlowVeda,GLOWVEDA-032,Flipkart,GlowVeda Ubtan Face Pack for Tan Removal and Glow - 100g,6,6,359.47,399.0,85,4.2,267,GlowVeda Official Store,skincare,active,79.0
+2026-10-19,GlowVeda,GLOWVEDA-032,Flipkart,GlowVeda Ubtan Face Pack for Tan Removal and Glow - 100g,6,6,359.47,399.0,85,4.2,267,GlowVeda Official Store,skincare,active,79.0
+2026-10-18,GlowVeda,GLOWVEDA-033,Amazon,"GlowVeda Vitamin C Face Serum for Glowing Skin - 30ml, Pack of 1",6,6,499.0,549.0,55,4.3,199,GlowVeda Official Store,skincare,active,51.5
+2026-10-19,GlowVeda,GLOWVEDA-033,Amazon,"GlowVeda Vitamin C Face Serum for Glowing Skin - 30ml, Pack of 1",6,6,499.0,549.0,55,4.3,199,GlowVeda Official Store,skincare,active,51.5
+2026-10-18,GlowVeda,GLOWVEDA-033,Flipkart,"GlowVeda Vitamin C Face Serum for Glowing Skin - 30ml, Pack of 1",6,6,513.97,549.0,55,4.3,199,GlowVeda Official Store,skincare,active,51.5
+2026-10-19,GlowVeda,GLOWVEDA-033,Flipkart,"GlowVeda Vitamin C Face Serum for Glowing Skin - 30ml, Pack of 1",6,6,513.97,549.0,55,4.3,199,GlowVeda Official Store,skincare,active,51.5
+2026-10-18,GlowVeda,GLOWVEDA-034,Amazon,GlowVeda Neem & Tulsi Foaming Face Wash for Oily Skin - 150ml,6,6,299.0,349.0,77,4.2,251,GlowVeda Official Store,skincare,active,72.2
+2026-10-19,GlowVeda,GLOWVEDA-034,Amazon,GlowVeda Neem & Tulsi Foaming Face Wash for Oily Skin - 150ml,6,6,299.0,349.0,77,4.2,251,GlowVeda Official Store,skincare,active,72.2
+2026-10-18,GlowVeda,GLOWVEDA-034,Flipkart,GlowVeda Neem & Tulsi Foaming Face Wash for Oily Skin - 150ml,6,6,307.97,349.0,77,4.2,251,GlowVeda Official Store,skincare,active,72.2
+2026-10-19,GlowVeda,GLOWVEDA-034,Flipkart,GlowVeda Neem & Tulsi Foaming Face Wash for Oily Skin - 150ml,6,6,307.97,349.0,77,4.2,251,GlowVeda Official Store,skincare,active,72.2
+2026-10-18,GlowVeda,GLOWVEDA-035,Amazon,GlowVeda Hyaluronic Acid Moisturising Face Cream - 50g,6,6,449.0,499.0,48,4.4,182,GlowVeda Official Store,skincare,active,44.8
+2026-10-19,GlowVeda,GLOWVEDA-035,Amazon,GlowVeda Hyaluronic Acid Moisturising Face Cream - 50g,6,6,449.0,499.0,48,4.4,182,GlowVeda Official Store,skincare,active,44.8
+2026-10-18,GlowVeda,GLOWVEDA-035,Flipkart,GlowVeda Hyaluronic Acid Moisturising Face Cream - 50g,6,6,462.47,499.0,48,4.4,182,GlowVeda Official Store,skincare,active,44.8
+2026-10-19,GlowVeda,GLOWVEDA-035,Flipkart,GlowVeda Hyaluronic Acid Moisturising Face Cream - 50g,6,6,462.47,499.0,48,4.4,182,GlowVeda Official Store,skincare,active,44.8
+2026-10-18,GlowVeda,GLOWVEDA-036,Amazon,"GlowVeda SPF 50 Sunscreen Lotion for Face, Matte Finish - 50ml",6,6,599.0,699.0,70,4.1,234,GlowVeda Official Store,skincare,active,65.5
+2026-10-19,GlowVeda,GLOWVEDA-036,Amazon,"GlowVeda SPF 50 Sunscreen Lotion for Face, Matte Finish - 50ml",6,6,599.0,699.0,70,4.1,234,GlowVeda Official Store,skincare,active,65.5
+2026-10-18,GlowVeda,GLOWVEDA-036,Flipkart,"GlowVeda SPF 50 Sunscreen Lotion for Face, Matte Finish - 50ml",6,6,616.97,699.0,70,4.1,234,GlowVeda Official Store,skincare,active,65.5
+2026-10-19,GlowVeda,GLOWVEDA-036,Flipkart,"GlowVeda SPF 50 Sunscreen Lotion for Face, Matte Finish - 50ml",6,6,616.97,699.0,70,4.1,234,GlowVeda Official Store,skincare,active,65.5
+2026-10-18,GlowVeda,GLOWVEDA-037,Amazon,GlowVeda Aloe Vera Skin Soothing Gel for Face and Body - 200ml,6,6,249.0,299.0,92,4.5,286,GlowVeda Official Store,skincare,active,86.2
+2026-10-19,GlowVeda,GLOWVEDA-037,Amazon,GlowVeda Aloe Vera Skin Soothing Gel for Face and Body - 200ml,6,6,249.0,299.0,92,4.5,286,GlowVeda Official Store,skincare,active,86.2
+2026-10-18,GlowVeda,GLOWVEDA-037,Flipkart,GlowVeda Aloe Vera Skin Soothing Gel for Face and Body - 200ml,6,6,256.47,299.0,92,4.5,286,GlowVeda Official Store,skincare,active,86.2
+2026-10-19,GlowVeda,GLOWVEDA-037,Flipkart,GlowVeda Aloe Vera Skin Soothing Gel for Face and Body - 200ml,6,6,256.47,299.0,92,4.5,286,GlowVeda Official Store,skincare,active,86.2
+2026-10-18,GlowVeda,GLOWVEDA-038,Amazon,GlowVeda Niacinamide 10% Face Serum for Clear Skin - 30ml,6,6,549.0,649.0,63,4.3,217,GlowVeda Official Store,skincare,active,58.8
+2026-10-19,GlowVeda,GLOWVEDA-038,Amazon,GlowVeda Niacinamide 10% Face Serum for Clear Skin - 30ml,6,6,549.0,649.0,63,4.3,217,GlowVeda Official Store,skincare,active,58.8
+2026-10-18,GlowVeda,GLOWVEDA-038,Flipkart,GlowVeda Niacinamide 10% Face Serum for Clear Skin - 30ml,6,6,565.47,649.0,63,4.3,217,GlowVeda Official Store,skincare,active,58.8
+2026-10-19,GlowVeda,GLOWVEDA-038,Flipkart,GlowVeda Niacinamide 10% Face Serum for Clear Skin - 30ml,6,6,565.47,649.0,63,4.3,217,GlowVeda Official Store,skincare,active,58.8
+2026-10-18,GlowVeda,GLOWVEDA-039,Amazon,GlowVeda Kumkumadi Night Face Oil for Radiant Skin - 15ml,6,6,799.0,899.0,85,4.6,269,GlowVeda Official Store,skincare,active,79.5
+2026-10-19,GlowVeda,GLOWVEDA-039,Amazon,GlowVeda Kumkumadi Night Face Oil for Radiant Skin - 15ml,6,6,799.0,899.0,85,4.6,269,GlowVeda Official Store,skincare,active,79.5
+2026-10-18,GlowVeda,GLOWVEDA-039,Flipkart,GlowVeda Kumkumadi Night Face Oil for Radiant Skin - 15ml,6,6,822.97,899.0,85,4.6,269,GlowVeda Official Store,skincare,active,79.5
+2026-10-19,GlowVeda,GLOWVEDA-039,Flipkart,GlowVeda Kumkumadi Night Face Oil for Radiant Skin - 15ml,6,6,822.97,899.0,85,4.6,269,GlowVeda Official Store,skincare,active,79.5
+2026-10-18,GlowVeda,GLOWVEDA-040,Amazon,GlowVeda Ubtan Face Pack for Tan Removal and Glow - 100g,6,6,349.0,399.0,56,4.2,200,GlowVeda Official Store,skincare,active,52.1
+2026-10-19,GlowVeda,GLOWVEDA-040,Amazon,GlowVeda Ubtan Face Pack for Tan Removal and Glow - 100g,6,6,349.0,399.0,56,4.2,200,GlowVeda Official Store,skincare,active,52.1
+2026-10-18,GlowVeda,GLOWVEDA-040,Flipkart,GlowVeda Ubtan Face Pack for Tan Removal and Glow - 100g,6,6,359.47,399.0,56,4.2,200,GlowVeda Official Store,skincare,active,52.1
+2026-10-19,GlowVeda,GLOWVEDA-040,Flipkart,GlowVeda Ubtan Face Pack for Tan Removal and Glow - 100g,6,6,359.47,399.0,56,4.2,200,GlowVeda Official Store,skincare,active,52.1
+2026-10-18,Munchkraft,MUNCHKRAFT-001,Amazon,Munchkraft Roasted Masala Chips Snack Pack - 150 gm,6,6,199.0,219.0,224,4.1,154,Munchkraft Foods,snacks,active,156.8
+2026-10-19,Munchkraft,MUNCHKRAFT-001,Amazon,Munchkraft Roasted Masala Chips Snack Pack - 150 gm,6,6,199.0,219.0,224,4.1,154,Munchkraft Foods,snacks,active,156.8
+2026-10-18,Munchkraft,MUNCHKRAFT-001,Flipkart,Munchkraft Roasted Masala Chips Snack Pack - 150 gm,6,6,204.97,219.0,0,4.1,154,Munchkraft Foods,snacks,active,156.8
+2026-10-19,Munchkraft,MUNCHKRAFT-001,Flipkart,Munchkraft Roasted Masala Chips Snack Pack - 150 gm,6,6,204.97,219.0,0,4.1,154,Munchkraft Foods,snacks,active,156.8
+2026-10-18,Munchkraft,MUNCHKRAFT-002,Amazon,Munchkraft Peri Peri Makhana Roasted Snack - 200 gm,6,6,149.0,175.0,0,4.3,189,Munchkraft Foods,snacks,active,208.6
+2026-10-19,Munchkraft,MUNCHKRAFT-002,Amazon,Munchkraft Peri Peri Makhana Roasted Snack - 200 gm,6,6,149.0,175.0,0,4.3,189,Munchkraft Foods,snacks,active,208.6
+2026-10-18,Munchkraft,MUNCHKRAFT-002,Flipkart,Munchkraft Peri Peri Makhana Roasted Snack - 200 gm,6,6,153.47,175.0,298,4.3,189,Munchkraft Foods,snacks,active,208.6
+2026-10-19,Munchkraft,MUNCHKRAFT-002,Flipkart,Munchkraft Peri Peri Makhana Roasted Snack - 200 gm,6,6,153.47,175.0,298,4.3,189,Munchkraft Foods,snacks,active,208.6
+2026-10-18,Munchkraft,MUNCHKRAFT-003,Amazon,"Munchkraft Ragi Millet Crisps, Baked Not Fried - 120 gm Pack",6,6,129.0,150.0,200,4.2,142,Munchkraft Foods,snacks,active,140.0
+2026-10-19,Munchkraft,MUNCHKRAFT-003,Amazon,"Munchkraft Ragi Millet Crisps, Baked Not Fried - 120 gm Pack",6,6,129.0,150.0,200,4.2,142,Munchkraft Foods,snacks,active,140.0
+2026-10-18,Munchkraft,MUNCHKRAFT-003,Flipkart,"Munchkraft Ragi Millet Crisps, Baked Not Fried - 120 gm Pack",6,6,132.87,150.0,0,4.2,142,Munchkraft Foods,snacks,active,140.0
+2026-10-19,Munchkraft,MUNCHKRAFT-003,Flipkart,"Munchkraft Ragi Millet Crisps, Baked Not Fried - 120 gm Pack",6,6,132.87,150.0,0,4.2,142,Munchkraft Foods,snacks,active,140.0
+2026-10-18,Munchkraft,MUNCHKRAFT-004,Amazon,Munchkraft Jaggery Peanut Chikki Bites - 250 gm Pack,6,6,99.0,120.0,41,4.4,178,Munchkraft Foods,snacks,active,191.8
+2026-10-19,Munchkraft,MUNCHKRAFT-004,Amazon,Munchkraft Jaggery Peanut Chikki Bites - 250 gm Pack,6,6,99.0,120.0,41,4.4,178,Munchkraft Foods,snacks,active,191.8
+2026-10-18,Munchkraft,MUNCHKRAFT-004,Flipkart,Munchkraft Jaggery Peanut Chikki Bites - 250 gm Pack,6,6,101.97,120.0,274,4.4,178,Munchkraft Foods,snacks,active,191.8
+2026-10-19,Munchkraft,MUNCHKRAFT-004,Flipkart,Munchkraft Jaggery Peanut Chikki Bites - 250 gm Pack,6,6,101.97,120.0,274,4.4,178,Munchkraft Foods,snacks,active,191.8
+2026-10-18,Munchkraft,MUNCHKRAFT-005,Amazon,Munchkraft Cheese Jalapeno Nachos Chips - 170 gm,6,6,179.0,199.0,176,4.0,131,Munchkraft Foods,snacks,active,123.2
+2026-10-19,Munchkraft,MUNCHKRAFT-005,Amazon,Munchkraft Cheese Jalapeno Nachos Chips - 170 gm,6,6,179.0,199.0,176,4.0,131,Munchkraft Foods,snacks,active,123.2
+2026-10-18,Munchkraft,MUNCHKRAFT-005,Flipkart,Munchkraft Cheese Jalapeno Nachos Chips - 170 gm,6,6,184.37,199.0,26,4.0,131,Munchkraft Foods,snacks,active,123.2
+2026-10-19,Munchkraft,MUNCHKRAFT-005,Flipkart,Munchkraft Cheese Jalapeno Nachos Chips - 170 gm,6,6,184.37,199.0,26,4.0,131,Munchkraft Foods,snacks,active,123.2
+2026-10-18,Munchkraft,MUNCHKRAFT-006,Amazon,Munchkraft Trail Mix Dry Fruit Snack Pack - 200 gm,6,6,249.0,299.0,37,4.5,166,Munchkraft Foods,snacks,active,175.0
+2026-10-19,Munchkraft,MUNCHKRAFT-006,Amazon,Munchkraft Trail Mix Dry Fruit Snack Pack - 200 gm,6,6,249.0,299.0,37,4.5,166,Munchkraft Foods,snacks,active,175.0
+2026-10-18,Munchkraft,MUNCHKRAFT-006,Flipkart,Munchkraft Trail Mix Dry Fruit Snack Pack - 200 gm,6,6,256.47,299.0,250,4.5,166,Munchkraft Foods,snacks,active,175.0
+2026-10-19,Munchkraft,MUNCHKRAFT-006,Flipkart,Munchkraft Trail Mix Dry Fruit Snack Pack - 200 gm,6,6,256.47,299.0,250,4.5,166,Munchkraft Foods,snacks,active,175.0
+2026-10-18,Munchkraft,MUNCHKRAFT-007,Amazon,"Munchkraft Banana Chips, Kerala Style in Coconut Oil - 180 gm",6,6,159.0,180.0,152,4.3,120,Munchkraft Foods,snacks,active,106.4
+2026-10-19,Munchkraft,MUNCHKRAFT-007,Amazon,"Munchkraft Banana Chips, Kerala Style in Coconut Oil - 180 gm",6,6,159.0,180.0,152,4.3,120,Munchkraft Foods,snacks,active,106.4
+2026-10-18,Munchkraft,MUNCHKRAFT-007,Flipkart,"Munchkraft Banana Chips, Kerala Style in Coconut Oil - 180 gm",6,6,163.77,180.0,22,4.3,120,Munchkraft Foods,snacks,active,106.4
+2026-10-19,Munchkraft,MUNCHKRAFT-007,Flipkart,"Munchkraft Banana Chips, Kerala Style in Coconut Oil - 180 gm",6,6,163.77,180.0,22,4.3,120,Munchkraft Foods,snacks,active,106.4
+2026-10-18,Munchkraft,MUNCHKRAFT-008,Amazon,"Munchkraft Protein Puffs Snack, Tangy Tomato - 6 x 30 gm Pack",6,6,357.25,464.43,226,4.1,155,Munchkraft Foods,snacks,active,158.2
+2026-10-19,Munchkraft,MUNCHKRAFT-008,Amazon,"Munchkraft Protein Puffs Snack, Tangy Tomato - 6 x 30 gm Pack",6,6,357.25,464.43,226,4.1,155,Munchkraft Foods,snacks,active,158.2
+2026-10-18,Munchkraft,MUNCHKRAFT-008,Flipkart,"Munchkraft Protein Puffs Snack, Tangy Tomato - 6 x 30 gm Pack",6,6,307.97,349.0,226,4.1,155,Munchkraft Foods,snacks,active,158.2
+2026-10-19,Munchkraft,MUNCHKRAFT-008,Flipkart,"Munchkraft Protein Puffs Snack, Tangy Tomato - 6 x 30 gm Pack",6,6,307.97,349.0,226,4.1,155,Munchkraft Foods,snacks,active,158.2
+2026-10-18,Munchkraft,MUNCHKRAFT-009,Amazon,Munchkraft Roasted Masala Chips Snack Pack - 150 gm,6,6,199.0,219.0,300,4.1,190,Munchkraft Foods,snacks,active,210.0
+2026-10-19,Munchkraft,MUNCHKRAFT-009,Amazon,Munchkraft Roasted Masala Chips Snack Pack - 150 gm,6,6,199.0,219.0,300,4.1,190,Munchkraft Foods,snacks,active,210.0
+2026-10-18,Munchkraft,MUNCHKRAFT-009,Flipkart,Munchkraft Roasted Masala Chips Snack Pack - 150 gm,6,6,230.84,300.09,300,4.1,190,Munchkraft Foods,snacks,active,210.0
+2026-10-19,Munchkraft,MUNCHKRAFT-009,Flipkart,Munchkraft Roasted Masala Chips Snack Pack - 150 gm,6,6,230.84,300.09,300,4.1,190,Munchkraft Foods,snacks,active,210.0
+2026-10-18,Munchkraft,MUNCHKRAFT-010,Amazon,Munchkraft Peri Peri Makhana Roasted Snack - 200 gm,6,6,178.03,231.44,202,4.3,143,Munchkraft Foods,snacks,active,141.4
+2026-10-19,Munchkraft,MUNCHKRAFT-010,Amazon,Munchkraft Peri Peri Makhana Roasted Snack - 200 gm,6,6,178.03,231.44,202,4.3,143,Munchkraft Foods,snacks,active,141.4
+2026-10-18,Munchkraft,MUNCHKRAFT-010,Flipkart,Munchkraft Peri Peri Makhana Roasted Snack - 200 gm,6,6,153.47,175.0,202,4.3,143,Munchkraft Foods,snacks,active,141.4
+2026-10-19,Munchkraft,MUNCHKRAFT-010,Flipkart,Munchkraft Peri Peri Makhana Roasted Snack - 200 gm,6,6,153.47,175.0,202,4.3,143,Munchkraft Foods,snacks,active,141.4
+2026-10-18,Munchkraft,MUNCHKRAFT-011,Amazon,"Munchkraft Ragi Millet Crisps, Baked Not Fried - 120 gm Pack",6,6,162.0,150.0,276,4.2,179,Munchkraft Foods,snacks,active,193.2
+2026-10-19,Munchkraft,MUNCHKRAFT-011,Amazon,"Munchkraft Ragi Millet Crisps, Baked Not Fried - 120 gm Pack",6,6,162.0,150.0,276,4.2,179,Munchkraft Foods,snacks,active,193.2
+2026-10-18,Munchkraft,MUNCHKRAFT-011,Flipkart,"Munchkraft Ragi Millet Crisps, Baked Not Fried - 120 gm Pack",6,6,162.0,150.0,276,4.2,179,Munchkraft Foods,snacks,active,193.2
+2026-10-19,Munchkraft,MUNCHKRAFT-011,Flipkart,"Munchkraft Ragi Millet Crisps, Baked Not Fried - 120 gm Pack",6,6,162.0,150.0,276,4.2,179,Munchkraft Foods,snacks,active,193.2
+2026-10-18,Munchkraft,MUNCHKRAFT-012,Amazon,Munchkraft Jaggery Peanut Chikki Bites - 250 gm Pack,6,6,129.6,120.0,178,4.4,132,Munchkraft Foods,snacks,active,124.6
+2026-10-19,Munchkraft,MUNCHKRAFT-012,Amazon,Munchkraft Jaggery Peanut Chikki Bites - 250 gm Pack,6,6,129.6,120.0,178,4.4,132,Munchkraft Foods,snacks,active,124.6
+2026-10-18,Munchkraft,MUNCHKRAFT-012,Flipkart,Munchkraft Jaggery Peanut Chikki Bites - 250 gm Pack,6,6,129.6,120.0,178,4.4,132,Munchkraft Foods,snacks,active,124.6
+2026-10-19,Munchkraft,MUNCHKRAFT-012,Flipkart,Munchkraft Jaggery Peanut Chikki Bites - 250 gm Pack,6,6,129.6,120.0,178,4.4,132,Munchkraft Foods,snacks,active,124.6
+2026-10-18,Munchkraft,MUNCHKRAFT-013,Amazon,Munchkraft Cheese Jalapeno Nachos Chips - 170 gm,6,6,179.0,199.0,252,4.0,167,Munchkraft Foods,snacks,active,176.4
+2026-10-19,Munchkraft,MUNCHKRAFT-013,Amazon,Munchkraft Cheese Jalapeno Nachos Chips - 170 gm,6,6,134.25,199.0,252,4.0,167,Munchkraft Foods,snacks,active,176.4
+2026-10-18,Munchkraft,MUNCHKRAFT-013,Flipkart,Munchkraft Cheese Jalapeno Nachos Chips - 170 gm,6,6,184.37,199.0,252,4.0,167,Munchkraft Foods,snacks,active,176.4
+2026-10-19,Munchkraft,MUNCHKRAFT-013,Flipkart,Munchkraft Cheese Jalapeno Nachos Chips - 170 gm,6,6,138.28,199.0,252,4.0,167,Munchkraft Foods,snacks,active,176.4
+2026-10-18,Munchkraft,MUNCHKRAFT-014,Amazon,New Product Item,3,2,249.0,299.0,154,4.5,121,Munchkraft Foods,snacks,active,107.8
+2026-10-19,Munchkraft,MUNCHKRAFT-014,Amazon,New Product Item,3,2,249.0,299.0,154,4.5,121,Munchkraft Foods,snacks,active,107.8
+2026-10-18,Munchkraft,MUNCHKRAFT-014,Flipkart,Munchkraft Trail Mix Dry Fruit Snack Pack - 200 gm,6,6,256.47,299.0,154,4.5,121,Munchkraft Foods,snacks,active,107.8
+2026-10-19,Munchkraft,MUNCHKRAFT-014,Flipkart,Munchkraft Trail Mix Dry Fruit Snack Pack - 200 gm,6,6,256.47,299.0,154,4.5,121,Munchkraft Foods,snacks,active,107.8
+2026-10-18,Munchkraft,MUNCHKRAFT-015,Amazon,"Munchkraft Banana Chips, Kerala Style in Coconut Oil - 180 gm",6,6,159.0,180.0,228,4.3,156,Munchkraft Foods,snacks,active,159.6
+2026-10-19,Munchkraft,MUNCHKRAFT-015,Amazon,"Munchkraft Banana Chips, Kerala Style in Coconut Oil - 180 gm",6,6,159.0,180.0,228,4.3,156,Munchkraft Foods,snacks,active,159.6
+2026-10-18,Munchkraft,MUNCHKRAFT-015,Flipkart,New Product Item,3,2,163.77,180.0,228,4.3,156,Munchkraft Foods,snacks,active,159.6
+2026-10-19,Munchkraft,MUNCHKRAFT-015,Flipkart,New Product Item,3,2,163.77,180.0,228,4.3,156,Munchkraft Foods,snacks,active,159.6
+2026-10-18,Munchkraft,MUNCHKRAFT-016,Amazon,New Product Item,3,2,299.0,349.0,302,4.1,191,Munchkraft Foods,snacks,active,211.4
+2026-10-19,Munchkraft,MUNCHKRAFT-016,Amazon,New Product Item,3,2,299.0,349.0,302,4.1,191,Munchkraft Foods,snacks,active,211.4
+2026-10-18,Munchkraft,MUNCHKRAFT-016,Flipkart,"Munchkraft Protein Puffs Snack, Tangy Tomato - 6 x 30 gm Pack",6,6,307.97,349.0,302,4.1,191,Munchkraft Foods,snacks,active,211.4
+2026-10-19,Munchkraft,MUNCHKRAFT-016,Flipkart,"Munchkraft Protein Puffs Snack, Tangy Tomato - 6 x 30 gm Pack",6,6,307.97,349.0,302,4.1,191,Munchkraft Foods,snacks,active,211.4
+2026-10-18,Munchkraft,MUNCHKRAFT-017,Amazon,Munchkraft Roasted Masala Chips Snack Pack - 150 gm,6,6,199.0,219.0,204,4.1,144,Munchkraft Foods,snacks,active,142.8
+2026-10-19,Munchkraft,MUNCHKRAFT-017,Amazon,Munchkraft Roasted Masala Chips Snack Pack - 150 gm,6,6,199.0,219.0,204,4.1,144,Munchkraft Foods,snacks,active,142.8
+2026-10-18,Munchkraft,MUNCHKRAFT-017,Flipkart,New Product Item,3,2,204.97,219.0,204,4.1,144,Munchkraft Foods,snacks,active,142.8
+2026-10-19,Munchkraft,MUNCHKRAFT-017,Flipkart,New Product Item,3,2,204.97,219.0,204,4.1,144,Munchkraft Foods,snacks,active,142.8
+2026-10-18,Munchkraft,MUNCHKRAFT-018,Amazon,Munchkraft Peri Peri Makhana Roasted Snack - 200 gm,6,6,149.0,175.0,278,4.5,180,Munchkraft Foods,snacks,active,194.6
+2026-10-19,Munchkraft,MUNCHKRAFT-018,Amazon,Munchkraft Peri Peri Makhana Roasted Snack - 200 gm,6,6,149.0,175.0,278,4.1,180,Munchkraft Foods,snacks,active,194.6
+2026-10-18,Munchkraft,MUNCHKRAFT-018,Flipkart,Munchkraft Peri Peri Makhana Roasted Snack - 200 gm,6,6,153.47,175.0,278,4.3,180,Munchkraft Foods,snacks,active,194.6
+2026-10-19,Munchkraft,MUNCHKRAFT-018,Flipkart,Munchkraft Peri Peri Makhana Roasted Snack - 200 gm,6,6,153.47,175.0,278,4.3,180,Munchkraft Foods,snacks,active,194.6
+2026-10-18,Munchkraft,MUNCHKRAFT-019,Amazon,"Munchkraft Ragi Millet Crisps, Baked Not Fried - 120 gm Pack",6,6,129.0,150.0,180,4.2,133,Munchkraft Foods,snacks,active,126.0
+2026-10-19,Munchkraft,MUNCHKRAFT-019,Amazon,"Munchkraft Ragi Millet Crisps, Baked Not Fried - 120 gm Pack",6,6,129.0,150.0,180,4.2,133,Munchkraft Foods,snacks,active,126.0
+2026-10-18,Munchkraft,MUNCHKRAFT-019,Flipkart,"Munchkraft Ragi Millet Crisps, Baked Not Fried - 120 gm Pack",6,6,132.87,150.0,180,4.2,133,Munchkraft Foods,snacks,active,126.0
+2026-10-19,Munchkraft,MUNCHKRAFT-019,Flipkart,"Munchkraft Ragi Millet Crisps, Baked Not Fried - 120 gm Pack",6,6,132.87,150.0,180,4.2,133,Munchkraft Foods,snacks,active,126.0
+2026-10-18,Munchkraft,MUNCHKRAFT-020,Amazon,Munchkraft Jaggery Peanut Chikki Bites - 250 gm Pack,6,6,99.0,120.0,254,4.4,168,Munchkraft Foods,snacks,active,177.8
+2026-10-19,Munchkraft,MUNCHKRAFT-020,Amazon,Munchkraft Jaggery Peanut Chikki Bites - 250 gm Pack,6,6,99.0,120.0,254,4.4,168,Munchkraft Foods,snacks,active,177.8
+2026-10-18,Munchkraft,MUNCHKRAFT-020,Flipkart,Munchkraft Jaggery Peanut Chikki Bites - 250 gm Pack,6,6,101.97,120.0,254,4.4,168,Munchkraft Foods,snacks,active,177.8
+2026-10-19,Munchkraft,MUNCHKRAFT-020,Flipkart,Munchkraft Jaggery Peanut Chikki Bites - 250 gm Pack,6,6,101.97,120.0,254,4.4,168,Munchkraft Foods,snacks,active,177.8
+2026-10-18,Munchkraft,MUNCHKRAFT-021,Amazon,Munchkraft Cheese Jalapeno Nachos Chips - 170 gm,6,6,179.0,199.0,156,4.0,122,Munchkraft Foods,snacks,active,109.2
+2026-10-19,Munchkraft,MUNCHKRAFT-021,Amazon,Munchkraft Cheese Jalapeno Nachos Chips - 170 gm,6,6,179.0,199.0,156,4.0,122,Munchkraft Foods,snacks,active,109.2
+2026-10-18,Munchkraft,MUNCHKRAFT-021,Flipkart,Munchkraft Cheese Jalapeno Nachos Chips - 170 gm,6,6,184.37,199.0,156,4.0,122,Shree Retail Traders,snacks,active,109.2
+2026-10-19,Munchkraft,MUNCHKRAFT-021,Flipkart,Munchkraft Cheese Jalapeno Nachos Chips - 170 gm,6,6,184.37,199.0,156,4.0,122,Shree Retail Traders,snacks,active,109.2
+2026-10-18,Munchkraft,MUNCHKRAFT-022,Amazon,Munchkraft Trail Mix Dry Fruit Snack Pack - 200 gm,6,6,249.0,299.0,230,4.5,157,Shree Retail Traders,snacks,active,161.0
+2026-10-19,Munchkraft,MUNCHKRAFT-022,Amazon,Munchkraft Trail Mix Dry Fruit Snack Pack - 200 gm,6,6,249.0,299.0,230,4.5,157,Shree Retail Traders,snacks,active,161.0
+2026-10-18,Munchkraft,MUNCHKRAFT-022,Flipkart,Munchkraft Trail Mix Dry Fruit Snack Pack - 200 gm,6,6,256.47,299.0,230,4.5,157,Munchkraft Foods,snacks,active,161.0
+2026-10-19,Munchkraft,MUNCHKRAFT-022,Flipkart,Munchkraft Trail Mix Dry Fruit Snack Pack - 200 gm,6,6,256.47,299.0,230,4.5,157,Munchkraft Foods,snacks,active,161.0
+2026-10-18,Munchkraft,MUNCHKRAFT-023,Amazon,"Munchkraft Banana Chips, Kerala Style in Coconut Oil - 180 gm",6,6,159.0,180.0,304,4.3,192,Munchkraft Foods,snacks,active,212.8
+2026-10-19,Munchkraft,MUNCHKRAFT-023,Amazon,"Munchkraft Banana Chips, Kerala Style in Coconut Oil - 180 gm",6,6,159.0,180.0,304,4.3,192,Munchkraft Foods,snacks,active,212.8
+2026-10-18,Munchkraft,MUNCHKRAFT-023,Flipkart,"Munchkraft Banana Chips, Kerala Style in Coconut Oil - 180 gm",6,6,163.77,180.0,304,4.3,192,Shree Retail Traders,snacks,active,212.8
+2026-10-19,Munchkraft,MUNCHKRAFT-023,Flipkart,"Munchkraft Banana Chips, Kerala Style in Coconut Oil - 180 gm",6,6,163.77,180.0,304,4.3,192,Shree Retail Traders,snacks,active,212.8
+2026-10-18,Munchkraft,MUNCHKRAFT-024,Amazon,"Munchkraft Protein Puffs Snack, Tangy Tomato - 6 x 30 gm Pack",6,6,299.0,349.0,206,4.1,145,Munchkraft Foods,snacks,active,144.2
+2026-10-19,Munchkraft,MUNCHKRAFT-024,Amazon,"Munchkraft Protein Puffs Snack, Tangy Tomato - 6 x 30 gm Pack",6,6,299.0,349.0,206,4.1,145,Munchkraft Foods,snacks,active,144.2
+2026-10-18,Munchkraft,MUNCHKRAFT-024,Flipkart,"Munchkraft Protein Puffs Snack, Tangy Tomato - 6 x 30 gm Pack",6,6,307.97,349.0,206,4.1,145,Munchkraft Foods,snacks,active,144.2
+2026-10-19,Munchkraft,MUNCHKRAFT-024,Flipkart,"Munchkraft Protein Puffs Snack, Tangy Tomato - 6 x 30 gm Pack",6,6,307.97,349.0,206,4.1,145,Munchkraft Foods,snacks,active,144.2
+2026-10-18,Munchkraft,MUNCHKRAFT-025,Amazon,Munchkraft Roasted Masala Chips Snack Pack - 150 gm,6,6,199.0,219.0,280,4.1,180,Munchkraft Foods,snacks,active,196.0
+2026-10-19,Munchkraft,MUNCHKRAFT-025,Amazon,Munchkraft Roasted Masala Chips Snack Pack - 150 gm,6,6,199.0,219.0,280,4.1,180,Munchkraft Foods,snacks,active,196.0
+2026-10-18,Munchkraft,MUNCHKRAFT-025,Flipkart,Munchkraft Roasted Masala Chips Snack Pack - 150 gm,6,6,204.97,219.0,280,4.1,180,Munchkraft Foods,snacks,active,196.0
+2026-10-19,Munchkraft,MUNCHKRAFT-025,Flipkart,Munchkraft Roasted Masala Chips Snack Pack - 150 gm,6,6,204.97,219.0,280,4.1,180,Munchkraft Foods,snacks,active,196.0
+2026-10-18,Munchkraft,MUNCHKRAFT-026,Amazon,Munchkraft Peri Peri Makhana Roasted Snack - 200 gm,6,6,149.0,175.0,182,4.3,134,Munchkraft Foods,snacks,active,127.4
+2026-10-19,Munchkraft,MUNCHKRAFT-026,Amazon,Munchkraft Peri Peri Makhana Roasted Snack - 200 gm,6,6,149.0,175.0,182,4.3,134,Munchkraft Foods,snacks,active,127.4
+2026-10-18,Munchkraft,MUNCHKRAFT-026,Flipkart,Munchkraft Peri Peri Makhana Roasted Snack - 200 gm,6,6,153.47,175.0,182,4.3,134,Munchkraft Foods,snacks,active,127.4
+2026-10-19,Munchkraft,MUNCHKRAFT-026,Flipkart,Munchkraft Peri Peri Makhana Roasted Snack - 200 gm,6,6,153.47,175.0,182,4.3,134,Munchkraft Foods,snacks,active,127.4
+2026-10-18,Munchkraft,MUNCHKRAFT-027,Amazon,"Munchkraft Ragi Millet Crisps, Baked Not Fried - 120 gm Pack",6,6,129.0,150.0,256,4.2,169,Munchkraft Foods,snacks,active,179.2
+2026-10-19,Munchkraft,MUNCHKRAFT-027,Amazon,"Munchkraft Ragi Millet Crisps, Baked Not Fried - 120 gm Pack",6,6,129.0,150.0,256,4.2,169,Munchkraft Foods,snacks,active,179.2
+2026-10-18,Munchkraft,MUNCHKRAFT-027,Flipkart,"Munchkraft Ragi Millet Crisps, Baked Not Fried - 120 gm Pack",6,6,132.87,150.0,256,4.2,169,Munchkraft Foods,snacks,active,179.2
+2026-10-19,Munchkraft,MUNCHKRAFT-027,Flipkart,"Munchkraft Ragi Millet Crisps, Baked Not Fried - 120 gm Pack",6,6,132.87,150.0,256,4.2,169,Munchkraft Foods,snacks,active,179.2
+2026-10-18,Munchkraft,MUNCHKRAFT-028,Amazon,Munchkraft Jaggery Peanut Chikki Bites - 250 gm Pack,6,6,99.0,120.0,158,4.4,123,Munchkraft Foods,snacks,inactive,110.6
+2026-10-19,Munchkraft,MUNCHKRAFT-028,Amazon,Munchkraft Jaggery Peanut Chikki Bites - 250 gm Pack,6,6,99.0,120.0,158,4.4,123,Munchkraft Foods,snacks,inactive,110.6
+2026-10-18,Munchkraft,MUNCHKRAFT-028,Flipkart,Munchkraft Jaggery Peanut Chikki Bites - 250 gm Pack,6,6,101.97,120.0,158,4.4,123,Munchkraft Foods,snacks,active,110.6
+2026-10-19,Munchkraft,MUNCHKRAFT-028,Flipkart,Munchkraft Jaggery Peanut Chikki Bites - 250 gm Pack,6,6,101.97,120.0,158,4.4,123,Munchkraft Foods,snacks,active,110.6
+2026-10-18,Munchkraft,MUNCHKRAFT-029,Amazon,Munchkraft Cheese Jalapeno Nachos Chips - 170 gm,6,6,179.0,199.0,232,4.0,158,Munchkraft Foods,snacks,active,162.4
+2026-10-19,Munchkraft,MUNCHKRAFT-029,Amazon,Munchkraft Cheese Jalapeno Nachos Chips - 170 gm,6,6,179.0,199.0,232,4.0,158,Munchkraft Foods,snacks,active,162.4
+2026-10-18,Munchkraft,MUNCHKRAFT-029,Flipkart,Munchkraft Cheese Jalapeno Nachos Chips - 170 gm,6,6,184.37,199.0,232,4.0,158,Munchkraft Foods,snacks,blocked,162.4
+2026-10-19,Munchkraft,MUNCHKRAFT-029,Flipkart,Munchkraft Cheese Jalapeno Nachos Chips - 170 gm,6,6,184.37,199.0,232,4.0,158,Munchkraft Foods,snacks,blocked,162.4
+2026-10-18,Munchkraft,MUNCHKRAFT-030,Amazon,Munchkraft Trail Mix Dry Fruit Snack Pack - 200 gm,6,6,249.0,299.0,306,4.5,193,Munchkraft Foods,snacks,suppressed,214.2
+2026-10-19,Munchkraft,MUNCHKRAFT-030,Amazon,Munchkraft Trail Mix Dry Fruit Snack Pack - 200 gm,6,6,249.0,299.0,306,4.5,193,Munchkraft Foods,snacks,suppressed,214.2
+2026-10-18,Munchkraft,MUNCHKRAFT-030,Flipkart,Munchkraft Trail Mix Dry Fruit Snack Pack - 200 gm,6,6,256.47,299.0,306,4.5,193,Munchkraft Foods,snacks,active,214.2
+2026-10-19,Munchkraft,MUNCHKRAFT-030,Flipkart,Munchkraft Trail Mix Dry Fruit Snack Pack - 200 gm,6,6,256.47,299.0,306,4.5,193,Munchkraft Foods,snacks,active,214.2
+2026-10-18,Munchkraft,MUNCHKRAFT-031,Amazon,"Munchkraft Banana Chips, Kerala Style in Coconut Oil - 180 gm",6,6,159.0,180.0,208,4.3,146,Munchkraft Foods,snacks,active,145.6
+2026-10-19,Munchkraft,MUNCHKRAFT-031,Amazon,"Munchkraft Banana Chips, Kerala Style in Coconut Oil - 180 gm",6,6,159.0,180.0,208,4.3,146,Munchkraft Foods,snacks,active,145.6
+2026-10-18,Munchkraft,MUNCHKRAFT-031,Flipkart,"Munchkraft Banana Chips, Kerala Style in Coconut Oil - 180 gm",6,6,163.77,180.0,0,4.3,146,Shree Retail Traders,snacks,active,145.6
+2026-10-19,Munchkraft,MUNCHKRAFT-031,Flipkart,"Munchkraft Banana Chips, Kerala Style in Coconut Oil - 180 gm",6,6,163.77,180.0,0,4.3,146,Shree Retail Traders,snacks,active,145.6
+2026-10-18,Munchkraft,MUNCHKRAFT-032,Amazon,"Munchkraft Protein Puffs Snack, Tangy Tomato - 6 x 30 gm Pack",6,6,299.0,349.0,282,4.1,181,Munchkraft Foods,snacks,active,197.4
+2026-10-19,Munchkraft,MUNCHKRAFT-032,Amazon,"Munchkraft Protein Puffs Snack, Tangy Tomato - 6 x 30 gm Pack",6,6,299.0,349.0,282,4.1,181,Munchkraft Foods,snacks,active,197.4
+2026-10-18,Munchkraft,MUNCHKRAFT-032,Flipkart,"Munchkraft Protein Puffs Snack, Tangy Tomato - 6 x 30 gm Pack",6,6,307.97,349.0,282,4.1,181,Munchkraft Foods,snacks,active,197.4
+2026-10-19,Munchkraft,MUNCHKRAFT-032,Flipkart,"Munchkraft Protein Puffs Snack, Tangy Tomato - 6 x 30 gm Pack",6,6,307.97,349.0,282,4.1,181,Munchkraft Foods,snacks,active,197.4
+2026-10-18,Munchkraft,MUNCHKRAFT-033,Amazon,Munchkraft Roasted Masala Chips Snack Pack - 150 gm,6,6,199.0,219.0,184,4.1,135,Munchkraft Foods,snacks,active,128.8
+2026-10-19,Munchkraft,MUNCHKRAFT-033,Amazon,Munchkraft Roasted Masala Chips Snack Pack - 150 gm,6,6,199.0,219.0,184,4.1,135,Munchkraft Foods,snacks,active,128.8
+2026-10-18,Munchkraft,MUNCHKRAFT-033,Flipkart,Munchkraft Roasted Masala Chips Snack Pack - 150 gm,6,6,204.97,219.0,184,4.1,135,Munchkraft Foods,snacks,active,128.8
+2026-10-19,Munchkraft,MUNCHKRAFT-033,Flipkart,Munchkraft Roasted Masala Chips Snack Pack - 150 gm,6,6,204.97,219.0,184,4.1,135,Munchkraft Foods,snacks,active,128.8
+2026-10-18,Munchkraft,MUNCHKRAFT-034,Amazon,Munchkraft Peri Peri Makhana Roasted Snack - 200 gm,6,6,149.0,175.0,258,4.3,170,Munchkraft Foods,snacks,active,180.6
+2026-10-19,Munchkraft,MUNCHKRAFT-034,Amazon,Munchkraft Peri Peri Makhana Roasted Snack - 200 gm,6,6,149.0,175.0,258,4.3,170,Munchkraft Foods,snacks,active,180.6
+2026-10-18,Munchkraft,MUNCHKRAFT-034,Flipkart,Munchkraft Peri Peri Makhana Roasted Snack - 200 gm,6,6,153.47,175.0,258,4.3,170,Munchkraft Foods,snacks,active,180.6
+2026-10-19,Munchkraft,MUNCHKRAFT-034,Flipkart,Munchkraft Peri Peri Makhana Roasted Snack - 200 gm,6,6,153.47,175.0,258,4.3,170,Munchkraft Foods,snacks,active,180.6
+2026-10-18,Munchkraft,MUNCHKRAFT-035,Amazon,"Munchkraft Ragi Millet Crisps, Baked Not Fried - 120 gm Pack",6,6,129.0,150.0,160,4.2,124,Munchkraft Foods,snacks,active,112.0
+2026-10-19,Munchkraft,MUNCHKRAFT-035,Amazon,"Munchkraft Ragi Millet Crisps, Baked Not Fried - 120 gm Pack",6,6,129.0,150.0,160,4.2,124,Munchkraft Foods,snacks,active,112.0
+2026-10-18,Munchkraft,MUNCHKRAFT-035,Flipkart,"Munchkraft Ragi Millet Crisps, Baked Not Fried - 120 gm Pack",6,6,132.87,150.0,160,4.2,124,Munchkraft Foods,snacks,active,112.0
+2026-10-19,Munchkraft,MUNCHKRAFT-035,Flipkart,"Munchkraft Ragi Millet Crisps, Baked Not Fried - 120 gm Pack",6,6,132.87,150.0,160,4.2,124,Munchkraft Foods,snacks,active,112.0
+2026-10-18,Munchkraft,MUNCHKRAFT-036,Amazon,Munchkraft Jaggery Peanut Chikki Bites - 250 gm Pack,6,6,99.0,120.0,234,4.4,159,Munchkraft Foods,snacks,active,163.8
+2026-10-19,Munchkraft,MUNCHKRAFT-036,Amazon,Munchkraft Jaggery Peanut Chikki Bites - 250 gm Pack,6,6,99.0,120.0,234,4.4,159,Munchkraft Foods,snacks,active,163.8
+2026-10-18,Munchkraft,MUNCHKRAFT-036,Flipkart,Munchkraft Jaggery Peanut Chikki Bites - 250 gm Pack,6,6,101.97,120.0,234,4.4,159,Munchkraft Foods,snacks,active,163.8
+2026-10-19,Munchkraft,MUNCHKRAFT-036,Flipkart,Munchkraft Jaggery Peanut Chikki Bites - 250 gm Pack,6,6,101.97,120.0,234,4.4,159,Munchkraft Foods,snacks,active,163.8
+2026-10-18,Munchkraft,MUNCHKRAFT-037,Amazon,Munchkraft Cheese Jalapeno Nachos Chips - 170 gm,6,6,179.0,199.0,308,4.0,194,Munchkraft Foods,snacks,active,215.6
+2026-10-19,Munchkraft,MUNCHKRAFT-037,Amazon,Munchkraft Cheese Jalapeno Nachos Chips - 170 gm,6,6,179.0,199.0,308,4.0,194,Munchkraft Foods,snacks,active,215.6
+2026-10-18,Munchkraft,MUNCHKRAFT-037,Flipkart,Munchkraft Cheese Jalapeno Nachos Chips - 170 gm,6,6,184.37,199.0,308,4.0,194,Munchkraft Foods,snacks,active,215.6
+2026-10-19,Munchkraft,MUNCHKRAFT-037,Flipkart,Munchkraft Cheese Jalapeno Nachos Chips - 170 gm,6,6,184.37,199.0,308,4.0,194,Munchkraft Foods,snacks,active,215.6
+2026-10-18,Munchkraft,MUNCHKRAFT-038,Amazon,Munchkraft Trail Mix Dry Fruit Snack Pack - 200 gm,6,6,249.0,299.0,210,4.5,147,Munchkraft Foods,snacks,active,147.0
+2026-10-19,Munchkraft,MUNCHKRAFT-038,Amazon,Munchkraft Trail Mix Dry Fruit Snack Pack - 200 gm,6,6,249.0,299.0,210,4.5,147,Munchkraft Foods,snacks,active,147.0
+2026-10-18,Munchkraft,MUNCHKRAFT-038,Flipkart,Munchkraft Trail Mix Dry Fruit Snack Pack - 200 gm,6,6,256.47,299.0,210,4.5,147,Munchkraft Foods,snacks,active,147.0
+2026-10-19,Munchkraft,MUNCHKRAFT-038,Flipkart,Munchkraft Trail Mix Dry Fruit Snack Pack - 200 gm,6,6,256.47,299.0,210,4.5,147,Munchkraft Foods,snacks,active,147.0
+2026-10-18,Munchkraft,MUNCHKRAFT-039,Amazon,"Munchkraft Banana Chips, Kerala Style in Coconut Oil - 180 gm",6,6,159.0,180.0,284,4.3,182,Munchkraft Foods,snacks,active,198.8
+2026-10-19,Munchkraft,MUNCHKRAFT-039,Amazon,"Munchkraft Banana Chips, Kerala Style in Coconut Oil - 180 gm",6,6,159.0,180.0,284,4.3,182,Munchkraft Foods,snacks,active,198.8
+2026-10-18,Munchkraft,MUNCHKRAFT-039,Flipkart,"Munchkraft Banana Chips, Kerala Style in Coconut Oil - 180 gm",6,6,163.77,180.0,284,4.3,182,Munchkraft Foods,snacks,active,198.8
+2026-10-19,Munchkraft,MUNCHKRAFT-039,Flipkart,"Munchkraft Banana Chips, Kerala Style in Coconut Oil - 180 gm",6,6,163.77,180.0,284,4.3,182,Munchkraft Foods,snacks,active,198.8
+2026-10-18,Munchkraft,MUNCHKRAFT-040,Amazon,"Munchkraft Protein Puffs Snack, Tangy Tomato - 6 x 30 gm Pack",6,6,299.0,349.0,186,4.1,136,Munchkraft Foods,snacks,active,130.2
+2026-10-19,Munchkraft,MUNCHKRAFT-040,Amazon,"Munchkraft Protein Puffs Snack, Tangy Tomato - 6 x 30 gm Pack",6,6,299.0,349.0,186,4.1,136,Munchkraft Foods,snacks,active,130.2
+2026-10-18,Munchkraft,MUNCHKRAFT-040,Flipkart,"Munchkraft Protein Puffs Snack, Tangy Tomato - 6 x 30 gm Pack",6,6,307.97,349.0,186,4.1,136,Munchkraft Foods,snacks,active,130.2
+2026-10-19,Munchkraft,MUNCHKRAFT-040,Flipkart,"Munchkraft Protein Puffs Snack, Tangy Tomato - 6 x 30 gm Pack",6,6,307.97,349.0,186,4.1,136,Munchkraft Foods,snacks,active,130.2
+2026-10-18,Vayu Home,VAYUHOME-001,Amazon,"Vayu Home 1200 Watt Mixer Grinder Kitchen Appliance - Steel Jar, 3 Speed",7,7,1899.0,2099.0,28,4.4,340,Vayu Home Appliances,home_appliances,active,15.7
+2026-10-19,Vayu Home,VAYUHOME-001,Amazon,"Vayu Home 1200 Watt Mixer Grinder Kitchen Appliance - Steel Jar, 3 Speed",7,7,1899.0,2099.0,28,4.4,340,Vayu Home Appliances,home_appliances,active,15.7
+2026-10-18,Vayu Home,VAYUHOME-001,Flipkart,"Vayu Home 1200 Watt Mixer Grinder Kitchen Appliance - Steel Jar, 3 Speed",7,7,1955.97,2099.0,0,4.4,340,Vayu Home Appliances,home_appliances,active,15.7
+2026-10-19,Vayu Home,VAYUHOME-001,Flipkart,"Vayu Home 1200 Watt Mixer Grinder Kitchen Appliance - Steel Jar, 3 Speed",7,7,1955.97,2099.0,0,4.4,340,Vayu Home Appliances,home_appliances,active,15.7
+2026-10-18,Vayu Home,VAYUHOME-002,Amazon,"Vayu Home 1.8L Electric Kettle, 1500 Watt Stainless Steel Body",7,7,1199.0,1899.0,0,4.3,418,Vayu Home Appliances,home_appliances,active,20.9
+2026-10-19,Vayu Home,VAYUHOME-002,Amazon,"Vayu Home 1.8L Electric Kettle, 1500 Watt Stainless Steel Body",7,7,1199.0,1899.0,0,4.3,418,Vayu Home Appliances,home_appliances,active,20.9
+2026-10-18,Vayu Home,VAYUHOME-002,Flipkart,"Vayu Home 1.8L Electric Kettle, 1500 Watt Stainless Steel Body",7,7,1234.97,1899.0,37,4.3,418,Vayu Home Appliances,home_appliances,active,20.9
+2026-10-19,Vayu Home,VAYUHOME-002,Flipkart,"Vayu Home 1.8L Electric Kettle, 1500 Watt Stainless Steel Body",7,7,1234.97,1899.0,37,4.3,418,Vayu Home Appliances,home_appliances,active,20.9
+2026-10-18,Vayu Home,VAYUHOME-003,Amazon,"Vayu Home 4.2L Digital Air Fryer, 1400 Watt, Kitchen Appliance",7,7,4299.0,5999.0,25,4.2,315,Vayu Home Appliances,home_appliances,active,14.0
+2026-10-19,Vayu Home,VAYUHOME-003,Amazon,"Vayu Home 4.2L Digital Air Fryer, 1400 Watt, Kitchen Appliance",7,7,4299.0,5999.0,25,4.2,315,Vayu Home Appliances,home_appliances,active,14.0
+2026-10-18,Vayu Home,VAYUHOME-003,Flipkart,"Vayu Home 4.2L Digital Air Fryer, 1400 Watt, Kitchen Appliance",7,7,4427.97,5999.0,0,4.2,315,Vayu Home Appliances,home_appliances,active,14.0
+2026-10-19,Vayu Home,VAYUHOME-003,Flipkart,"Vayu Home 4.2L Digital Air Fryer, 1400 Watt, Kitchen Appliance",7,7,4427.97,5999.0,0,4.2,315,Vayu Home Appliances,home_appliances,active,14.0
+2026-10-18,Vayu Home,VAYUHOME-004,Amazon,Vayu Home 1000 Watt Dry Iron with Non-Stick Soleplate for Home,7,7,899.0,1199.0,4,4.1,393,Vayu Home Appliances,home_appliances,active,19.2
+2026-10-19,Vayu Home,VAYUHOME-004,Amazon,Vayu Home 1000 Watt Dry Iron with Non-Stick Soleplate for Home,7,7,899.0,1199.0,4,4.1,393,Vayu Home Appliances,home_appliances,active,19.2
+2026-10-18,Vayu Home,VAYUHOME-004,Flipkart,Vayu Home 1000 Watt Dry Iron with Non-Stick Soleplate for Home,7,7,925.97,1199.0,34,4.1,393,Vayu Home Appliances,home_appliances,active,19.2
+2026-10-19,Vayu Home,VAYUHOME-004,Flipkart,Vayu Home 1000 Watt Dry Iron with Non-Stick Soleplate for Home,7,7,925.97,1199.0,34,4.1,393,Vayu Home Appliances,home_appliances,active,19.2
+2026-10-18,Vayu Home,VAYUHOME-005,Amazon,"Vayu Home 2000 Watt Induction Cooktop for Kitchen, 8 Preset Menus",7,7,2499.0,3499.0,22,4.3,290,Vayu Home Appliances,home_appliances,active,12.3
+2026-10-19,Vayu Home,VAYUHOME-005,Amazon,"Vayu Home 2000 Watt Induction Cooktop for Kitchen, 8 Preset Menus",7,7,2499.0,3499.0,22,4.3,290,Vayu Home Appliances,home_appliances,active,12.3
+2026-10-18,Vayu Home,VAYUHOME-005,Flipkart,"Vayu Home 2000 Watt Induction Cooktop for Kitchen, 8 Preset Menus",7,7,2573.97,3499.0,2,4.3,290,Vayu Home Appliances,home_appliances,active,12.3
+2026-10-19,Vayu Home,VAYUHOME-005,Flipkart,"Vayu Home 2000 Watt Induction Cooktop for Kitchen, 8 Preset Menus",7,7,2573.97,3499.0,2,4.3,290,Vayu Home Appliances,home_appliances,active,12.3
+2026-10-18,Vayu Home,VAYUHOME-006,Amazon,"Vayu Home 500 Watt Hand Blender with Steel Blades, 2 Speed",7,7,1299.0,1799.0,3,4.0,368,Vayu Home Appliances,home_appliances,active,17.5
+2026-10-19,Vayu Home,VAYUHOME-006,Amazon,"Vayu Home 500 Watt Hand Blender with Steel Blades, 2 Speed",7,7,1299.0,1799.0,3,4.0,368,Vayu Home Appliances,home_appliances,active,17.5
+2026-10-18,Vayu Home,VAYUHOME-006,Flipkart,"Vayu Home 500 Watt Hand Blender with Steel Blades, 2 Speed",7,7,1337.97,1799.0,31,4.0,368,Vayu Home Appliances,home_appliances,active,17.5
+2026-10-19,Vayu Home,VAYUHOME-006,Flipkart,"Vayu Home 500 Watt Hand Blender with Steel Blades, 2 Speed",7,7,1337.97,1799.0,31,4.0,368,Vayu Home Appliances,home_appliances,active,17.5
+2026-10-18,Vayu Home,VAYUHOME-007,Amazon,"Vayu Home 2 Slice Pop-Up Toaster, 750 Watt, Kitchen Appliance",7,7,1099.0,1499.0,19,4.2,265,Vayu Home Appliances,home_appliances,active,10.6
+2026-10-19,Vayu Home,VAYUHOME-007,Amazon,"Vayu Home 2 Slice Pop-Up Toaster, 750 Watt, Kitchen Appliance",7,7,1099.0,1499.0,19,4.2,265,Vayu Home Appliances,home_appliances,active,10.6
+2026-10-18,Vayu Home,VAYUHOME-007,Flipkart,"Vayu Home 2 Slice Pop-Up Toaster, 750 Watt, Kitchen Appliance",7,7,1274.84,1657.29,19,4.2,265,Vayu Home Appliances,home_appliances,active,10.6
+2026-10-19,Vayu Home,VAYUHOME-007,Flipkart,"Vayu Home 2 Slice Pop-Up Toaster, 750 Watt, Kitchen Appliance",7,7,1274.84,1657.29,19,4.2,265,Vayu Home Appliances,home_appliances,active,10.6
+2026-10-18,Vayu Home,VAYUHOME-008,Amazon,"Vayu Home 1.5L Electric Rice Cooker, 500 Watt, Steel Inner Pot",7,7,2149.45,2794.28,28,4.5,342,Vayu Home Appliances,home_appliances,active,15.8
+2026-10-19,Vayu Home,VAYUHOME-008,Amazon,"Vayu Home 1.5L Electric Rice Cooker, 500 Watt, Steel Inner Pot",7,7,2149.45,2794.28,28,4.5,342,Vayu Home Appliances,home_appliances,active,15.8
+2026-10-18,Vayu Home,VAYUHOME-008,Flipkart,"Vayu Home 1.5L Electric Rice Cooker, 500 Watt, Steel Inner Pot",7,7,1852.97,2499.0,28,4.5,342,Vayu Home Appliances,home_appliances,active,15.8
+2026-10-19,Vayu Home,VAYUHOME-008,Flipkart,"Vayu Home 1.5L Electric Rice Cooker, 500 Watt, Steel Inner Pot",7,7,1852.97,2499.0,28,4.5,342,Vayu Home Appliances,home_appliances,active,15.8
+2026-10-18,Vayu Home,VAYUHOME-009,Amazon,"Vayu Home 1200 Watt Mixer Grinder Kitchen Appliance - Steel Jar, 3 Speed",7,7,1899.0,2099.0,38,4.4,420,Vayu Home Appliances,home_appliances,active,21.0
+2026-10-19,Vayu Home,VAYUHOME-009,Amazon,"Vayu Home 1200 Watt Mixer Grinder Kitchen Appliance - Steel Jar, 3 Speed",7,7,1899.0,2099.0,38,4.4,420,Vayu Home Appliances,home_appliances,active,21.0
+2026-10-18,Vayu Home,VAYUHOME-009,Flipkart,"Vayu Home 1200 Watt Mixer Grinder Kitchen Appliance - Steel Jar, 3 Speed",7,7,2202.84,2863.69,38,4.4,420,Vayu Home Appliances,home_appliances,active,21.0
+2026-10-19,Vayu Home,VAYUHOME-009,Flipkart,"Vayu Home 1200 Watt Mixer Grinder Kitchen Appliance - Steel Jar, 3 Speed",7,7,2202.84,2863.69,38,4.4,420,Vayu Home Appliances,home_appliances,active,21.0
+2026-10-18,Vayu Home,VAYUHOME-010,Amazon,"Vayu Home 1.8L Electric Kettle, 1500 Watt Stainless Steel Body",7,7,1432.57,1862.34,25,4.3,317,Vayu Home Appliances,home_appliances,active,14.1
+2026-10-19,Vayu Home,VAYUHOME-010,Amazon,"Vayu Home 1.8L Electric Kettle, 1500 Watt Stainless Steel Body",7,7,1432.57,1862.34,25,4.3,317,Vayu Home Appliances,home_appliances,active,14.1
+2026-10-18,Vayu Home,VAYUHOME-010,Flipkart,"Vayu Home 1.8L Electric Kettle, 1500 Watt Stainless Steel Body",7,7,1234.97,1899.0,25,4.3,317,Vayu Home Appliances,home_appliances,active,14.1
+2026-10-19,Vayu Home,VAYUHOME-010,Flipkart,"Vayu Home 1.8L Electric Kettle, 1500 Watt Stainless Steel Body",7,7,1234.97,1899.0,25,4.3,317,Vayu Home Appliances,home_appliances,active,14.1
+2026-10-18,Vayu Home,VAYUHOME-011,Amazon,"Vayu Home 4.2L Digital Air Fryer, 1400 Watt, Kitchen Appliance",7,7,6478.92,5999.0,34,4.2,395,Vayu Home Appliances,home_appliances,active,19.3
+2026-10-19,Vayu Home,VAYUHOME-011,Amazon,"Vayu Home 4.2L Digital Air Fryer, 1400 Watt, Kitchen Appliance",7,7,6478.92,5999.0,34,4.2,395,Vayu Home Appliances,home_appliances,active,19.3
+2026-10-18,Vayu Home,VAYUHOME-011,Flipkart,"Vayu Home 4.2L Digital Air Fryer, 1400 Watt, Kitchen Appliance",7,7,6478.92,5999.0,34,4.2,395,Vayu Home Appliances,home_appliances,active,19.3
+2026-10-19,Vayu Home,VAYUHOME-011,Flipkart,"Vayu Home 4.2L Digital Air Fryer, 1400 Watt, Kitchen Appliance",7,7,6478.92,5999.0,34,4.2,395,Vayu Home Appliances,home_appliances,active,19.3
+2026-10-18,Vayu Home,VAYUHOME-012,Amazon,Vayu Home 1000 Watt Dry Iron with Non-Stick Soleplate for Home,7,7,899.0,1199.0,22,4.1,292,Vayu Home Appliances,home_appliances,active,12.5
+2026-10-19,Vayu Home,VAYUHOME-012,Amazon,Vayu Home 1000 Watt Dry Iron with Non-Stick Soleplate for Home,7,7,674.25,1199.0,22,4.1,292,Vayu Home Appliances,home_appliances,active,12.5
+2026-10-18,Vayu Home,VAYUHOME-012,Flipkart,Vayu Home 1000 Watt Dry Iron with Non-Stick Soleplate for Home,7,7,925.97,1199.0,22,4.1,292,Vayu Home Appliances,home_appliances,active,12.5
+2026-10-19,Vayu Home,VAYUHOME-012,Flipkart,Vayu Home 1000 Watt Dry Iron with Non-Stick Soleplate for Home,7,7,694.48,1199.0,22,4.1,292,Vayu Home Appliances,home_appliances,active,12.5
+2026-10-18,Vayu Home,VAYUHOME-013,Amazon,"Vayu Home 2000 Watt Induction Cooktop for Kitchen, 8 Preset Menus",7,7,2499.0,3499.0,32,4.3,370,Vayu Home Appliances,home_appliances,active,17.6
+2026-10-19,Vayu Home,VAYUHOME-013,Amazon,"Vayu Home 2000 Watt Induction Cooktop for Kitchen, 8 Preset Menus",7,7,1874.25,3499.0,32,4.3,370,Vayu Home Appliances,home_appliances,active,17.6
+2026-10-18,Vayu Home,VAYUHOME-013,Flipkart,"Vayu Home 2000 Watt Induction Cooktop for Kitchen, 8 Preset Menus",7,7,2573.97,3499.0,32,4.3,370,Vayu Home Appliances,home_appliances,active,17.6
+2026-10-19,Vayu Home,VAYUHOME-013,Flipkart,"Vayu Home 2000 Watt Induction Cooktop for Kitchen, 8 Preset Menus",7,7,1930.48,3499.0,32,4.3,370,Vayu Home Appliances,home_appliances,active,17.6
+2026-10-18,Vayu Home,VAYUHOME-014,Amazon,New Product Item,3,2,1299.0,1799.0,19,4.0,267,Vayu Home Appliances,home_appliances,active,10.8
+2026-10-19,Vayu Home,VAYUHOME-014,Amazon,New Product Item,3,2,1299.0,1799.0,19,4.0,267,Vayu Home Appliances,home_appliances,active,10.8
+2026-10-18,Vayu Home,VAYUHOME-014,Flipkart,"Vayu Home 500 Watt Hand Blender with Steel Blades, 2 Speed",7,7,1337.97,1799.0,19,4.0,267,Vayu Home Appliances,home_appliances,active,10.8
+2026-10-19,Vayu Home,VAYUHOME-014,Flipkart,"Vayu Home 500 Watt Hand Blender with Steel Blades, 2 Speed",7,7,1337.97,1799.0,19,4.0,267,Vayu Home Appliances,home_appliances,active,10.8
+2026-10-18,Vayu Home,VAYUHOME-015,Amazon,"Vayu Home 2 Slice Pop-Up Toaster, 750 Watt, Kitchen Appliance",7,7,1099.0,1499.0,29,4.2,344,Vayu Home Appliances,home_appliances,active,16.0
+2026-10-19,Vayu Home,VAYUHOME-015,Amazon,"Vayu Home 2 Slice Pop-Up Toaster, 750 Watt, Kitchen Appliance",7,7,1099.0,1499.0,29,4.2,344,Vayu Home Appliances,home_appliances,active,16.0
+2026-10-18,Vayu Home,VAYUHOME-015,Flipkart,New Product Item,3,2,1131.97,1499.0,29,4.2,344,Vayu Home Appliances,home_appliances,active,16.0
+2026-10-19,Vayu Home,VAYUHOME-015,Flipkart,New Product Item,3,2,1131.97,1499.0,29,4.2,344,Vayu Home Appliances,home_appliances,active,16.0
+2026-10-18,Vayu Home,VAYUHOME-016,Amazon,New Product Item,3,2,1799.0,2499.0,38,4.5,422,Vayu Home Appliances,home_appliances,active,21.1
+2026-10-19,Vayu Home,VAYUHOME-016,Amazon,New Product Item,3,2,1799.0,2499.0,38,4.5,422,Vayu Home Appliances,home_appliances,active,21.1
+2026-10-18,Vayu Home,VAYUHOME-016,Flipkart,"Vayu Home 1.5L Electric Rice Cooker, 500 Watt, Steel Inner Pot",7,7,1852.97,2499.0,38,4.5,422,Vayu Home Appliances,home_appliances,active,21.1
+2026-10-19,Vayu Home,VAYUHOME-016,Flipkart,"Vayu Home 1.5L Electric Rice Cooker, 500 Watt, Steel Inner Pot",7,7,1852.97,2499.0,38,4.5,422,Vayu Home Appliances,home_appliances,active,21.1
+2026-10-18,Vayu Home,VAYUHOME-017,Amazon,"Vayu Home 1200 Watt Mixer Grinder Kitchen Appliance - Steel Jar, 3 Speed",7,7,1899.0,2099.0,26,4.4,319,Vayu Home Appliances,home_appliances,active,14.3
+2026-10-19,Vayu Home,VAYUHOME-017,Amazon,"Vayu Home 1200 Watt Mixer Grinder Kitchen Appliance - Steel Jar, 3 Speed",7,7,1899.0,2099.0,26,4.4,319,Vayu Home Appliances,home_appliances,active,14.3
+2026-10-18,Vayu Home,VAYUHOME-017,Flipkart,"Vayu Home 1200 Watt Mixer Grinder Kitchen Appliance - Steel Jar, 3 Speed",7,7,1955.97,2099.0,26,4.5,319,Vayu Home Appliances,home_appliances,active,14.3
+2026-10-19,Vayu Home,VAYUHOME-017,Flipkart,"Vayu Home 1200 Watt Mixer Grinder Kitchen Appliance - Steel Jar, 3 Speed",7,7,1955.97,2099.0,26,4.1,319,Vayu Home Appliances,home_appliances,active,14.3
+2026-10-18,Vayu Home,VAYUHOME-018,Amazon,"Vayu Home 1.8L Electric Kettle, 1500 Watt Stainless Steel Body",7,7,1199.0,1899.0,35,4.5,397,Vayu Home Appliances,home_appliances,active,19.5
+2026-10-19,Vayu Home,VAYUHOME-018,Amazon,"Vayu Home 1.8L Electric Kettle, 1500 Watt Stainless Steel Body",7,7,1199.0,1899.0,35,4.1,397,Vayu Home Appliances,home_appliances,active,19.5
+2026-10-18,Vayu Home,VAYUHOME-018,Flipkart,"Vayu Home 1.8L Electric Kettle, 1500 Watt Stainless Steel Body",7,7,1234.97,1899.0,35,4.3,397,Vayu Home Appliances,home_appliances,active,19.5
+2026-10-19,Vayu Home,VAYUHOME-018,Flipkart,"Vayu Home 1.8L Electric Kettle, 1500 Watt Stainless Steel Body",7,7,1234.97,1899.0,35,4.3,397,Vayu Home Appliances,home_appliances,active,19.5
+2026-10-18,Vayu Home,VAYUHOME-019,Amazon,"Vayu Home 4.2L Digital Air Fryer, 1400 Watt, Kitchen Appliance",7,7,4299.0,5999.0,22,4.2,294,Vayu Home Appliances,home_appliances,active,12.6
+2026-10-19,Vayu Home,VAYUHOME-019,Amazon,"Vayu Home 4.2L Digital Air Fryer, 1400 Watt, Kitchen Appliance",7,7,4299.0,5999.0,22,4.2,294,Vayu Home Appliances,home_appliances,active,12.6
+2026-10-18,Vayu Home,VAYUHOME-019,Flipkart,"Vayu Home 4.2L Digital Air Fryer, 1400 Watt, Kitchen Appliance",7,7,4427.97,5999.0,22,4.2,294,Vayu Home Appliances,home_appliances,active,12.6
+2026-10-19,Vayu Home,VAYUHOME-019,Flipkart,"Vayu Home 4.2L Digital Air Fryer, 1400 Watt, Kitchen Appliance",7,7,4427.97,5999.0,22,4.2,294,Vayu Home Appliances,home_appliances,active,12.6
+2026-10-18,Vayu Home,VAYUHOME-020,Amazon,Vayu Home 1000 Watt Dry Iron with Non-Stick Soleplate for Home,7,7,899.0,1199.0,32,4.1,372,Vayu Home Appliances,home_appliances,active,17.8
+2026-10-19,Vayu Home,VAYUHOME-020,Amazon,Vayu Home 1000 Watt Dry Iron with Non-Stick Soleplate for Home,7,7,899.0,1199.0,32,4.1,372,Vayu Home Appliances,home_appliances,active,17.8
+2026-10-18,Vayu Home,VAYUHOME-020,Flipkart,Vayu Home 1000 Watt Dry Iron with Non-Stick Soleplate for Home,7,7,925.97,1199.0,32,4.1,372,Vayu Home Appliances,home_appliances,active,17.8
+2026-10-19,Vayu Home,VAYUHOME-020,Flipkart,Vayu Home 1000 Watt Dry Iron with Non-Stick Soleplate for Home,7,7,925.97,1199.0,32,4.1,372,Vayu Home Appliances,home_appliances,active,17.8
+2026-10-18,Vayu Home,VAYUHOME-021,Amazon,"Vayu Home 2000 Watt Induction Cooktop for Kitchen, 8 Preset Menus",7,7,2499.0,3499.0,20,4.3,269,Vayu Home Appliances,home_appliances,active,10.9
+2026-10-19,Vayu Home,VAYUHOME-021,Amazon,"Vayu Home 2000 Watt Induction Cooktop for Kitchen, 8 Preset Menus",7,7,2499.0,3499.0,20,4.3,269,Vayu Home Appliances,home_appliances,active,10.9
+2026-10-18,Vayu Home,VAYUHOME-021,Flipkart,"Vayu Home 2000 Watt Induction Cooktop for Kitchen, 8 Preset Menus",7,7,2573.97,3499.0,20,4.3,269,Shree Retail Traders,home_appliances,active,10.9
+2026-10-19,Vayu Home,VAYUHOME-021,Flipkart,"Vayu Home 2000 Watt Induction Cooktop for Kitchen, 8 Preset Menus",7,7,2573.97,3499.0,20,4.3,269,Shree Retail Traders,home_appliances,active,10.9
+2026-10-18,Vayu Home,VAYUHOME-022,Amazon,"Vayu Home 500 Watt Hand Blender with Steel Blades, 2 Speed",7,7,1299.0,1799.0,29,4.0,346,Shree Retail Traders,home_appliances,active,16.1
+2026-10-19,Vayu Home,VAYUHOME-022,Amazon,"Vayu Home 500 Watt Hand Blender with Steel Blades, 2 Speed",7,7,1299.0,1799.0,29,4.0,346,Shree Retail Traders,home_appliances,active,16.1
+2026-10-18,Vayu Home,VAYUHOME-022,Flipkart,"Vayu Home 500 Watt Hand Blender with Steel Blades, 2 Speed",7,7,1337.97,1799.0,29,4.0,346,Vayu Home Appliances,home_appliances,active,16.1
+2026-10-19,Vayu Home,VAYUHOME-022,Flipkart,"Vayu Home 500 Watt Hand Blender with Steel Blades, 2 Speed",7,7,1337.97,1799.0,29,4.0,346,Vayu Home Appliances,home_appliances,active,16.1
+2026-10-18,Vayu Home,VAYUHOME-023,Amazon,"Vayu Home 2 Slice Pop-Up Toaster, 750 Watt, Kitchen Appliance",7,7,1099.0,1499.0,38,4.2,424,Vayu Home Appliances,home_appliances,active,21.3
+2026-10-19,Vayu Home,VAYUHOME-023,Amazon,"Vayu Home 2 Slice Pop-Up Toaster, 750 Watt, Kitchen Appliance",7,7,1099.0,1499.0,38,4.2,424,Vayu Home Appliances,home_appliances,active,21.3
+2026-10-18,Vayu Home,VAYUHOME-023,Flipkart,"Vayu Home 2 Slice Pop-Up Toaster, 750 Watt, Kitchen Appliance",7,7,1131.97,1499.0,38,4.2,424,Shree Retail Traders,home_appliances,active,21.3
+2026-10-19,Vayu Home,VAYUHOME-023,Flipkart,"Vayu Home 2 Slice Pop-Up Toaster, 750 Watt, Kitchen Appliance",7,7,1131.97,1499.0,38,4.2,424,Shree Retail Traders,home_appliances,active,21.3
+2026-10-18,Vayu Home,VAYUHOME-024,Amazon,"Vayu Home 1.5L Electric Rice Cooker, 500 Watt, Steel Inner Pot",7,7,1799.0,2499.0,26,4.5,321,Vayu Home Appliances,home_appliances,active,14.4
+2026-10-19,Vayu Home,VAYUHOME-024,Amazon,"Vayu Home 1.5L Electric Rice Cooker, 500 Watt, Steel Inner Pot",7,7,1799.0,2499.0,26,4.5,321,Vayu Home Appliances,home_appliances,active,14.4
+2026-10-18,Vayu Home,VAYUHOME-024,Flipkart,"Vayu Home 1.5L Electric Rice Cooker, 500 Watt, Steel Inner Pot",7,7,1852.97,2499.0,26,4.5,321,Vayu Home Appliances,home_appliances,active,14.4
+2026-10-19,Vayu Home,VAYUHOME-024,Flipkart,"Vayu Home 1.5L Electric Rice Cooker, 500 Watt, Steel Inner Pot",7,7,1852.97,2499.0,26,4.5,321,Vayu Home Appliances,home_appliances,active,14.4
+2026-10-18,Vayu Home,VAYUHOME-025,Amazon,"Vayu Home 1200 Watt Mixer Grinder Kitchen Appliance - Steel Jar, 3 Speed",7,7,1899.0,2099.0,35,4.4,399,Vayu Home Appliances,home_appliances,active,19.6
+2026-10-19,Vayu Home,VAYUHOME-025,Amazon,"Vayu Home 1200 Watt Mixer Grinder Kitchen Appliance - Steel Jar, 3 Speed",7,7,1899.0,2099.0,35,4.4,399,Vayu Home Appliances,home_appliances,active,19.6
+2026-10-18,Vayu Home,VAYUHOME-025,Flipkart,"Vayu Home 1200 Watt Mixer Grinder Kitchen Appliance - Steel Jar, 3 Speed",7,7,1955.97,2099.0,35,4.4,399,Vayu Home Appliances,home_appliances,active,19.6
+2026-10-19,Vayu Home,VAYUHOME-025,Flipkart,"Vayu Home 1200 Watt Mixer Grinder Kitchen Appliance - Steel Jar, 3 Speed",7,7,1955.97,2099.0,35,4.4,399,Vayu Home Appliances,home_appliances,active,19.6
+2026-10-18,Vayu Home,VAYUHOME-026,Amazon,"Vayu Home 1.8L Electric Kettle, 1500 Watt Stainless Steel Body",7,7,1199.0,1899.0,23,4.3,296,Vayu Home Appliances,home_appliances,active,12.7
+2026-10-19,Vayu Home,VAYUHOME-026,Amazon,"Vayu Home 1.8L Electric Kettle, 1500 Watt Stainless Steel Body",7,7,1199.0,1899.0,23,4.3,296,Vayu Home Appliances,home_appliances,active,12.7
+2026-10-18,Vayu Home,VAYUHOME-026,Flipkart,"Vayu Home 1.8L Electric Kettle, 1500 Watt Stainless Steel Body",7,7,1234.97,1899.0,23,4.3,296,Vayu Home Appliances,home_appliances,active,12.7
+2026-10-19,Vayu Home,VAYUHOME-026,Flipkart,"Vayu Home 1.8L Electric Kettle, 1500 Watt Stainless Steel Body",7,7,1234.97,1899.0,23,4.3,296,Vayu Home Appliances,home_appliances,active,12.7
+2026-10-18,Vayu Home,VAYUHOME-027,Amazon,"Vayu Home 4.2L Digital Air Fryer, 1400 Watt, Kitchen Appliance",7,7,4299.0,5999.0,32,4.2,374,Vayu Home Appliances,home_appliances,active,17.9
+2026-10-19,Vayu Home,VAYUHOME-027,Amazon,"Vayu Home 4.2L Digital Air Fryer, 1400 Watt, Kitchen Appliance",7,7,4299.0,5999.0,32,4.2,374,Vayu Home Appliances,home_appliances,active,17.9
+2026-10-18,Vayu Home,VAYUHOME-027,Flipkart,"Vayu Home 4.2L Digital Air Fryer, 1400 Watt, Kitchen Appliance",7,7,4427.97,5999.0,32,4.2,374,Vayu Home Appliances,home_appliances,suppressed,17.9
+2026-10-19,Vayu Home,VAYUHOME-027,Flipkart,"Vayu Home 4.2L Digital Air Fryer, 1400 Watt, Kitchen Appliance",7,7,4427.97,5999.0,32,4.2,374,Vayu Home Appliances,home_appliances,suppressed,17.9
+2026-10-18,Vayu Home,VAYUHOME-028,Amazon,Vayu Home 1000 Watt Dry Iron with Non-Stick Soleplate for Home,7,7,899.0,1199.0,20,4.1,271,Vayu Home Appliances,home_appliances,inactive,11.1
+2026-10-19,Vayu Home,VAYUHOME-028,Amazon,Vayu Home 1000 Watt Dry Iron with Non-Stick Soleplate for Home,7,7,899.0,1199.0,20,4.1,271,Vayu Home Appliances,home_appliances,inactive,11.1
+2026-10-18,Vayu Home,VAYUHOME-028,Flipkart,Vayu Home 1000 Watt Dry Iron with Non-Stick Soleplate for Home,7,7,925.97,1199.0,20,4.1,271,Vayu Home Appliances,home_appliances,active,11.1
+2026-10-19,Vayu Home,VAYUHOME-028,Flipkart,Vayu Home 1000 Watt Dry Iron with Non-Stick Soleplate for Home,7,7,925.97,1199.0,20,4.1,271,Vayu Home Appliances,home_appliances,active,11.1
+2026-10-18,Vayu Home,VAYUHOME-029,Amazon,"Vayu Home 2000 Watt Induction Cooktop for Kitchen, 8 Preset Menus",7,7,2499.0,3499.0,29,4.3,349,Vayu Home Appliances,home_appliances,active,16.2
+2026-10-19,Vayu Home,VAYUHOME-029,Amazon,"Vayu Home 2000 Watt Induction Cooktop for Kitchen, 8 Preset Menus",7,7,2499.0,3499.0,29,4.3,349,Vayu Home Appliances,home_appliances,active,16.2
+2026-10-18,Vayu Home,VAYUHOME-029,Flipkart,"Vayu Home 2000 Watt Induction Cooktop for Kitchen, 8 Preset Menus",7,7,2573.97,3499.0,29,4.3,349,Vayu Home Appliances,home_appliances,blocked,16.2
+2026-10-19,Vayu Home,VAYUHOME-029,Flipkart,"Vayu Home 2000 Watt Induction Cooktop for Kitchen, 8 Preset Menus",7,7,2573.97,3499.0,29,4.3,349,Vayu Home Appliances,home_appliances,blocked,16.2
+2026-10-18,Vayu Home,VAYUHOME-030,Amazon,"Vayu Home 500 Watt Hand Blender with Steel Blades, 2 Speed",7,7,1299.0,1799.0,38,4.0,426,Vayu Home Appliances,home_appliances,suppressed,21.4
+2026-10-19,Vayu Home,VAYUHOME-030,Amazon,"Vayu Home 500 Watt Hand Blender with Steel Blades, 2 Speed",7,7,1299.0,1799.0,38,4.0,426,Vayu Home Appliances,home_appliances,suppressed,21.4
+2026-10-18,Vayu Home,VAYUHOME-030,Flipkart,"Vayu Home 500 Watt Hand Blender with Steel Blades, 2 Speed",7,7,1337.97,1799.0,38,4.0,426,Vayu Home Appliances,home_appliances,active,21.4
+2026-10-19,Vayu Home,VAYUHOME-030,Flipkart,"Vayu Home 500 Watt Hand Blender with Steel Blades, 2 Speed",7,7,1337.97,1799.0,38,4.0,426,Vayu Home Appliances,home_appliances,active,21.4
+2026-10-18,Vayu Home,VAYUHOME-031,Amazon,"Vayu Home 2 Slice Pop-Up Toaster, 750 Watt, Kitchen Appliance",7,7,1099.0,1499.0,26,4.2,323,Vayu Home Appliances,home_appliances,active,14.6
+2026-10-19,Vayu Home,VAYUHOME-031,Amazon,"Vayu Home 2 Slice Pop-Up Toaster, 750 Watt, Kitchen Appliance",7,7,1099.0,1499.0,26,4.2,323,Vayu Home Appliances,home_appliances,active,14.6
+2026-10-18,Vayu Home,VAYUHOME-031,Flipkart,"Vayu Home 2 Slice Pop-Up Toaster, 750 Watt, Kitchen Appliance",7,7,1131.97,1499.0,0,4.2,323,Shree Retail Traders,home_appliances,active,14.6
+2026-10-19,Vayu Home,VAYUHOME-031,Flipkart,"Vayu Home 2 Slice Pop-Up Toaster, 750 Watt, Kitchen Appliance",7,7,1131.97,1499.0,0,4.2,323,Shree Retail Traders,home_appliances,active,14.6
+2026-10-18,Vayu Home,VAYUHOME-032,Amazon,"Vayu Home 1.5L Electric Rice Cooker, 500 Watt, Steel Inner Pot",7,7,1799.0,2499.0,35,4.5,401,Vayu Home Appliances,home_appliances,active,19.7
+2026-10-19,Vayu Home,VAYUHOME-032,Amazon,"Vayu Home 1.5L Electric Rice Cooker, 500 Watt, Steel Inner Pot",7,7,1799.0,2499.0,35,4.5,401,Vayu Home Appliances,home_appliances,active,19.7
+2026-10-18,Vayu Home,VAYUHOME-032,Flipkart,"Vayu Home 1.5L Electric Rice Cooker, 500 Watt, Steel Inner Pot",7,7,1852.97,2499.0,35,4.5,401,Vayu Home Appliances,home_appliances,active,19.7
+2026-10-19,Vayu Home,VAYUHOME-032,Flipkart,"Vayu Home 1.5L Electric Rice Cooker, 500 Watt, Steel Inner Pot",7,7,1852.97,2499.0,35,4.5,401,Vayu Home Appliances,home_appliances,active,19.7
+2026-10-18,Vayu Home,VAYUHOME-033,Amazon,"Vayu Home 1200 Watt Mixer Grinder Kitchen Appliance - Steel Jar, 3 Speed",7,7,1899.0,2099.0,23,4.4,298,Vayu Home Appliances,home_appliances,active,12.9
+2026-10-19,Vayu Home,VAYUHOME-033,Amazon,"Vayu Home 1200 Watt Mixer Grinder Kitchen Appliance - Steel Jar, 3 Speed",7,7,1899.0,2099.0,23,4.4,298,Vayu Home Appliances,home_appliances,active,12.9
+2026-10-18,Vayu Home,VAYUHOME-033,Flipkart,"Vayu Home 1200 Watt Mixer Grinder Kitchen Appliance - Steel Jar, 3 Speed",7,7,1955.97,2099.0,23,4.4,298,Vayu Home Appliances,home_appliances,active,12.9
+2026-10-19,Vayu Home,VAYUHOME-033,Flipkart,"Vayu Home 1200 Watt Mixer Grinder Kitchen Appliance - Steel Jar, 3 Speed",7,7,1955.97,2099.0,23,4.4,298,Vayu Home Appliances,home_appliances,active,12.9
+2026-10-18,Vayu Home,VAYUHOME-034,Amazon,"Vayu Home 1.8L Electric Kettle, 1500 Watt Stainless Steel Body",7,7,1199.0,1899.0,32,4.3,376,Vayu Home Appliances,home_appliances,active,18.1
+2026-10-19,Vayu Home,VAYUHOME-034,Amazon,"Vayu Home 1.8L Electric Kettle, 1500 Watt Stainless Steel Body",7,7,1199.0,1899.0,32,4.3,376,Vayu Home Appliances,home_appliances,active,18.1
+2026-10-18,Vayu Home,VAYUHOME-034,Flipkart,"Vayu Home 1.8L Electric Kettle, 1500 Watt Stainless Steel Body",7,7,1234.97,1899.0,32,4.3,376,Vayu Home Appliances,home_appliances,active,18.1
+2026-10-19,Vayu Home,VAYUHOME-034,Flipkart,"Vayu Home 1.8L Electric Kettle, 1500 Watt Stainless Steel Body",7,7,1234.97,1899.0,32,4.3,376,Vayu Home Appliances,home_appliances,active,18.1
+2026-10-18,Vayu Home,VAYUHOME-035,Amazon,"Vayu Home 4.2L Digital Air Fryer, 1400 Watt, Kitchen Appliance",7,7,4299.0,5999.0,20,4.2,273,Vayu Home Appliances,home_appliances,active,11.2
+2026-10-19,Vayu Home,VAYUHOME-035,Amazon,"Vayu Home 4.2L Digital Air Fryer, 1400 Watt, Kitchen Appliance",7,7,4299.0,5999.0,20,4.2,273,Vayu Home Appliances,home_appliances,active,11.2
+2026-10-18,Vayu Home,VAYUHOME-035,Flipkart,"Vayu Home 4.2L Digital Air Fryer, 1400 Watt, Kitchen Appliance",7,7,4427.97,5999.0,20,4.2,273,Vayu Home Appliances,home_appliances,active,11.2
+2026-10-19,Vayu Home,VAYUHOME-035,Flipkart,"Vayu Home 4.2L Digital Air Fryer, 1400 Watt, Kitchen Appliance",7,7,4427.97,5999.0,20,4.2,273,Vayu Home Appliances,home_appliances,active,11.2
+2026-10-18,Vayu Home,VAYUHOME-036,Amazon,Vayu Home 1000 Watt Dry Iron with Non-Stick Soleplate for Home,7,7,899.0,1199.0,29,4.1,351,Vayu Home Appliances,home_appliances,active,16.4
+2026-10-19,Vayu Home,VAYUHOME-036,Amazon,Vayu Home 1000 Watt Dry Iron with Non-Stick Soleplate for Home,7,7,899.0,1199.0,29,4.1,351,Vayu Home Appliances,home_appliances,active,16.4
+2026-10-18,Vayu Home,VAYUHOME-036,Flipkart,Vayu Home 1000 Watt Dry Iron with Non-Stick Soleplate for Home,7,7,925.97,1199.0,29,4.1,351,Vayu Home Appliances,home_appliances,active,16.4
+2026-10-19,Vayu Home,VAYUHOME-036,Flipkart,Vayu Home 1000 Watt Dry Iron with Non-Stick Soleplate for Home,7,7,925.97,1199.0,29,4.1,351,Vayu Home Appliances,home_appliances,active,16.4
+2026-10-18,Vayu Home,VAYUHOME-037,Amazon,"Vayu Home 2000 Watt Induction Cooktop for Kitchen, 8 Preset Menus",7,7,2499.0,3499.0,38,4.3,428,Vayu Home Appliances,home_appliances,active,21.6
+2026-10-19,Vayu Home,VAYUHOME-037,Amazon,"Vayu Home 2000 Watt Induction Cooktop for Kitchen, 8 Preset Menus",7,7,2499.0,3499.0,38,4.3,428,Vayu Home Appliances,home_appliances,active,21.6
+2026-10-18,Vayu Home,VAYUHOME-037,Flipkart,"Vayu Home 2000 Watt Induction Cooktop for Kitchen, 8 Preset Menus",7,7,2573.97,3499.0,38,4.3,428,Vayu Home Appliances,home_appliances,active,21.6
+2026-10-19,Vayu Home,VAYUHOME-037,Flipkart,"Vayu Home 2000 Watt Induction Cooktop for Kitchen, 8 Preset Menus",7,7,2573.97,3499.0,38,4.3,428,Vayu Home Appliances,home_appliances,active,21.6
+2026-10-18,Vayu Home,VAYUHOME-038,Amazon,"Vayu Home 500 Watt Hand Blender with Steel Blades, 2 Speed",7,7,1299.0,1799.0,26,4.0,326,Vayu Home Appliances,home_appliances,active,14.7
+2026-10-19,Vayu Home,VAYUHOME-038,Amazon,"Vayu Home 500 Watt Hand Blender with Steel Blades, 2 Speed",7,7,1299.0,1799.0,26,4.0,326,Vayu Home Appliances,home_appliances,active,14.7
+2026-10-18,Vayu Home,VAYUHOME-038,Flipkart,"Vayu Home 500 Watt Hand Blender with Steel Blades, 2 Speed",7,7,1337.97,1799.0,26,4.0,326,Vayu Home Appliances,home_appliances,active,14.7
+2026-10-19,Vayu Home,VAYUHOME-038,Flipkart,"Vayu Home 500 Watt Hand Blender with Steel Blades, 2 Speed",7,7,1337.97,1799.0,26,4.0,326,Vayu Home Appliances,home_appliances,active,14.7
+2026-10-18,Vayu Home,VAYUHOME-039,Amazon,"Vayu Home 2 Slice Pop-Up Toaster, 750 Watt, Kitchen Appliance",7,7,1099.0,1499.0,36,4.2,403,Vayu Home Appliances,home_appliances,active,19.9
+2026-10-19,Vayu Home,VAYUHOME-039,Amazon,"Vayu Home 2 Slice Pop-Up Toaster, 750 Watt, Kitchen Appliance",7,7,1099.0,1499.0,36,4.2,403,Vayu Home Appliances,home_appliances,active,19.9
+2026-10-18,Vayu Home,VAYUHOME-039,Flipkart,"Vayu Home 2 Slice Pop-Up Toaster, 750 Watt, Kitchen Appliance",7,7,1131.97,1499.0,36,4.2,403,Vayu Home Appliances,home_appliances,active,19.9
+2026-10-19,Vayu Home,VAYUHOME-039,Flipkart,"Vayu Home 2 Slice Pop-Up Toaster, 750 Watt, Kitchen Appliance",7,7,1131.97,1499.0,36,4.2,403,Vayu Home Appliances,home_appliances,active,19.9
+2026-10-18,Vayu Home,VAYUHOME-040,Amazon,"Vayu Home 1.5L Electric Rice Cooker, 500 Watt, Steel Inner Pot",7,7,1799.0,2499.0,23,4.5,300,Vayu Home Appliances,home_appliances,active,13.0
+2026-10-19,Vayu Home,VAYUHOME-040,Amazon,"Vayu Home 1.5L Electric Rice Cooker, 500 Watt, Steel Inner Pot",7,7,1799.0,2499.0,23,4.5,300,Vayu Home Appliances,home_appliances,active,13.0
+2026-10-18,Vayu Home,VAYUHOME-040,Flipkart,"Vayu Home 1.5L Electric Rice Cooker, 500 Watt, Steel Inner Pot",7,7,1852.97,2499.0,23,4.5,300,Vayu Home Appliances,home_appliances,active,13.0
+2026-10-19,Vayu Home,VAYUHOME-040,Flipkart,"Vayu Home 1.5L Electric Rice Cooker, 500 Watt, Steel Inner Pot",7,7,1852.97,2499.0,23,4.5,300,Vayu Home Appliances,home_appliances,active,13.0

@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Issue queue — clear</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Instrument+Sans:wght@400;500;600;700&amp;display=swap">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:#F2F3EF;color:#15181C;font-family:'Instrument Sans',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;font-size:14px;line-height:1.45;-webkit-font-smoothing:antialiased}
+a{color:#1E4F5C}a:hover{color:#123540}
+h1,h2,h3,p,dl,dd,ul,ol{margin:0}
+.mono{font-family:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace}
+.app{min-height:100vh;display:flex;flex-direction:column;background:#F2F3EF}
+.hdr{display:flex;align-items:center;gap:20px;flex-wrap:wrap;padding:10px 24px;background:#FFFFFF;border-bottom:1px solid #DCDFD8;position:relative;z-index:3}
+.logo{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:#15181C}
+.logo:hover{color:#15181C}
+.logo b{font-weight:700;font-size:15px;letter-spacing:-.01em}
+.logo span{color:#5C636C;font-size:13px;padding-left:10px;border-left:1px solid #DCDFD8}
+.nav{display:flex;gap:2px;flex-wrap:wrap;align-items:center}
+.nav a{display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:0 10px;border-radius:6px;color:#3D434B;text-decoration:none;font-weight:500}
+.nav a:hover{background:#F2F3EF;color:#15181C}
+.nav a[aria-current="page"]{background:#E7E9E3;color:#15181C}
+.nav .sep{width:1px;height:20px;background:#DCDFD8;margin:0 8px}
+.count{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;line-height:16px;background:#E1F0E6;color:#1F6B45;border-radius:999px;padding:0 6px}
+.hdr-right{margin-left:auto;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.stamp{font-size:12.5px;color:#5C636C}
+.ai-form{margin:0}
+.switch{display:inline-flex;align-items:center;gap:8px;min-height:36px;padding:0 12px 0 8px;border:1px solid #DCDFD8;border-radius:999px;font-size:13px;font-weight:500;color:#3D434B;cursor:pointer;background:#FFFFFF}
+.switch .state{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:#1E4F5C}
+.sw{appearance:none;-webkit-appearance:none;margin:0;width:36px;height:20px;border-radius:999px;background:radial-gradient(circle at 10px 50%,#FFFFFF 6.5px,transparent 7px),#AEB3AA;cursor:pointer;flex:none}
+.sw:checked{background:radial-gradient(circle at 26px 50%,#FFFFFF 6.5px,transparent 7px),#1E4F5C}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:36px;padding:0 14px;border-radius:6px;border:1px solid #CDD1C9;background:#FFFFFF;color:#15181C;font:inherit;font-size:13.5px;font-weight:600;text-decoration:none;cursor:pointer;white-space:nowrap}
+.btn:hover{background:#F2F3EF;color:#15181C}
+.btn svg{flex:none}
+.btn-primary{background:#1E4F5C;border-color:#1E4F5C;color:#FFFFFF}
+.btn-primary:hover{background:#163E49;color:#FFFFFF}
+.btn:focus-visible,summary:focus-visible,.sw:focus-visible{outline:2px solid #1E4F5C;outline-offset:2px}
+.upl{position:relative}
+.upl>summary{list-style:none}
+.upl>summary::-webkit-details-marker{display:none}
+.upl-pop{position:absolute;right:0;top:calc(100% + 8px);width:380px}
+.panel{background:#FFFFFF;border:1px solid #DCDFD8;border-radius:10px}
+.pop{box-shadow:0 12px 32px rgba(21,24,28,.12)}
+.upl-form{display:grid;gap:14px;padding:18px}
+.upl-head{display:grid;gap:2px}
+.upl-head b{font-size:15px}
+.upl-head span{font-size:12.5px;color:#5C636C}
+.field{display:grid;gap:5px}
+.field label{font-size:13px;font-weight:600}
+.field input[type="file"]{font:inherit;font-size:12.5px;color:#3D434B;width:100%;padding:8px;border:1px dashed #BFC4BA;border-radius:6px;background:#F7F8F5}
+.field input[type="file"]::file-selector-button{font:inherit;font-size:12.5px;font-weight:600;margin-right:10px;padding:5px 10px;border:1px solid #CDD1C9;border-radius:5px;background:#FFFFFF;color:#15181C;cursor:pointer}
+.hint{font-size:12px;color:#5C636C}
+.main{width:100%;max-width:1040px;margin:0 auto;padding:28px 24px 72px;display:flex;flex-direction:column;gap:16px}
+.page-head h1{font-size:24px;font-weight:700;letter-spacing:-.02em}
+.page-head p{color:#4A5059;margin-top:4px}
+.clear{display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;padding:56px 32px 48px;background:#F0F6F2;border-color:#D1E5D8}
+.badge{width:64px;height:64px;border-radius:999px;background:#1F6B45;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 8px #DCEDE2}
+.clear h2{font-size:26px;font-weight:700;letter-spacing:-.02em;margin-top:8px}
+.clear p{color:#2F4A3B;font-size:15px;max-width:520px;text-wrap:pretty}
+.recap{display:flex;gap:0;border:1px solid #D1E5D8;border-radius:8px;background:#FFFFFF;margin-top:6px}
+.recap div{padding:12px 22px;display:flex;flex-direction:column;gap:2px;align-items:center}
+.recap div+div{border-left:1px solid #D1E5D8}
+.recap b{font-family:'IBM Plex Mono',monospace;font-size:22px;font-weight:600;letter-spacing:-.02em}
+.recap span{font-size:12px;color:#4A5059}
+.next{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="hdr">
+  <a class="logo" href="index.html">
+    <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="1" width="22" height="22" rx="6" fill="#15181C"/><path d="M6.5 8.5h11M6.5 12h7.5M6.5 15.5h4" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"/><circle cx="16.8" cy="15.5" r="1.9" fill="#E3A33B"/></svg>
+    <b>Listing Audit</b><span>Intent Farm</span>
+  </a>
+  <nav class="nav" aria-label="Main">
+    <a href="index.html">Overview</a>
+    <a href="queue-empty.html" aria-current="page">Queue <span class="count">0</span></a>
+    <span class="sep" aria-hidden="true"></span>
+    <a href="brand.html" data-route="/brand/glowveda">GlowVeda</a>
+    <a href="brand.html" data-route="/brand/munchkraft">Munchkraft</a>
+    <a href="brand.html" data-route="/brand/vayu-home">Vayu Home</a>
+  </nav>
+  <div class="hdr-right">
+    <span class="stamp">Audited 18 Oct, 09:40 · 146 listings</span>
+    <form class="ai-form" method="post" action="/settings/ai">
+      <label class="switch"><input class="sw" type="checkbox" name="ai" checked> AI drafts <span class="state">ON</span></label>
+    </form>
+    <details class="upl">
+      <summary class="btn"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 10.5V2.5M4.8 5.6 8 2.4l3.2 3.2"/><path d="M2.5 10.5v2a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-2"/></svg>Upload data</summary>
+      <div class="upl-pop panel pop">
+        <form class="upl-form" method="post" action="/upload" enctype="multipart/form-data">
+          <div class="upl-head"><b>Upload audit data</b><span>Three CSVs. Replaces the current snapshot; the previous one is kept for comparison.</span></div>
+          <div class="field"><label for="f-listings">Listings</label><input id="f-listings" type="file" name="listings" accept=".csv"><span class="hint">One row per SKU per platform</span></div>
+          <div class="field"><label for="f-ads">Ads</label><input id="f-ads" type="file" name="ads" accept=".csv"><span class="hint">Daily spend by campaign and SKU</span></div>
+          <div class="field"><label for="f-reviews">Reviews</label><input id="f-reviews" type="file" name="reviews" accept=".csv"><span class="hint">Rating, text, date, platform</span></div>
+          <button class="btn btn-primary" type="submit">Upload files</button>
+        </form>
+      </div>
+    </details>
+  </div>
+</header>
+
+<main class="main">
+  <div class="page-head">
+    <h1>Issue queue</h1>
+    <p>0 open</p>
+  </div>
+  <section class="clear panel" aria-labelledby="clear-h">
+    <div class="badge"><svg width="30" height="30" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="m4.6 9.3 2.9 2.9 5.9-6.2" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <h2 id="clear-h">No open issues — queue is clear</h2>
+    <p>Every flagged listing from the 18 Oct audit has a decision. Fixes you approved are in the decision log for follow-up.</p>
+    <div class="recap" aria-label="Today">
+      <div><b>10</b><span>approved today</span></div>
+      <div><b>2</b><span>dismissed</span></div>
+      <div><b>₹3,870</b><span>/day addressed</span></div>
+    </div>
+    <div class="next">
+      <a class="btn btn-primary" href="brand.html">Read this week's brand summaries</a>
+      <a class="btn" href="index.html">Back to overview</a>
+    </div>
+    <span class="hint">Upload fresh CSVs when brands send new files — the next audit compares against today.</span>
+  </section>
+</main>
+</div>
+</body>
+</html>

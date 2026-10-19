@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portfolio overview — awaiting audit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Instrument+Sans:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;display=swap">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:#F2F3EF;color:#15181C;font-family:'Instrument Sans',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;font-size:14px;line-height:1.45;-webkit-font-smoothing:antialiased}
+a{color:#1E4F5C}a:hover{color:#123540}
+h1,h2,h3,p,dl,dd,ul,ol,figure,blockquote{margin:0}
+.mono{font-family:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace}
+.app{min-height:100vh;display:flex;flex-direction:column;background:#F2F3EF}
+.hdr{display:flex;align-items:center;gap:20px;flex-wrap:wrap;padding:10px 24px;background:#FFFFFF;border-bottom:1px solid #DCDFD8;position:relative;z-index:3}
+.logo{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:#15181C}
+.logo:hover{color:#15181C}
+.logo b{font-weight:700;font-size:15px;letter-spacing:-.01em}
+.logo span{color:#5C636C;font-size:13px;padding-left:10px;border-left:1px solid #DCDFD8}
+.nav{display:flex;gap:2px;flex-wrap:wrap;align-items:center}
+.nav a{display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:0 10px;border-radius:6px;color:#3D434B;text-decoration:none;font-weight:500}
+.nav a:hover{background:#F2F3EF;color:#15181C}
+.nav a[aria-current="page"]{background:#E7E9E3;color:#15181C}
+.nav .sep{width:1px;height:20px;background:#DCDFD8;margin:0 8px}
+.count{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;line-height:16px;background:#AEB3AA;color:#15181C;border-radius:999px;padding:0 6px}
+.hdr-right{margin-left:auto;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.stamp{font-size:12.5px;color:#5C636C}
+.stamp.warn{color:#735C00;font-weight:600}
+.ai-form{margin:0}
+.switch{display:inline-flex;align-items:center;gap:8px;min-height:36px;padding:0 12px 0 8px;border:1px solid #DCDFD8;border-radius:999px;font-size:13px;font-weight:500;color:#3D434B;cursor:pointer;background:#FFFFFF}
+.switch .state{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:#1E4F5C}
+.sw{appearance:none;-webkit-appearance:none;margin:0;width:36px;height:20px;border-radius:999px;background:radial-gradient(circle at 10px 50%,#FFFFFF 6.5px,transparent 7px),#AEB3AA;cursor:pointer;flex:none}
+.sw:checked{background:radial-gradient(circle at 26px 50%,#FFFFFF 6.5px,transparent 7px),#1E4F5C}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:36px;padding:0 14px;border-radius:6px;border:1px solid #CDD1C9;background:#FFFFFF;color:#15181C;font:inherit;font-size:13.5px;font-weight:600;text-decoration:none;cursor:pointer;white-space:nowrap}
+.btn:hover{background:#F2F3EF;color:#15181C}
+.btn svg{flex:none}
+.btn-primary{background:#1E4F5C;border-color:#1E4F5C;color:#FFFFFF}
+.btn-primary:hover{background:#163E49;color:#FFFFFF}
+.btn-lg{min-height:44px;padding:0 18px;font-size:14.5px}
+.btn:focus-visible,summary:focus-visible,.sw:focus-visible{outline:2px solid #1E4F5C;outline-offset:2px}
+.upl{position:relative}
+.upl>summary{list-style:none}
+.upl>summary::-webkit-details-marker{display:none}
+.upl-pop{position:absolute;right:0;top:calc(100% + 8px);width:380px}
+.panel{background:#FFFFFF;border:1px solid #DCDFD8;border-radius:10px}
+.pop{box-shadow:0 12px 32px rgba(21,24,28,.12)}
+.upl-form{display:grid;gap:14px;padding:18px}
+.upl-head{display:grid;gap:2px}
+.upl-head b{font-size:15px}
+.upl-head span{font-size:12.5px;color:#5C636C}
+.field{display:grid;gap:5px}
+.field label{font-size:13px;font-weight:600}
+.field input[type="file"]{font:inherit;font-size:12.5px;color:#3D434B;width:100%;padding:8px;border:1px dashed #BFC4BA;border-radius:6px;background:#F7F8F5}
+.field input[type="file"]::file-selector-button{font:inherit;font-size:12.5px;font-weight:600;margin-right:10px;padding:5px 10px;border:1px solid #CDD1C9;border-radius:5px;background:#FFFFFF;color:#15181C;cursor:pointer}
+.hint{font-size:12px;color:#5C636C}
+.main{width:100%;max-width:1240px;margin:0 auto;padding:28px 24px 72px;display:flex;flex-direction:column;gap:20px}
+.sev{display:inline-flex;align-items:center;gap:5px;padding:2px 7px 2px 5px;border-radius:4px;font-size:11.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;line-height:16px;white-space:nowrap}
+.sev-crit{color:#A61B1B;background:#FBE7E4}
+.sev-high{color:#9A4205;background:#FCEBD7}
+.sev-med{color:#735C00;background:#F5EDC8}
+.sev-low{color:#38588A;background:#E4ECF7}
+.plat{display:inline-flex;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:.06em;line-height:14px;padding:2px 5px;border-radius:3px;white-space:nowrap}
+.plat-amz{background:#15181C;color:#FFFFFF}
+.plat-fk{background:#FFFFFF;color:#1C44B0;box-shadow:inset 0 0 0 1.5px #1C44B0}
+.hero{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px;padding:26px 28px}
+.eyebrow{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#4A5059}
+.hero-num{font-family:'IBM Plex Mono',monospace;font-size:64px;font-weight:600;line-height:1;letter-spacing:-.04em;margin-top:12px;color:#AEB3AA}
+.hero-sub{margin-top:12px;color:#4A5059}
+.hero-r{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.hero-r form{margin:0;display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.files{display:flex;gap:10px;flex-wrap:wrap;list-style:none;padding:0;margin:16px 0 0}
+.files li{display:inline-flex;align-items:center;gap:8px;min-height:32px;padding:0 12px 0 10px;border:1px solid #DCDFD8;border-radius:6px;background:#F7F8F5;font-size:13px}
+.files .mono{font-size:12.5px;font-weight:600}
+.files .n{font-family:'IBM Plex Mono',monospace;font-size:12px;color:#5C636C}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:12px}
+.tile{display:flex;flex-direction:column;gap:12px;padding:16px 18px}
+.tile-n{font-family:'IBM Plex Mono',monospace;font-size:34px;font-weight:600;line-height:1;color:#AEB3AA}
+.tile-f{font-size:12.5px;color:#5C636C}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:18px 20px 14px}
+.sec-head h2{font-size:15px;font-weight:700}
+.sec-head span{font-size:12.5px;color:#5C636C}
+.hgrid-wrap{overflow-x:auto;padding-bottom:10px}
+.hgrid{width:100%;border-collapse:collapse;min-width:760px}
+.hgrid th,.hgrid td{border-top:1px solid #E6E8E2;padding:10px;vertical-align:top;text-align:left}
+.hgrid thead th{border-top:0;padding-top:0;padding-bottom:8px;font-size:12.5px;font-weight:600;color:#3D434B}
+.th-plat{display:inline-flex;align-items:center;gap:8px}
+.hgrid th[scope="row"]{width:22%;padding-left:20px;padding-top:18px;font-weight:400}
+.hgrid td:last-child{padding-right:20px}
+.b-name{font-size:15px;font-weight:700}
+.b-cat{font-size:12.5px;color:#5C636C;margin-top:2px}
+.cell{display:flex;flex-direction:column;justify-content:space-between;gap:12px;min-height:104px;padding:14px 16px;border-radius:8px;background:#FFFFFF;border:1px dashed #BFC4BA}
+.wait-row{display:flex;align-items:center;gap:8px;font-weight:600;color:#3D434B;font-size:14px}
+.cell-line{font-size:13px;color:#4A5059}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="hdr">
+  <a class="logo" href="index.html">
+    <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="1" width="22" height="22" rx="6" fill="#15181C"/><path d="M6.5 8.5h11M6.5 12h7.5M6.5 15.5h4" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"/><circle cx="16.8" cy="15.5" r="1.9" fill="#E3A33B"/></svg>
+    <b>Listing Audit</b><span>Intent Farm</span>
+  </a>
+  <nav class="nav" aria-label="Main">
+    <a href="overview-awaiting-audit.html" aria-current="page">Overview</a>
+    <a href="queue.html">Queue <span class="count">—</span></a>
+    <span class="sep" aria-hidden="true"></span>
+    <a href="brand.html" data-route="/brand/glowveda">GlowVeda</a>
+    <a href="brand.html" data-route="/brand/munchkraft">Munchkraft</a>
+    <a href="brand.html" data-route="/brand/vayu-home">Vayu Home</a>
+  </nav>
+  <div class="hdr-right">
+    <span class="stamp warn">Uploaded 21:14 · not audited</span>
+    <form class="ai-form" method="post" action="/settings/ai">
+      <label class="switch"><input class="sw" type="checkbox" name="ai" checked> AI drafts <span class="state">ON</span></label>
+    </form>
+    <details class="upl">
+      <summary class="btn"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 10.5V2.5M4.8 5.6 8 2.4l3.2 3.2"/><path d="M2.5 10.5v2a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-2"/></svg>Upload data</summary>
+      <div class="upl-pop panel pop">
+        <form class="upl-form" method="post" action="/upload" enctype="multipart/form-data">
+          <div class="upl-head"><b>Upload audit data</b><span>Three CSVs. Replaces the current snapshot; the previous one is kept for comparison.</span></div>
+          <div class="field"><label for="f-listings">Listings</label><input id="f-listings" type="file" name="listings" accept=".csv"><span class="hint">One row per SKU per platform</span></div>
+          <div class="field"><label for="f-ads">Ads</label><input id="f-ads" type="file" name="ads" accept=".csv"><span class="hint">Daily spend by campaign and SKU</span></div>
+          <div class="field"><label for="f-reviews">Reviews</label><input id="f-reviews" type="file" name="reviews" accept=".csv"><span class="hint">Rating, text, date, platform</span></div>
+          <button class="btn btn-primary" type="submit">Upload files</button>
+        </form>
+      </div>
+    </details>
+  </div>
+</header>
+
+<main class="main">
+  <section class="hero panel" aria-labelledby="loss-label">
+    <div>
+      <div class="eyebrow"><span id="loss-label">Estimated daily loss</span></div>
+      <div class="hero-num" aria-label="Not computed yet">—</div>
+      <p class="hero-sub">New data is in. Nothing has been checked or compared against the 14 Oct snapshot yet.</p>
+      <ul class="files" aria-label="Uploaded files">
+        <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#1F6B45" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3.5 8.4 2.8 2.8 6.2-6.4"/></svg><span class="mono">listings.csv</span><span class="n">146 rows</span></li>
+        <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#1F6B45" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3.5 8.4 2.8 2.8 6.2-6.4"/></svg><span class="mono">ads.csv</span><span class="n">88 rows</span></li>
+        <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#1F6B45" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3.5 8.4 2.8 2.8 6.2-6.4"/></svg><span class="mono">reviews.csv</span><span class="n">2,931 rows</span></li>
+      </ul>
+    </div>
+    <div class="hero-r">
+      <form method="post" action="/audit/run">
+        <button class="btn btn-primary btn-lg" type="submit"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3.2v9.6L12.8 8z"/></svg>Run audit</button>
+        <span class="stamp">Checks 146 listings across 6 brand × platform pairs</span>
+      </form>
+    </div>
+  </section>
+
+  <section class="tiles" aria-label="Open issues by severity">
+    <div class="tile panel"><span class="sev sev-crit"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M4 .6h4L11.4 4v4L8 11.4H4L.6 8V4z" fill="currentColor"/><path d="M6 3.1v3.4M6 8.6v.1" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg>Critical</span><span class="tile-n" aria-label="Not computed">—</span><span class="tile-f">After audit</span></div>
+    <div class="tile panel"><span class="sev sev-high"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8l5.6 10H.4z" fill="currentColor" stroke="currentColor" stroke-width=".8" stroke-linejoin="round"/><path d="M6 4.3v2.9M6 9v.1" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>High</span><span class="tile-n" aria-label="Not computed">—</span><span class="tile-f">After audit</span></div>
+    <div class="tile panel"><span class="sev sev-med"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .6 11.4 6 6 11.4.6 6z" fill="currentColor"/><path d="M3.8 6h4.4" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>Medium</span><span class="tile-n" aria-label="Not computed">—</span><span class="tile-f">After audit</span></div>
+    <div class="tile panel"><span class="sev sev-low"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="4.6" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="6" cy="6" r="1.7" fill="currentColor"/></svg>Low</span><span class="tile-n" aria-label="Not computed">—</span><span class="tile-f">After audit</span></div>
+  </section>
+
+  <section class="panel" aria-labelledby="grid-h">
+    <div class="sec-head"><h2 id="grid-h">Health by brand and platform</h2><span>Listings loaded per cell · checks run when you start the audit</span></div>
+    <div class="hgrid-wrap">
+      <table class="hgrid">
+        <thead>
+          <tr>
+            <th scope="col"><span style="padding-left: 10px">Brand</span></th>
+            <th scope="col"><span class="th-plat"><span class="plat plat-amz">AMZ</span>Amazon</span></th>
+            <th scope="col"><span class="th-plat"><span class="plat plat-fk">FK</span>Flipkart</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><div class="b-name">GlowVeda</div><div class="b-cat">Skincare · 52 listings</div></th>
+            <td><div class="cell"><div class="wait-row"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#4A5059" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="9" r="7.2" stroke-dasharray="2.6 2.4"/><path d="M9 5.5V9l2.4 1.6"/></svg>Awaiting audit</div><div class="cell-line">28 listings loaded</div></div></td>
+            <td><div class="cell"><div class="wait-row"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#4A5059" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="9" r="7.2" stroke-dasharray="2.6 2.4"/><path d="M9 5.5V9l2.4 1.6"/></svg>Awaiting audit</div><div class="cell-line">24 listings loaded</div></div></td>
+          </tr>
+          <tr>
+            <th scope="row"><div class="b-name">Munchkraft</div><div class="b-cat">Snacks · 62 listings</div></th>
+            <td><div class="cell"><div class="wait-row"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#4A5059" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="9" r="7.2" stroke-dasharray="2.6 2.4"/><path d="M9 5.5V9l2.4 1.6"/></svg>Awaiting audit</div><div class="cell-line">31 listings loaded</div></div></td>
+            <td><div class="cell"><div class="wait-row"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#4A5059" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="9" r="7.2" stroke-dasharray="2.6 2.4"/><path d="M9 5.5V9l2.4 1.6"/></svg>Awaiting audit</div><div class="cell-line">31 listings loaded</div></div></td>
+          </tr>
+          <tr>
+            <th scope="row"><div class="b-name">Vayu Home</div><div class="b-cat">Home appliances · 32 listings</div></th>
+            <td><div class="cell"><div class="wait-row"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#4A5059" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="9" r="7.2" stroke-dasharray="2.6 2.4"/><path d="M9 5.5V9l2.4 1.6"/></svg>Awaiting audit</div><div class="cell-line">18 listings loaded</div></div></td>
+            <td><div class="cell"><div class="wait-row"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#4A5059" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="9" r="7.2" stroke-dasharray="2.6 2.4"/><path d="M9 5.5V9l2.4 1.6"/></svg>Awaiting audit</div><div class="cell-line">14 listings loaded</div></div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</main>
+</div>
+</body>
+</html>

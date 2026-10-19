@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>GlowVeda weekly summary</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Instrument+Sans:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;display=swap">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:#F2F3EF;color:#15181C;font-family:'Instrument Sans',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;font-size:14px;line-height:1.45;-webkit-font-smoothing:antialiased}
+a{color:#1E4F5C}a:hover{color:#123540}
+h1,h2,h3,p,dl,dd,ul,ol,figure,blockquote{margin:0}
+.mono{font-family:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace}
+.app{min-height:100vh;display:flex;flex-direction:column;background:#F2F3EF}
+.hdr{display:flex;align-items:center;gap:20px;flex-wrap:wrap;padding:10px 24px;background:#FFFFFF;border-bottom:1px solid #DCDFD8;position:relative;z-index:3}
+.logo{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:#15181C}
+.logo:hover{color:#15181C}
+.logo b{font-weight:700;font-size:15px;letter-spacing:-.01em}
+.logo span{color:#5C636C;font-size:13px;padding-left:10px;border-left:1px solid #DCDFD8}
+.nav{display:flex;gap:2px;flex-wrap:wrap;align-items:center}
+.nav a{display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:0 10px;border-radius:6px;color:#3D434B;text-decoration:none;font-weight:500}
+.nav a:hover{background:#F2F3EF;color:#15181C}
+.nav a[aria-current="page"]{background:#E7E9E3;color:#15181C}
+.nav .sep{width:1px;height:20px;background:#DCDFD8;margin:0 8px}
+.count{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;line-height:16px;background:#15181C;color:#FFFFFF;border-radius:999px;padding:0 6px}
+.hdr-right{margin-left:auto;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.stamp{font-size:12.5px;color:#5C636C}
+.ai-form{margin:0}
+.switch{display:inline-flex;align-items:center;gap:8px;min-height:36px;padding:0 12px 0 8px;border:1px solid #DCDFD8;border-radius:999px;font-size:13px;font-weight:500;color:#3D434B;cursor:pointer;background:#FFFFFF}
+.switch .state{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:#1E4F5C}
+.sw{appearance:none;-webkit-appearance:none;margin:0;width:36px;height:20px;border-radius:999px;background:radial-gradient(circle at 10px 50%,#FFFFFF 6.5px,transparent 7px),#AEB3AA;cursor:pointer;flex:none}
+.sw:checked{background:radial-gradient(circle at 26px 50%,#FFFFFF 6.5px,transparent 7px),#1E4F5C}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:36px;padding:0 14px;border-radius:6px;border:1px solid #CDD1C9;background:#FFFFFF;color:#15181C;font:inherit;font-size:13.5px;font-weight:600;text-decoration:none;cursor:pointer;white-space:nowrap}
+.btn:hover{background:#F2F3EF;color:#15181C}
+.btn svg{flex:none}
+.btn-primary{background:#1E4F5C;border-color:#1E4F5C;color:#FFFFFF}
+.btn-primary:hover{background:#163E49;color:#FFFFFF}
+.btn-ghost{background:transparent;border-color:transparent;color:#4A5059}
+.btn-ghost:hover{background:#E9EBE5}
+.btn:focus-visible,summary:focus-visible,.sw:focus-visible{outline:2px solid #1E4F5C;outline-offset:2px}
+.upl{position:relative}
+.upl>summary{list-style:none}
+.upl>summary::-webkit-details-marker{display:none}
+.upl-pop{position:absolute;right:0;top:calc(100% + 8px);width:380px}
+.panel{background:#FFFFFF;border:1px solid #DCDFD8;border-radius:10px}
+.pop{box-shadow:0 12px 32px rgba(21,24,28,.12)}
+.upl-form{display:grid;gap:14px;padding:18px}
+.upl-head{display:grid;gap:2px}
+.upl-head b{font-size:15px}
+.upl-head span{font-size:12.5px;color:#5C636C}
+.field{display:grid;gap:5px}
+.field label{font-size:13px;font-weight:600}
+.field input[type="file"]{font:inherit;font-size:12.5px;color:#3D434B;width:100%;padding:8px;border:1px dashed #BFC4BA;border-radius:6px;background:#F7F8F5}
+.field input[type="file"]::file-selector-button{font:inherit;font-size:12.5px;font-weight:600;margin-right:10px;padding:5px 10px;border:1px solid #CDD1C9;border-radius:5px;background:#FFFFFF;color:#15181C;cursor:pointer}
+.hint{font-size:12px;color:#5C636C}
+.sev{display:inline-flex;align-items:center;gap:5px;padding:2px 7px 2px 5px;border-radius:4px;font-size:11.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;line-height:16px;white-space:nowrap}
+.sev-crit{color:#A61B1B;background:#FBE7E4}
+.sev-high{color:#9A4205;background:#FCEBD7}
+.sev-med{color:#735C00;background:#F5EDC8}
+.sev-low{color:#38588A;background:#E4ECF7}
+.plat{display:inline-flex;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:.06em;line-height:14px;padding:2px 5px;border-radius:3px;white-space:nowrap}
+.plat-amz{background:#15181C;color:#FFFFFF}
+.plat-fk{background:#FFFFFF;color:#1C44B0;box-shadow:inset 0 0 0 1.5px #1C44B0}
+.ai-tag{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;line-height:16px;color:#5141A6;background:#EDEAF9;padding:1px 7px 1px 5px;border-radius:999px;white-space:nowrap;letter-spacing:0;text-transform:none}
+.paper{background:#FFFFFF;flex:1;border-bottom:1px solid #DCDFD8}
+.doc{width:100%;max-width:760px;margin:0 auto;padding:56px 24px 88px;display:flex;flex-direction:column;gap:36px}
+.week{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.week-nav{display:flex;align-items:center;gap:4px}
+.week-nav a{display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:0 10px;border-radius:6px;color:#3D434B;text-decoration:none;font-size:13px;font-weight:500}
+.week-nav a:hover{background:#F2F3EF}
+.week-nav .cur{font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-weight:600;padding:0 8px}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#4A5059}
+.title h1{font-family:'Newsreader',Georgia,'Times New Roman',serif;font-size:52px;font-weight:500;line-height:1.05;letter-spacing:-.02em;margin-top:10px}
+.title p{margin-top:10px;color:#4A5059;font-size:15px}
+.summary{display:flex;flex-direction:column;gap:14px}
+.summary-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.summary-meta form{margin:0}
+.prose{font-family:'Newsreader',Georgia,'Times New Roman',serif;font-size:20px;line-height:1.65;color:#1E2227;text-wrap:pretty}
+.prose .num{font-family:'IBM Plex Mono',monospace;font-size:16.5px;font-weight:500}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(120px,100%),1fr));border-top:1px solid #15181C;border-bottom:1px solid #DCDFD8}
+.stat{padding:16px 16px 18px 0;display:flex;flex-direction:column;gap:6px}
+.stat+.stat{padding-left:16px;border-left:1px solid #E6E8E2}
+.stat dt{font-size:12px;color:#4A5059}
+.stat dd{font-family:'IBM Plex Mono',monospace;font-size:26px;font-weight:600;letter-spacing:-.02em;line-height:1}
+.stat dd small{font-size:12px;font-weight:500;color:#5C636C;letter-spacing:0}
+.top h2{font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#3D434B;margin-bottom:6px}
+.top ol{list-style:none;padding:0;margin:0}
+.top li{display:grid;grid-template-columns:28px minmax(0,1fr) auto;gap:12px;align-items:baseline;padding:14px 0;border-top:1px solid #E6E8E2}
+.top li:first-child{border-top:0}
+.top .i{font-family:'IBM Plex Mono',monospace;font-size:12px;color:#6E757D}
+.top .what{display:flex;flex-direction:column;gap:4px;min-width:0}
+.top .what b{font-weight:600;font-size:15px}
+.top .what span{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:12.5px;color:#5C636C}
+.top .what a{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:#3D434B}
+.top .amt{text-align:right;display:flex;flex-direction:column;gap:4px;align-items:flex-end}
+.top .amt b{font-family:'IBM Plex Mono',monospace;font-size:15px;font-weight:600}
+.state-tag{font-size:12px;font-weight:600;color:#3D434B}
+.state-tag.ok{color:#1F6B45}
+.foot{font-size:12.5px;color:#5C636C;border-top:1px solid #E6E8E2;padding-top:16px}
+</style>
+</helmet>
+<div class="app">
+<header class="hdr">
+  <a class="logo" href="Main.dc.html">
+    <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="1" width="22" height="22" rx="6" fill="#15181C"/><path d="M6.5 8.5h11M6.5 12h7.5M6.5 15.5h4" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"/><circle cx="16.8" cy="15.5" r="1.9" fill="#E3A33B"/></svg>
+    <b>Listing Audit</b><span>Intent Farm</span>
+  </a>
+  <nav class="nav" aria-label="Main">
+    <a href="Main.dc.html">Overview</a>
+    <a href="Queue.dc.html">Queue <span class="count">12</span></a>
+    <span class="sep" aria-hidden="true"></span>
+    <a href="Brand.dc.html" data-route="/brand/glowveda" aria-current="page">GlowVeda</a>
+    <a href="Brand.dc.html" data-route="/brand/munchkraft">Munchkraft</a>
+    <a href="Brand.dc.html" data-route="/brand/vayu-home">Vayu Home</a>
+  </nav>
+  <div class="hdr-right">
+    <span class="stamp">Audited 18 Oct, 09:40 · 146 listings</span>
+    <form class="ai-form" method="post" action="/settings/ai">
+      <label class="switch"><input class="sw" type="checkbox" name="ai" checked> AI drafts <span class="state">ON</span></label>
+    </form>
+    <details class="upl">
+      <summary class="btn"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 10.5V2.5M4.8 5.6 8 2.4l3.2 3.2"/><path d="M2.5 10.5v2a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-2"/></svg>Upload data</summary>
+      <div class="upl-pop panel pop">
+        <form class="upl-form" method="post" action="/upload" enctype="multipart/form-data">
+          <div class="upl-head"><b>Upload audit data</b><span>Three CSVs. Replaces the current snapshot; the previous one is kept for comparison.</span></div>
+          <div class="field"><label for="f-listings">Listings</label><input id="f-listings" type="file" name="listings" accept=".csv"><span class="hint">One row per SKU per platform</span></div>
+          <div class="field"><label for="f-ads">Ads</label><input id="f-ads" type="file" name="ads" accept=".csv"><span class="hint">Daily spend by campaign and SKU</span></div>
+          <div class="field"><label for="f-reviews">Reviews</label><input id="f-reviews" type="file" name="reviews" accept=".csv"><span class="hint">Rating, text, date, platform</span></div>
+          <button class="btn btn-primary" type="submit">Upload files</button>
+        </form>
+      </div>
+    </details>
+  </div>
+</header>
+
+<div class="paper">
+<article class="doc">
+  <div class="week">
+    <span class="eyebrow">Weekly summary</span>
+    <nav class="week-nav" aria-label="Week">
+      <a href="Brand.dc.html" data-route="/brand/glowveda?week=2026-10-05" aria-label="Previous week">← 5–11 Oct</a>
+      <span class="cur">12–18 Oct 2026</span>
+    </nav>
+  </div>
+
+  <header class="title">
+    <h1>GlowVeda</h1>
+    <p>Skincare · 52 listings on Amazon and Flipkart</p>
+  </header>
+
+  <section class="summary" aria-label="Summary">
+    <div class="summary-meta">
+      <span class="ai-tag"><svg width="11" height="11" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8c.4 2.6 1.6 3.8 4.2 4.2v.1C7.6 5.5 6.4 6.7 6 9.3h-.1C5.5 6.7 4.3 5.5 1.7 5.1V5C4.3 4.6 5.5 3.4 5.9.8z" fill="currentColor"/><circle cx="10" cy="10" r="1.2" fill="currentColor"/></svg>AI-written from this week's audit data</span>
+      <button class="btn" type="button" data-copy-target="summary-text"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="2.5" width="10" height="12" rx="1.5"/><path d="M6 1.5h4v2H6z"/></svg>Copy summary</button>
+    </div>
+    <p class="prose" id="summary-text">A rough week for the face wash. GLOWVEDA-FW-014 ran out of stock on Amazon on 14 Oct while its Sponsored Products campaign kept spending, and that one listing accounts for most of the week's estimated <span class="num">₹9,870</span> loss. On Flipkart, the Vitamin C Serum's rating slipped from 4.3 to 3.8, with a dozen reviews describing the dropper bottle leaking in transit. Four fixes were approved, including the sunscreen price alignment, and one low-stock alert was dismissed as a planned phase-out. Six issues are still open going into next week; the ad pause and the packaging change are the two to chase first.</p>
+  </section>
+
+  <dl class="stats">
+    <div class="stat"><dt>Issues raised</dt><dd>11</dd></div>
+    <div class="stat"><dt>Estimated loss</dt><dd>₹9,870<small> /wk</small></dd></div>
+    <div class="stat"><dt>Approved</dt><dd>4</dd></div>
+    <div class="stat"><dt>Dismissed</dt><dd>1</dd></div>
+    <div class="stat"><dt>Still open</dt><dd>6</dd></div>
+  </dl>
+
+  <section class="top" aria-labelledby="top-h">
+    <h2 id="top-h">Highest-impact items this week</h2>
+    <ol>
+      <li><span class="i">01</span><div class="what"><b>Out of stock with ads running</b><span><a href="Sku.dc.html">GLOWVEDA-FW-014</a><span class="plat plat-amz">AMZ</span><span class="sev sev-crit"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M4 .6h4L11.4 4v4L8 11.4H4L.6 8V4z" fill="currentColor"/><path d="M6 3.1v3.4M6 8.6v.1" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg>Critical</span></span></div><div class="amt"><b>₹1,240/day</b><span class="state-tag">Open · 4 days</span></div></li>
+      <li><span class="i">02</span><div class="what"><b>Rating dropped below 4.0</b><span><a href="Sku.dc.html">GLOWVEDA-SR-007</a><span class="plat plat-fk">FK</span><span class="sev sev-high"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8l5.6 10H.4z" fill="currentColor" stroke="currentColor" stroke-width=".8" stroke-linejoin="round"/><path d="M6 4.3v2.9M6 9v.1" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>High</span></span></div><div class="amt"><b>₹420/day</b><span class="state-tag">Open · 3 days</span></div></li>
+      <li><span class="i">03</span><div class="what"><b>Price mismatch across platforms</b><span><a href="Sku.dc.html">GLOWVEDA-SN-002</a><span class="plat plat-fk">FK</span><span class="sev sev-high"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8l5.6 10H.4z" fill="currentColor" stroke="currentColor" stroke-width=".8" stroke-linejoin="round"/><path d="M6 4.3v2.9M6 9v.1" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>High</span></span></div><div class="amt"><b>₹310/day</b><span class="state-tag ok">Approved 15 Oct</span></div></li>
+      <li><span class="i">04</span><div class="what"><b>Too few product images</b><span><a href="Sku.dc.html">GLOWVEDA-TN-011</a><span class="plat plat-amz">AMZ</span><span class="sev sev-med"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .6 11.4 6 6 11.4.6 6z" fill="currentColor"/><path d="M3.8 6h4.4" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>Medium</span></span></div><div class="amt"><b>₹110/day</b><span class="state-tag ok">Approved 16 Oct</span></div></li>
+      <li><span class="i">05</span><div class="what"><b>Low stock</b><span><a href="Sku.dc.html">GLOWVEDA-FW-014</a><span class="plat plat-fk">FK</span><span class="sev sev-low"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="4.6" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="6" cy="6" r="1.7" fill="currentColor"/></svg>Low</span></span></div><div class="amt"><b>₹60/day</b><span class="state-tag">Open · 1 day</span></div></li>
+    </ol>
+  </section>
+
+  <p class="foot">Built from the 18 Oct audit (09:40). Loss figures are capped per listing, the same way as the portfolio total.</p>
+</article>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1320}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

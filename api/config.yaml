@@ -1,0 +1,118 @@
+# Marketplace Listing Audit — every threshold and rupee factor the engine uses.
+# This file is the thing a reviewer should open first: every flag on every screen
+# traces back to a number here, and every number has a one-line reason next to it.
+
+thresholds:
+  low_stock_days: 3          # days-of-cover below this triggers "low stock, high spend" (#2)
+  min_spend_inr: 100         # INR/day; below this, ad spend is noise, not a problem (#2, #8)
+  price_gap_pct: 0.08        # 8% cross-platform price gap triggers a mismatch flag (#3)
+  price_shock_pct: 0.15      # 15% snapshot-to-snapshot price swing triggers a price-shock flag (#4b)
+  title_min_chars: 40        # shorter reads as thin/incomplete on either platform
+  title_max_chars: 150       # both platforms visually truncate well before 200 chars
+  min_images: 4              # fewer than this is "missing images" territory on either platform
+  min_bullets: 5             # the brief's own stated minimum
+  rating_drop_threshold: 0.2 # brief's own stated threshold — rating fell >= this between snapshots
+  low_star_spike_count: 3    # 3+ one/two-star reviews in the trailing 7 days counts as a spike
+  target_roas: 2.0           # below this, ad spend isn't paying for itself (#8)
+
+severity_bands_inr_per_day:  # impact_inr -> severity, checked highest first
+  critical: 1000
+  high: 400
+  medium: 100
+  # anything below "medium" is "low"
+
+impact_factors:              # every one of these is an estimate; the UI labels them as such
+  price_mismatch_elasticity: 0.3
+    # price_mismatch (#3): fraction of the cross-platform price gap that actually
+    # converts into demand shifting to the cheaper platform. 0.3 is a conservative
+    # fraction of full elasticity — most buyers don't cross-shop rigorously.
+  above_mrp_risk: 0.5
+    # price_above_mrp (#4a): fraction of daily sales treated as "at risk" of the
+    # listing being pulled or penalized for an MRP violation (a compliance issue in
+    # India, not just a pricing one — severity is forced to critical regardless of
+    # this number; this factor only sizes the headline rupee estimate).
+  content_gap_uplift_per_element: 0.08
+    # weak_content (#5): revenue uplift per missing content element (short title,
+    # too-long title, missing images, missing bullets, no category keyword) if
+    # fixed — drawn from typical listing-optimization case studies (8-10% per fix).
+  rating_penalty_per_unit: 0.15
+    # rating_drop (#6): revenue impact per full 0.2-star drop "unit" — i.e. a 0.4
+    # drop is treated as 2x the impact of a 0.2 drop.
+  buybox_loss_factor: 0.6
+    # lost_buybox (#7): fraction of daily sales lost when the Buy Box (Amazon) or
+    # featured-seller slot (Flipkart) is lost. Not 1.0 — some demand still converts
+    # off-Buy-Box, especially on branded search.
+
+category_keywords:
+  skincare: [serum, cream, lotion, face, skin, glow]
+  snacks: [pack, gm, grams, snack, chips, bites]
+  home_appliances: [watt, appliance, kitchen, home, steel]
+
+content_templates:
+  # used only when the AI toggle is OFF for weak-content fixes. Rules can't know product
+  # facts, so those stay as [bracketed] fields for the AM to fill in before sending.
+  skincare:
+    title: "{brand} [Product Name] for Face & Skin Care - [Size], Pack of 1"
+    bullets:
+      - "KEY BENEFIT: [Main visible result, e.g. brighter, even-toned skin]"
+      - "HERO INGREDIENTS: [Actives and concentration, e.g. 10% Vitamin C]"
+      - "SKIN TYPE: Suitable for [skin types]; dermatologically tested"
+      - "HOW TO USE: [When and how to apply, e.g. 2-3 drops every morning]"
+      - "IN THE BOX: 1 x {brand} [Product Name], [Size]"
+  snacks:
+    title: "{brand} [Flavour] Snack Pack - [Weight] gm, [Key Claim e.g. Baked Not Fried]"
+    bullets:
+      - "TASTE: [Flavour profile in one line]"
+      - "INGREDIENTS: [Main ingredients; no added preservatives if true]"
+      - "NUTRITION: [Protein / calories per serving]"
+      - "BEST FOR: [Occasion, e.g. tea-time, office, travel]"
+      - "IN THE BOX: [Count] x [Weight] gm {brand} packs, best before [months]"
+  home_appliances:
+    title: "{brand} [Product Name] for Home & Kitchen - [Wattage] Watt, [Capacity], [Warranty]"
+    bullets:
+      - "PERFORMANCE: [Wattage] Watt motor for [main job]"
+      - "BUILD: [Material, e.g. stainless steel body], [weight]"
+      - "SAFETY: [Auto shut-off / overload protection / ISI mark]"
+      - "WARRANTY: [Years] year {brand} warranty with doorstep service"
+      - "IN THE BOX: 1 x [Product Name], [accessories], user manual"
+
+inactive_statuses: [suppressed, inactive, blocked]
+
+hinglish_complaint_lexicon:
+  # used only when the AI toggle is OFF — keyword buckets replace AI theme clustering
+  damaged: [tuta, "tuta hua", "toot gaya", leak, leaking, broken, tut gaya]
+  fake: [nakli, fake, duplicate, "asli nahi", nakali]
+  quality: [ghatiya, bekar, "low quality", kharab, "ghatiya quality"]
+  late: ["der se", "late aaya", delay, "der ho gaya"]
+  packaging: ["ghatiya packaging", "box damaged", "packaging kharab", "box tuta"]
+
+positive_theme_lexicon:
+  # AI-off counterpart for praise themes, matched on 4-5 star reviews only
+  good value: ["value for money", "paisa vasool", "worth the price"]
+  fast delivery: ["delivery was quick", "time pe", "fast delivery", "jaldi aaya"]
+  works as described: ["works as expected", "works well", "as described", "sahi hai"]
+  good quality: ["quality is nice", "acha product", "badhiya", "achha product"]
+
+hinglish_markers:
+  # two or more of these words in a review marks it as Hinglish (decides whether the
+  # SKU page offers an AI translation line)
+  [hai, hain, tha, thi, bahut, acha, accha, achha, nahi, aaya, gaya, hua, lagta, sahi,
+   thik, chalega, ki, ke, ka, pe, bhi, ab, pehle, wajah, bheja, kharab, ghatiya, bekar,
+   paisa, ho, se, hui]
+
+brands:
+  GlowVeda:
+    seller_name: "GlowVeda Official Store"
+    category: skincare
+  Munchkraft:
+    seller_name: "Munchkraft Foods"
+    category: snacks
+  Vayu Home:
+    seller_name: "Vayu Home Appliances"
+    category: home_appliances
+
+ai:
+  model_env_var: OPENROUTER_MODEL
+  default_model: "openai/gpt-4o-mini"  # cheap, fast, reliable structured JSON output
+  api_key_env_var: OPENROUTER_API_KEY
+  base_url: "https://openrouter.ai/api/v1"

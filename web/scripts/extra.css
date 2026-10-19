@@ -1,0 +1,23 @@
+/* ================= ADDED: drawn only on the Components board ================= */
+.switch .state.off{color:#5C636C}
+.cell-wait{background:#FFFFFF;border-style:dashed;border-color:#BFC4BA}
+.toast .plat-amz{background:#EEF0EA;color:#15181C}
+.prog{height:4px;border-radius:999px;background:#E6E8E2;overflow:hidden}
+.prog i{display:block;height:100%;width:40%;background:#1E4F5C;border-radius:999px;animation:prog 1.2s ease-in-out infinite}
+@keyframes prog{0%{transform:translateX(-100%)}100%{transform:translateX(250%)}}
+@media (prefers-reduced-motion:reduce){.prog i{animation:none;width:100%}}
+.files-st{display:flex;flex-direction:column;gap:4px;font-size:12.5px;color:#3D434B}
+.files-st span{display:flex;justify-content:space-between;font-family:var(--font-plex-mono),monospace;font-size:12px}
+
+/* ================= ADDED: not drawn, built to match (HANDOFF §8) ================= */
+.hint.err{color:#A61B1B;font-weight:600}
+.attrs .v.bad,.attrs dd.bad,.attrs .hint.bad{color:#A61B1B}
+.btn:disabled{opacity:.6;cursor:default}
+.switch.no-key,.switch.no-key .sw{cursor:help}
+.switch.no-key .sw{opacity:.6}
+.upl[open]>summary{background:#F2F3EF}
+.filters-clear{font-size:12.5px;margin-left:8px}
+.nf{display:flex;flex-direction:column;align-items:flex-start;gap:12px;padding:40px 32px}
+.nf h1{font-size:24px;font-weight:700;letter-spacing:-.02em}
+.nf p{color:#4A5059;max-width:520px}
+.empty-note{padding:18px 20px;color:#4A5059;font-size:13.5px}

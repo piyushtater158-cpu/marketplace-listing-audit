@@ -1,0 +1,454 @@
+{
+  "GLOWVEDA-001|Amazon": [],
+  "GLOWVEDA-001|Flipkart": [
+    "oos_ads_live"
+  ],
+  "GLOWVEDA-002|Amazon": [
+    "oos_ads_live"
+  ],
+  "GLOWVEDA-002|Flipkart": [],
+  "GLOWVEDA-003|Amazon": [],
+  "GLOWVEDA-003|Flipkart": [
+    "oos_ads_live"
+  ],
+  "GLOWVEDA-004|Amazon": [
+    "oos_ads_live"
+  ],
+  "GLOWVEDA-004|Flipkart": [],
+  "GLOWVEDA-005|Amazon": [],
+  "GLOWVEDA-005|Flipkart": [
+    "low_stock_high_spend"
+  ],
+  "GLOWVEDA-006|Amazon": [
+    "low_stock_high_spend"
+  ],
+  "GLOWVEDA-006|Flipkart": [],
+  "GLOWVEDA-007|Amazon": [],
+  "GLOWVEDA-007|Flipkart": [
+    "low_stock_high_spend"
+  ],
+  "GLOWVEDA-008|Amazon": [
+    "price_mismatch"
+  ],
+  "GLOWVEDA-008|Flipkart": [],
+  "GLOWVEDA-009|Amazon": [],
+  "GLOWVEDA-009|Flipkart": [
+    "price_mismatch"
+  ],
+  "GLOWVEDA-010|Amazon": [
+    "price_mismatch"
+  ],
+  "GLOWVEDA-010|Flipkart": [],
+  "GLOWVEDA-011|Amazon": [
+    "price_above_mrp"
+  ],
+  "GLOWVEDA-011|Flipkart": [
+    "price_above_mrp"
+  ],
+  "GLOWVEDA-012|Amazon": [
+    "price_above_mrp"
+  ],
+  "GLOWVEDA-012|Flipkart": [
+    "price_above_mrp"
+  ],
+  "GLOWVEDA-013|Amazon": [
+    "price_shock"
+  ],
+  "GLOWVEDA-013|Flipkart": [
+    "price_shock"
+  ],
+  "GLOWVEDA-014|Amazon": [
+    "price_shock"
+  ],
+  "GLOWVEDA-014|Flipkart": [
+    "price_shock"
+  ],
+  "GLOWVEDA-015|Amazon": [],
+  "GLOWVEDA-015|Flipkart": [
+    "weak_content"
+  ],
+  "GLOWVEDA-016|Amazon": [
+    "weak_content"
+  ],
+  "GLOWVEDA-016|Flipkart": [],
+  "GLOWVEDA-017|Amazon": [],
+  "GLOWVEDA-017|Flipkart": [
+    "weak_content"
+  ],
+  "GLOWVEDA-018|Amazon": [
+    "rating_drop"
+  ],
+  "GLOWVEDA-018|Flipkart": [],
+  "GLOWVEDA-019|Amazon": [],
+  "GLOWVEDA-019|Flipkart": [
+    "rating_drop"
+  ],
+  "GLOWVEDA-020|Amazon": [
+    "rating_drop"
+  ],
+  "GLOWVEDA-020|Flipkart": [],
+  "GLOWVEDA-021|Amazon": [],
+  "GLOWVEDA-021|Flipkart": [
+    "lost_buybox"
+  ],
+  "GLOWVEDA-022|Amazon": [
+    "lost_buybox"
+  ],
+  "GLOWVEDA-022|Flipkart": [],
+  "GLOWVEDA-023|Amazon": [],
+  "GLOWVEDA-023|Flipkart": [
+    "lost_buybox"
+  ],
+  "GLOWVEDA-024|Amazon": [
+    "lost_buybox"
+  ],
+  "GLOWVEDA-024|Flipkart": [],
+  "GLOWVEDA-025|Amazon": [],
+  "GLOWVEDA-025|Flipkart": [
+    "ad_waste"
+  ],
+  "GLOWVEDA-026|Amazon": [
+    "ad_waste"
+  ],
+  "GLOWVEDA-026|Flipkart": [],
+  "GLOWVEDA-027|Amazon": [],
+  "GLOWVEDA-027|Flipkart": [
+    "ad_waste"
+  ],
+  "GLOWVEDA-028|Amazon": [
+    "suppressed"
+  ],
+  "GLOWVEDA-028|Flipkart": [],
+  "GLOWVEDA-029|Amazon": [],
+  "GLOWVEDA-029|Flipkart": [
+    "suppressed"
+  ],
+  "GLOWVEDA-030|Amazon": [
+    "suppressed"
+  ],
+  "GLOWVEDA-030|Flipkart": [],
+  "GLOWVEDA-031|Amazon": [],
+  "GLOWVEDA-031|Flipkart": [
+    "ad_waste",
+    "lost_buybox",
+    "oos_ads_live"
+  ],
+  "GLOWVEDA-032|Amazon": [],
+  "GLOWVEDA-032|Flipkart": [],
+  "GLOWVEDA-033|Amazon": [],
+  "GLOWVEDA-033|Flipkart": [],
+  "GLOWVEDA-034|Amazon": [],
+  "GLOWVEDA-034|Flipkart": [],
+  "GLOWVEDA-035|Amazon": [],
+  "GLOWVEDA-035|Flipkart": [],
+  "GLOWVEDA-036|Amazon": [],
+  "GLOWVEDA-036|Flipkart": [],
+  "GLOWVEDA-037|Amazon": [],
+  "GLOWVEDA-037|Flipkart": [],
+  "GLOWVEDA-038|Amazon": [],
+  "GLOWVEDA-038|Flipkart": [],
+  "GLOWVEDA-039|Amazon": [],
+  "GLOWVEDA-039|Flipkart": [],
+  "GLOWVEDA-040|Amazon": [],
+  "GLOWVEDA-040|Flipkart": [],
+  "MUNCHKRAFT-001|Amazon": [],
+  "MUNCHKRAFT-001|Flipkart": [
+    "oos_ads_live"
+  ],
+  "MUNCHKRAFT-002|Amazon": [
+    "oos_ads_live"
+  ],
+  "MUNCHKRAFT-002|Flipkart": [],
+  "MUNCHKRAFT-003|Amazon": [],
+  "MUNCHKRAFT-003|Flipkart": [
+    "oos_ads_live"
+  ],
+  "MUNCHKRAFT-004|Amazon": [
+    "low_stock_high_spend"
+  ],
+  "MUNCHKRAFT-004|Flipkart": [],
+  "MUNCHKRAFT-005|Amazon": [],
+  "MUNCHKRAFT-005|Flipkart": [
+    "low_stock_high_spend"
+  ],
+  "MUNCHKRAFT-006|Amazon": [
+    "low_stock_high_spend"
+  ],
+  "MUNCHKRAFT-006|Flipkart": [],
+  "MUNCHKRAFT-007|Amazon": [],
+  "MUNCHKRAFT-007|Flipkart": [
+    "low_stock_high_spend"
+  ],
+  "MUNCHKRAFT-008|Amazon": [
+    "price_mismatch"
+  ],
+  "MUNCHKRAFT-008|Flipkart": [],
+  "MUNCHKRAFT-009|Amazon": [],
+  "MUNCHKRAFT-009|Flipkart": [
+    "price_mismatch"
+  ],
+  "MUNCHKRAFT-010|Amazon": [
+    "price_mismatch"
+  ],
+  "MUNCHKRAFT-010|Flipkart": [],
+  "MUNCHKRAFT-011|Amazon": [
+    "price_above_mrp"
+  ],
+  "MUNCHKRAFT-011|Flipkart": [
+    "price_above_mrp"
+  ],
+  "MUNCHKRAFT-012|Amazon": [
+    "price_above_mrp"
+  ],
+  "MUNCHKRAFT-012|Flipkart": [
+    "price_above_mrp"
+  ],
+  "MUNCHKRAFT-013|Amazon": [
+    "price_shock"
+  ],
+  "MUNCHKRAFT-013|Flipkart": [
+    "price_shock"
+  ],
+  "MUNCHKRAFT-014|Amazon": [
+    "weak_content"
+  ],
+  "MUNCHKRAFT-014|Flipkart": [],
+  "MUNCHKRAFT-015|Amazon": [],
+  "MUNCHKRAFT-015|Flipkart": [
+    "weak_content"
+  ],
+  "MUNCHKRAFT-016|Amazon": [
+    "weak_content"
+  ],
+  "MUNCHKRAFT-016|Flipkart": [],
+  "MUNCHKRAFT-017|Amazon": [],
+  "MUNCHKRAFT-017|Flipkart": [
+    "weak_content"
+  ],
+  "MUNCHKRAFT-018|Amazon": [
+    "rating_drop"
+  ],
+  "MUNCHKRAFT-018|Flipkart": [],
+  "MUNCHKRAFT-019|Amazon": [],
+  "MUNCHKRAFT-019|Flipkart": [
+    "rating_drop"
+  ],
+  "MUNCHKRAFT-020|Amazon": [
+    "rating_drop"
+  ],
+  "MUNCHKRAFT-020|Flipkart": [],
+  "MUNCHKRAFT-021|Amazon": [],
+  "MUNCHKRAFT-021|Flipkart": [
+    "lost_buybox"
+  ],
+  "MUNCHKRAFT-022|Amazon": [
+    "lost_buybox"
+  ],
+  "MUNCHKRAFT-022|Flipkart": [],
+  "MUNCHKRAFT-023|Amazon": [],
+  "MUNCHKRAFT-023|Flipkart": [
+    "lost_buybox"
+  ],
+  "MUNCHKRAFT-024|Amazon": [
+    "ad_waste"
+  ],
+  "MUNCHKRAFT-024|Flipkart": [],
+  "MUNCHKRAFT-025|Amazon": [],
+  "MUNCHKRAFT-025|Flipkart": [
+    "ad_waste"
+  ],
+  "MUNCHKRAFT-026|Amazon": [
+    "ad_waste"
+  ],
+  "MUNCHKRAFT-026|Flipkart": [],
+  "MUNCHKRAFT-027|Amazon": [],
+  "MUNCHKRAFT-027|Flipkart": [
+    "ad_waste"
+  ],
+  "MUNCHKRAFT-028|Amazon": [
+    "suppressed"
+  ],
+  "MUNCHKRAFT-028|Flipkart": [],
+  "MUNCHKRAFT-029|Amazon": [],
+  "MUNCHKRAFT-029|Flipkart": [
+    "suppressed"
+  ],
+  "MUNCHKRAFT-030|Amazon": [
+    "suppressed"
+  ],
+  "MUNCHKRAFT-030|Flipkart": [],
+  "MUNCHKRAFT-031|Amazon": [],
+  "MUNCHKRAFT-031|Flipkart": [
+    "ad_waste",
+    "lost_buybox",
+    "oos_ads_live"
+  ],
+  "MUNCHKRAFT-032|Amazon": [],
+  "MUNCHKRAFT-032|Flipkart": [],
+  "MUNCHKRAFT-033|Amazon": [],
+  "MUNCHKRAFT-033|Flipkart": [],
+  "MUNCHKRAFT-034|Amazon": [],
+  "MUNCHKRAFT-034|Flipkart": [],
+  "MUNCHKRAFT-035|Amazon": [],
+  "MUNCHKRAFT-035|Flipkart": [],
+  "MUNCHKRAFT-036|Amazon": [],
+  "MUNCHKRAFT-036|Flipkart": [],
+  "MUNCHKRAFT-037|Amazon": [],
+  "MUNCHKRAFT-037|Flipkart": [],
+  "MUNCHKRAFT-038|Amazon": [],
+  "MUNCHKRAFT-038|Flipkart": [],
+  "MUNCHKRAFT-039|Amazon": [],
+  "MUNCHKRAFT-039|Flipkart": [],
+  "MUNCHKRAFT-040|Amazon": [],
+  "MUNCHKRAFT-040|Flipkart": [],
+  "VAYUHOME-001|Amazon": [],
+  "VAYUHOME-001|Flipkart": [
+    "oos_ads_live"
+  ],
+  "VAYUHOME-002|Amazon": [
+    "oos_ads_live"
+  ],
+  "VAYUHOME-002|Flipkart": [],
+  "VAYUHOME-003|Amazon": [],
+  "VAYUHOME-003|Flipkart": [
+    "oos_ads_live"
+  ],
+  "VAYUHOME-004|Amazon": [
+    "low_stock_high_spend"
+  ],
+  "VAYUHOME-004|Flipkart": [],
+  "VAYUHOME-005|Amazon": [],
+  "VAYUHOME-005|Flipkart": [
+    "low_stock_high_spend"
+  ],
+  "VAYUHOME-006|Amazon": [
+    "low_stock_high_spend"
+  ],
+  "VAYUHOME-006|Flipkart": [],
+  "VAYUHOME-007|Amazon": [],
+  "VAYUHOME-007|Flipkart": [
+    "price_mismatch"
+  ],
+  "VAYUHOME-008|Amazon": [
+    "price_mismatch"
+  ],
+  "VAYUHOME-008|Flipkart": [],
+  "VAYUHOME-009|Amazon": [],
+  "VAYUHOME-009|Flipkart": [
+    "price_mismatch"
+  ],
+  "VAYUHOME-010|Amazon": [
+    "price_mismatch"
+  ],
+  "VAYUHOME-010|Flipkart": [],
+  "VAYUHOME-011|Amazon": [
+    "price_above_mrp"
+  ],
+  "VAYUHOME-011|Flipkart": [
+    "price_above_mrp"
+  ],
+  "VAYUHOME-012|Amazon": [
+    "price_shock"
+  ],
+  "VAYUHOME-012|Flipkart": [
+    "price_shock"
+  ],
+  "VAYUHOME-013|Amazon": [
+    "price_shock"
+  ],
+  "VAYUHOME-013|Flipkart": [
+    "price_shock"
+  ],
+  "VAYUHOME-014|Amazon": [
+    "weak_content"
+  ],
+  "VAYUHOME-014|Flipkart": [],
+  "VAYUHOME-015|Amazon": [],
+  "VAYUHOME-015|Flipkart": [
+    "weak_content"
+  ],
+  "VAYUHOME-016|Amazon": [
+    "weak_content"
+  ],
+  "VAYUHOME-016|Flipkart": [],
+  "VAYUHOME-017|Amazon": [],
+  "VAYUHOME-017|Flipkart": [
+    "rating_drop"
+  ],
+  "VAYUHOME-018|Amazon": [
+    "rating_drop"
+  ],
+  "VAYUHOME-018|Flipkart": [],
+  "VAYUHOME-019|Amazon": [],
+  "VAYUHOME-019|Flipkart": [
+    "rating_drop"
+  ],
+  "VAYUHOME-020|Amazon": [
+    "rating_drop"
+  ],
+  "VAYUHOME-020|Flipkart": [],
+  "VAYUHOME-021|Amazon": [],
+  "VAYUHOME-021|Flipkart": [
+    "lost_buybox"
+  ],
+  "VAYUHOME-022|Amazon": [
+    "lost_buybox"
+  ],
+  "VAYUHOME-022|Flipkart": [],
+  "VAYUHOME-023|Amazon": [],
+  "VAYUHOME-023|Flipkart": [
+    "lost_buybox"
+  ],
+  "VAYUHOME-024|Amazon": [
+    "ad_waste"
+  ],
+  "VAYUHOME-024|Flipkart": [],
+  "VAYUHOME-025|Amazon": [],
+  "VAYUHOME-025|Flipkart": [
+    "ad_waste"
+  ],
+  "VAYUHOME-026|Amazon": [
+    "ad_waste"
+  ],
+  "VAYUHOME-026|Flipkart": [],
+  "VAYUHOME-027|Amazon": [],
+  "VAYUHOME-027|Flipkart": [
+    "suppressed"
+  ],
+  "VAYUHOME-028|Amazon": [
+    "suppressed"
+  ],
+  "VAYUHOME-028|Flipkart": [],
+  "VAYUHOME-029|Amazon": [],
+  "VAYUHOME-029|Flipkart": [
+    "suppressed"
+  ],
+  "VAYUHOME-030|Amazon": [
+    "suppressed"
+  ],
+  "VAYUHOME-030|Flipkart": [],
+  "VAYUHOME-031|Amazon": [],
+  "VAYUHOME-031|Flipkart": [
+    "ad_waste",
+    "lost_buybox",
+    "oos_ads_live"
+  ],
+  "VAYUHOME-032|Amazon": [],
+  "VAYUHOME-032|Flipkart": [],
+  "VAYUHOME-033|Amazon": [],
+  "VAYUHOME-033|Flipkart": [],
+  "VAYUHOME-034|Amazon": [],
+  "VAYUHOME-034|Flipkart": [],
+  "VAYUHOME-035|Amazon": [],
+  "VAYUHOME-035|Flipkart": [],
+  "VAYUHOME-036|Amazon": [],
+  "VAYUHOME-036|Flipkart": [],
+  "VAYUHOME-037|Amazon": [],
+  "VAYUHOME-037|Flipkart": [],
+  "VAYUHOME-038|Amazon": [],
+  "VAYUHOME-038|Flipkart": [],
+  "VAYUHOME-039|Amazon": [],
+  "VAYUHOME-039|Flipkart": [],
+  "VAYUHOME-040|Amazon": [],
+  "VAYUHOME-040|Flipkart": []
+}

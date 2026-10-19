@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Engineering handoff</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Instrument+Sans:wght@400;500;600;700&amp;display=swap">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:#F2F3EF;color:#15181C;font-family:'Instrument Sans',ui-sans-serif,system-ui,sans-serif;font-size:14px;line-height:1.5}
+h1,h2,p,ul,ol{margin:0}
+code,.mono{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:12.5px}
+.sheet{width:1440px;min-height:1640px;padding:48px;display:flex;flex-direction:column;gap:24px}
+.sheet h1{font-size:28px;font-weight:700;letter-spacing:-.02em}
+.sub{color:#4A5059;margin-top:4px}
+.g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.blk{background:#FFFFFF;border:1px solid #DCDFD8;border-radius:10px;padding:20px 22px 22px;display:flex;flex-direction:column;gap:12px}
+.blk h2{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#3D434B;border-bottom:1px solid #EEF0EA;padding-bottom:10px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{text-align:left;padding:7px 10px 7px 0;border-top:1px solid #EEF0EA;vertical-align:top}
+thead th{border-top:0;font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:#5C636C}
+ol,ul{padding-left:18px;display:grid;gap:6px;font-size:13.5px}
+.rule{background:#F7F8F5;border:1px solid #E6E8E2;border-radius:8px;padding:10px 12px;font-size:13px}
+.rule b{display:block;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:#4A5059;margin-bottom:2px}
+.warn{color:#735C00;font-weight:600}
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div>
+    <h1>Engineering handoff</h1>
+    <p class="sub">For Claude Code. Next.js App Router, server components and server actions. Full spec: HANDOFF.md · styles: globals.css — both delivered alongside this canvas; give them to Claude Code with the export.</p>
+  </div>
+
+  <div class="g2">
+    <section class="blk" aria-label="Porting rules">
+      <h2>Porting rules</h2>
+      <ol>
+        <li>Every link: use <code>data-route</code> as the real <code>href</code>; <code>*.dc.html</code> hrefs are prototype-only.</li>
+        <li>Form <code>action</code>s are the real endpoints; keep button <code>name</code>/<code>value</code>.</li>
+        <li>Styles come from <code>globals.css</code>; drop each artboard's local style block.</li>
+        <li>All names, ₹ figures and SKUs are sample data; bind them to the DB.</li>
+        <li>Only two client islands: <code>CopyButton</code> (<code>data-copy-target</code>) and <code>AiToggle</code> (submit on change, with a <code>&lt;noscript&gt;</code> Save button).</li>
+        <li>Every queue card has <code>id="iss_xxxx"</code>; redirects and links end in <code>#iss_xxxx</code> to keep the scroll position.</li>
+      </ol>
+    </section>
+
+    <section class="blk" aria-label="Routes">
+      <h2>Artboard → route</h2>
+      <table>
+        <thead><tr><th>Artboard</th><th>Route</th><th>Renders when</th></tr></thead>
+        <tbody>
+          <tr><td>Main</td><td class="mono">/</td><td>latest upload audited</td></tr>
+          <tr><td>OverviewFresh</td><td class="mono">/</td><td>latest upload not audited</td></tr>
+          <tr><td>Queue</td><td class="mono">/queue</td><td>open issues ≥ 1</td></tr>
+          <tr><td>QueueEmpty</td><td class="mono">/queue</td><td>open issues = 0</td></tr>
+          <tr><td>Sku</td><td class="mono">/sku/[sku]</td><td>listed on both platforms</td></tr>
+          <tr><td>SkuSingle</td><td class="mono">/sku/[sku]</td><td>listed on one platform</td></tr>
+          <tr><td>Brand</td><td class="mono">/brand/[brand]?week=</td><td>one template, all brands</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="blk" aria-label="Server actions">
+      <h2>Server actions</h2>
+      <table>
+        <thead><tr><th>Action</th><th>Endpoint</th><th>Redirect</th></tr></thead>
+        <tbody>
+          <tr><td>Upload 3 CSVs</td><td class="mono">POST /upload</td><td class="mono">/</td></tr>
+          <tr><td>Run audit</td><td class="mono">POST /audit/run</td><td class="mono">/</td></tr>
+          <tr><td>Approve / approve edited / dismiss</td><td class="mono">POST /queue/decisions</td><td class="mono">/queue?decided=dec_id</td></tr>
+          <tr><td>Undo</td><td class="mono">POST /queue/decisions/undo</td><td class="mono">/queue#iss_id</td></tr>
+          <tr><td>AI on/off</td><td class="mono">POST /settings/ai</td><td>referring page</td></tr>
+          <tr><td>Edit (GET link)</td><td class="mono">/queue?edit=iss_id#iss_id</td><td>—</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size: 12.5px; color: #4A5059">Queue params: <code>brand</code> · <code>platform</code> · <code>severity</code> · <code>edit</code> · <code>decided</code> · <code>all</code></p>
+    </section>
+
+    <section class="blk" aria-label="Computation rules">
+      <h2>Computation rules</h2>
+      <div class="rule"><b>Queue sort</b><code>ORDER BY severity='critical' DESC, impact_per_day DESC, detected_at ASC</code></div>
+      <div class="rule"><b>Portfolio total</b>Σ over listings of <code>min(Σ open impact, avg_daily_sales + daily_ad_spend)</code>. Cells use the same capped figure, so they sum to the hero number.</div>
+      <div class="rule"><b>Card rail</b>Render <code>issue.impact_calc_text</code> verbatim (e.g. “₹4,260 sales/day × 23% featured-slot share”). Every term must come from CSV fields or a named config constant — never an observed-trend claim.</div>
+      <div class="rule"><b>Approve</b>Removes the card and shows the green strip with <code>final_text</code> in a pre-selected readonly textarea plus Copy, so copying still works without JS.</div>
+      <p class="warn">To confirm with the business: the cap formula and every penalty % are placeholders. Keep them as named constants in one config file.</p>
+    </section>
+  </div>
+</div>
+</body>
+</html>

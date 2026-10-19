@@ -1,0 +1,17 @@
+# Render Blueprint for the API. The free plan has no persistent disk, so the SQLite file
+# is rebuilt from api/seed/ on every restart or spin-down: the demo always opens on clean
+# sample data.
+services:
+  - type: web
+    name: listing-audit-api
+    runtime: docker
+    plan: free
+    dockerfilePath: ./api/Dockerfile
+    dockerContext: ./api
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: OPENROUTER_API_KEY
+        sync: false
+      - key: OPENROUTER_MODEL
+        value: openai/gpt-4o-mini
