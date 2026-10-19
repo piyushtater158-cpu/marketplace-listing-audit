@@ -26,9 +26,12 @@ app runs entirely on rules and templates. The seed loads and is audited on first
 Data lives in the `api-data` volume.
 
 **Hosted demo:** the web app runs on Vercel (`web/` as the root directory, `API_URL`
-pointing at the API) and the API on Render's free plan via `render.yaml`. Render's free
-plan has no persistent disk, so every restart reloads the seed: the demo always opens on
-clean sample data.
+pointing at the API) and the API on Render's free plan (`render.yaml` describes the
+service). Render's free plan has no persistent disk, so every restart reloads the seed:
+the demo always opens on clean sample data. Pushes to `main` redeploy Vercel directly and
+Render through `.github/workflows/deploy-api.yml`; `keep-alive.yml` pings the API every
+10 minutes so it never sleeps. The upload panel offers the sample CSVs for download and a
+"Reset to sample data" button.
 
 **Local development:**
 

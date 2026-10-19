@@ -1,0 +1,23 @@
+# The Render service builds from the public repo URL, which gets no push webhook, so
+# this asks Render to redeploy whenever the API changes on main.
+name: Deploy API to Render
+
+on:
+  push:
+    branches: [main]
+    paths: ["api/**"]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Trigger Render deploy
+        env:
+          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+        run: |
+          curl --fail --silent --show-error -X POST \
+            -H "Authorization: Bearer $RENDER_API_KEY" -H "Content-Type: application/json" \
+            -d '{"clearCache":"do_not_clear"}' \
+            https://api.render.com/v1/services/srv-dbb10h6q1p3s73dej5l0/deploys
