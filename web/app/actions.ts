@@ -36,6 +36,13 @@ export async function uploadData(_prev: UploadState, formData: FormData): Promis
   redirect("/");
 }
 
+export async function resetToSample(): Promise<void> {
+  const res = await post("/api/reset");
+  if (!res.ok) throw new Error(res.error ?? "Could not reset the sample data");
+  revalidatePath("/", "layout");
+  redirect("/");
+}
+
 export async function runAudit(): Promise<void> {
   const res = await post("/api/audit/run");
   if (!res.ok) throw new Error(res.error ?? "Audit failed");

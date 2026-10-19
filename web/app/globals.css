@@ -371,6 +371,9 @@ h1,h2,h3,p,dl,dd,ul,ol{margin:0}
 .btn:disabled{opacity:.6;cursor:default}
 .switch.no-key,.switch.no-key .sw{cursor:help}
 .switch.no-key .sw{opacity:.6}
+.upl-samples{display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:12px 18px 16px;border-top:1px solid #E6E8E2;font-size:12.5px;color:#4A5059}
+.upl-samples form{margin:0}
+.btn-sm{min-height:30px;padding:0 10px;font-size:12.5px}
 .upl[open]>summary{background:#F2F3EF}
 .filters-clear{font-size:12.5px;margin-left:8px}
 .nf{display:flex;flex-direction:column;align-items:flex-start;gap:12px;padding:40px 32px}

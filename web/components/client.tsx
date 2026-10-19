@@ -2,7 +2,7 @@
 
 import { useActionState, useEffect, useRef, useState } from "react";
 import { useFormStatus } from "react-dom";
-import { setAi, uploadData, type UploadState } from "@/app/actions";
+import { resetToSample, setAi, uploadData, type UploadState } from "@/app/actions";
 import { Icon } from "./ui";
 
 export function CopyButton({
@@ -160,7 +160,32 @@ export function UploadPanel() {
           ) : null}
           <UploadSubmit files={files} />
         </form>
+        <div className="upl-samples">
+          <span>
+            No files to hand? Download the samples:{" "}
+            {UPLOAD_FIELDS.map((f, i) => (
+              <span key={f.name}>
+                {i ? " · " : ""}
+                <a href={`/samples/${f.name}.csv`} download>
+                  {f.name}.csv
+                </a>
+              </span>
+            ))}
+          </span>
+          <form action={resetToSample}>
+            <ResetSubmit />
+          </form>
+        </div>
       </div>
     </details>
+  );
+}
+
+function ResetSubmit() {
+  const { pending } = useFormStatus();
+  return (
+    <button className="btn btn-ghost btn-sm" type="submit" disabled={pending}>
+      {pending ? "Resetting…" : "Reset to sample data"}
+    </button>
   );
 }

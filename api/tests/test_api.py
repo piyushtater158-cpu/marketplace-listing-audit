@@ -405,6 +405,31 @@ def test_upload_sku_on_one_platform_reads_as_not_listed(client):
     assert detail["missing_platforms"] == ["Flipkart"]
 
 
+def test_sample_csvs_download_and_reupload_cleanly(client):
+    files = {}
+    for name in ("listings", "ads", "reviews"):
+        resp = client.get(f"/api/samples/{name}.csv")
+        assert resp.status_code == 200 and resp.headers["content-type"].startswith("text/csv")
+        files[name] = resp.content
+    assert client.get("/api/samples/secrets.csv").status_code == 404
+    assert _upload(client, files["listings"], files["ads"], files["reviews"]).status_code == 200
+
+
+def test_reset_restores_the_audited_sample_and_clears_decisions(client):
+    sku = _seed_csv("listings.csv")[1][0]["sku"]
+    _upload(client, *_seed_bytes(drop_listing=lambda r: r["sku"] == sku))
+    client.post("/api/audit/run")
+    issue = client.get("/api/issues").json()[0]
+    client.post("/api/decisions", json={"issue_id": issue["id"], "decision": "dismiss"})
+
+    reset = client.post("/api/reset").json()
+    assert reset["snapshot"]["status"] == "audited" and reset["issues_computed"] > 0
+    p = client.get("/api/portfolio").json()
+    assert p["snapshot"]["row_counts"] == {"listings": 480, "ads": 3360, "reviews": 265}
+    assert p["dismissed_count"] == 0 and p["approved_count"] == 0
+    assert client.get(f"/api/sku/{sku}").status_code == 200
+
+
 def test_bad_upload_names_the_problem_and_keeps_existing_data(client):
     before = client.get("/api/portfolio").json()
     bad = b"sku,platform\nX,Amazon\n"

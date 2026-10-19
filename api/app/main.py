@@ -11,10 +11,11 @@ from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
 from fastapi import Depends, FastAPI, File, HTTPException, Query, UploadFile
+from fastapi.responses import FileResponse
 
 from app.ai import ai_available, cluster_complaints, detect_language, summarize_brand_week, translate_reviews
 from app.config import load_config
-from app.db import get_connection, init_db
+from app.db import clear_ingested_data, get_connection, init_db
 from app.engine import build_metrics_map
 from app.impact import cap_listing_total
 from app.ingest import CsvValidationError
@@ -675,6 +676,17 @@ def get_decision(decision_id: int, conn: sqlite3.Connection = Depends(db)) -> De
     return _decision_out(row)
 
 
+SAMPLE_FILES = ("listings", "ads", "reviews")
+
+
+@app.get("/api/samples/{name}.csv")
+def sample_csv(name: str) -> FileResponse:
+    """The bundled sample CSVs, so a reviewer can try the upload without their own exports."""
+    if name not in SAMPLE_FILES:
+        raise HTTPException(404, f"No sample file {name}.csv")
+    return FileResponse(SEED_DIR / f"{name}.csv", media_type="text/csv", filename=f"{name}.csv")
+
+
 @app.get("/api/settings/ai", response_model=AiSettingOut)
 def get_ai_setting(conn: sqlite3.Connection = Depends(db)) -> AiSettingOut:
     return AiSettingOut(enabled=get_ai_enabled(conn), available=ai_available(load_config()))
@@ -744,6 +756,16 @@ def upload(
             raise HTTPException(400, f"CSV has duplicate rows: {e}") from e
 
     return UploadResultOut(**counts, snapshot=_snapshot_out(latest_snapshot(conn)))
+
+
+@app.post("/api/reset", response_model=AuditResultOut)
+def reset_to_sample(conn: sqlite3.Connection = Depends(db)) -> AuditResultOut:
+    """Reloads and audits the bundled sample data in one step, dropping uploads and decisions."""
+    clear_ingested_data(conn)
+    ingest_csvs(conn, *(SEED_DIR / f"{n}.csv" for n in SAMPLE_FILES))
+    count = run_audit(conn, load_config(), allow_ai=False)
+    _fill_ai_drafts_in_background()
+    return AuditResultOut(issues_computed=count, snapshot=_snapshot_out(latest_snapshot(conn)))
 
 
 @app.post("/api/audit/run", response_model=AuditResultOut)

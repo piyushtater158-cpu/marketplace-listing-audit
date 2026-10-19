@@ -5,7 +5,7 @@ import { Icon, Plat, SevBadge, SevIcon } from "@/components/ui";
 import { getPortfolio, type Portfolio, type PortfolioCell } from "@/lib/api";
 import { SEVERITIES, SEV_CLASS, categoryLabel, daysSince, inr, num, plural } from "@/lib/format";
 
-export const metadata = { title: "Portfolio overview" };
+export const metadata = { title: { absolute: "Portfolio overview · Listing Audit" } };
 
 const TILE_HINT = { critical: "Act today", high: "This week", medium: "Batch-fix", low: "When convenient" } as const;
 
