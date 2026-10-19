@@ -145,8 +145,8 @@ def ingest_csvs(conn: sqlite3.Connection, listings_path: Path, ads_path: Path, r
     return {"listings": len(listings), "ads": len(ads), "reviews": len(reviews)}
 
 
-def run_audit(conn: sqlite3.Connection, cfg: dict) -> int:
-    count = recompute_issues_full(conn, cfg)
+def run_audit(conn: sqlite3.Connection, cfg: dict, allow_ai: bool = True) -> int:
+    count = recompute_issues_full(conn, cfg, allow_ai)
     snap = latest_snapshot(conn)
     if snap is not None:
         conn.execute(
@@ -156,17 +156,21 @@ def run_audit(conn: sqlite3.Connection, cfg: dict) -> int:
     return count
 
 
-def recompute_issues_full(conn: sqlite3.Connection, cfg: dict) -> int:
+def recompute_issues_full(conn: sqlite3.Connection, cfg: dict, allow_ai: bool = True) -> int:
+    """allow_ai=False writes template text only, so the audit never waits on the network;
+    the API then fills AI drafts in afterwards with refresh_ai_dependent_text."""
     listings = load_listings_from_db(conn)
     ads = load_ads_from_db(conn)
     reviews = load_reviews_from_db(conn)
 
     metrics_map, issues = run_engine(listings, ads, reviews)
-    ai_enabled = get_ai_enabled(conn)
+    ai_enabled = allow_ai and get_ai_enabled(conn)
     now = _now()
 
     fixes = _fixes_parallel(
-        [(RawIssue(i.code, i.evidence), metrics_map[(i.sku, i.platform)]) for i in issues], cfg, ai_enabled
+        [(RawIssue(i.code, i.evidence), metrics_map[(i.sku, i.platform)]) for i in issues],
+        cfg,
+        _ai_slots([(i.code, i.impact_inr) for i in issues], cfg, ai_enabled),
     )
 
     _park_live_decisions(conn)
@@ -199,7 +203,7 @@ def refresh_ai_dependent_text(conn: sqlite3.Connection, cfg: dict) -> int:
     issue codes only — preserves issue ids (and any decisions against them) rather than
     a full recompute, since nothing about the underlying data changed."""
     rows = conn.execute(
-        "SELECT id, sku, platform, issue_code, evidence_json FROM issues "
+        "SELECT id, sku, platform, issue_code, impact_inr, evidence_json FROM issues "
         "WHERE issue_code IN ({})".format(",".join("?" * len(AI_ENHANCED_CODES))),
         tuple(AI_ENHANCED_CODES),
     ).fetchall()
@@ -218,8 +222,10 @@ def refresh_ai_dependent_text(conn: sqlite3.Connection, cfg: dict) -> int:
             for r in targets
         ],
         cfg,
-        ai_enabled,
+        _ai_slots([(r["issue_code"], r["impact_inr"]) for r in targets], cfg, ai_enabled),
     )
+    if get_ai_enabled(conn) != ai_enabled:
+        return 0  # the toggle flipped while drafts were generating; that request rewrites the text
     for row, (fix, ai_generated) in zip(targets, fixes):
         conn.execute(
             "UPDATE issues SET suggested_fix = ?, fix_json = ?, ai_generated = ? WHERE id = ?",
@@ -229,10 +235,22 @@ def refresh_ai_dependent_text(conn: sqlite3.Connection, cfg: dict) -> int:
     return len(targets)
 
 
-def _fixes_parallel(items: list[tuple[RawIssue, ListingMetrics]], cfg: dict, ai_enabled: bool) -> list[tuple[dict, bool]]:
-    """Each AI-enhanced fix is one network round trip, so they run concurrently; with AI
-    off everything is local and a thread pool would only add overhead."""
+def _ai_slots(codes_and_impacts: list[tuple[str, float]], cfg: dict, ai_enabled: bool) -> set[int]:
+    """Indices of the issues that get an AI draft this run: the highest-impact
+    AI-enhanced ones, up to ai.max_fixes_per_run. Everything else uses its template."""
     if not ai_enabled:
+        return set()
+    eligible = [i for i, (code, _) in enumerate(codes_and_impacts) if code in AI_ENHANCED_CODES]
+    eligible.sort(key=lambda i: codes_and_impacts[i][1], reverse=True)
+    return set(eligible[: cfg["ai"]["max_fixes_per_run"]])
+
+
+def _fixes_parallel(items: list[tuple[RawIssue, ListingMetrics]], cfg: dict, ai_slots: set[int]) -> list[tuple[dict, bool]]:
+    """Each AI draft is one network round trip, so those run concurrently; template
+    fixes are local and run inline."""
+    if not ai_slots:
         return [suggested_fix(raw, m, cfg, False) for raw, m in items]
-    with ThreadPoolExecutor(max_workers=8) as pool:
-        return list(pool.map(lambda item: suggested_fix(item[0], item[1], cfg, True), items))
+    with ThreadPoolExecutor(max_workers=4) as pool:
+        return list(
+            pool.map(lambda idx_item: suggested_fix(*idx_item[1], cfg, idx_item[0] in ai_slots), enumerate(items))
+        )

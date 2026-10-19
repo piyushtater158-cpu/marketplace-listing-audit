@@ -19,10 +19,14 @@ docker compose up -d --build        # web on http://localhost:3000
 ```
 
 The API is only reachable from the web container. To turn the AI layer on, put
-`OPENROUTER_API_KEY=...` (and optionally `OPENROUTER_MODEL=...`, default
-`openai/gpt-4o-mini`) in a `.env` file next to `docker-compose.yml`. Without a key the
+`OPENROUTER_API_KEY=...` in a `.env` file next to `docker-compose.yml`. Without a key the
 app runs entirely on rules and templates. The seed loads and is audited on first boot.
 Data lives in the `api-data` volume.
+
+**Hosted demo:** the web app runs on Vercel (`web/` as the root directory, `API_URL`
+pointing at the API) and the API on Render's free plan via `render.yaml`. Render's free
+plan has no persistent disk, so every restart reloads the seed: the demo always opens on
+clean sample data.
 
 **Local development:**
 
@@ -31,7 +35,7 @@ Data lives in the `api-data` volume.
 cd api
 python -m venv .venv && .venv/Scripts/activate      # or: source .venv/bin/activate
 pip install -e ".[dev]"
-pytest                                               # 61 tests
+pytest                                               # 65 tests
 uvicorn app.main:app --port 8010
 
 # Web (Node 20+)
@@ -107,6 +111,22 @@ It only writes language on top of issues the rules already raised:
 
 AI text carries an "AI draft" tag; rule text carries its rule ID. If a call fails, that
 item silently uses the template.
+
+**Free models only.** The AI layer runs on OpenRouter's free models, so it is built
+around their limits (20 requests a minute, a daily cap, occasional upstream 429s):
+
+* Models: `nvidia/nemotron-3-super-120b-a12b:free` (reasoning off, ~4s) for fixes and
+  themes; `google/gemma-4-26b-a4b-it:free` for Hinglish translation and the brand summary,
+  where Nemotron mistranslated and padded. Other free models are OpenRouter fallbacks.
+* An audit never waits on AI. Issues are written with templates first; AI drafts for the
+  12 highest-impact eligible issues fill in a few seconds later in the background.
+* Identical requests are answered from memory; a 429, 402 or timeout pauses AI for 60s
+  instead of retrying into an exhausted quota.
+* Free models don't enforce the JSON schema strictly, so the schema is also spelled out
+  in the prompt and replies are pulled out of markdown fences before validation.
+* The brand summary is checked before it is shown: every ₹ figure must be one the API
+  supplied, and it may not call all issues critical when only some are. A summary that
+  fails either check is replaced by the template.
 
 ## CSV formats
 

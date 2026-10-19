@@ -113,6 +113,26 @@ brands:
 
 ai:
   model_env_var: OPENROUTER_MODEL
-  default_model: "openai/gpt-4o-mini"  # cheap, fast, reliable structured JSON output
+  # Free OpenRouter models only. Nemotron 3 Super is the most reliable free model at
+  # JSON output; with reasoning off it answers in ~4s instead of ~20s.
+  default_model: "nvidia/nemotron-3-super-120b-a12b:free"
+  fallback_models:              # tried in order by OpenRouter when the first is rate-limited or down
+    - "google/gemma-4-31b-it:free"
+    - "google/gemma-4-26b-a4b-it:free"
+  task_models:
+    # Nemotron mistranslates Hinglish ("der se aaya" -> "came from abroad"); Gemma gets it right.
+    translate: "google/gemma-4-26b-a4b-it:free"
+    # Gemma sticks to the supplied stats; Nemotron tends to add unrequested advice.
+    brand_summary: "google/gemma-4-26b-a4b-it:free"
+  disable_reasoning: true
   api_key_env_var: OPENROUTER_API_KEY
   base_url: "https://openrouter.ai/api/v1"
+  timeout_seconds: 20
+  # Free models allow 20 requests a minute and 50 (or 1,000 on accounts that have ever
+  # bought $10 of credits) per UTC day; failed ones count. One audit has ~33 AI-eligible
+  # issues, so only the highest-impact ones get an AI draft per run, leaving headroom in
+  # the minute for SKU pages and brand summaries. The rest use the rule templates.
+  max_fixes_per_run: 12
+  # After a 429/402 or a timeout, skip AI calls for this long instead of hammering an
+  # exhausted quota or a stuck provider; every call in the window uses templates instantly.
+  cooldown_seconds: 60

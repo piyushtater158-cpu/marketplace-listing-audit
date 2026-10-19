@@ -1,6 +1,7 @@
 import json
 import os
 import re
+import time
 from typing import Literal
 
 import httpx
@@ -70,40 +71,77 @@ def ai_available(cfg: dict) -> bool:
     return bool(os.environ.get(cfg["ai"]["api_key_env_var"]))
 
 
-def _call_openrouter(system_prompt: str, user_payload: dict, response_model: type[BaseModel], cfg: dict) -> BaseModel | None:
+# Successful responses keyed by the exact request body, so a repeat request (same SKU
+# page, toggling AI off and on again) never spends another call from the daily quota.
+_response_cache: dict[str, BaseModel] = {}
+_cooldown_until = 0.0
+
+
+def _json_object(content: str) -> str:
+    """Free models often wrap JSON in markdown fences or a sentence; keep the object."""
+    start, end = content.find("{"), content.rfind("}")
+    return content[start : end + 1] if start != -1 and end > start else content
+
+
+def _call_openrouter(
+    system_prompt: str, user_payload: dict, response_model: type[BaseModel], cfg: dict, task: str | None = None
+) -> BaseModel | None:
+    global _cooldown_until
     ai_cfg = cfg["ai"]
-    model = os.environ.get(ai_cfg["model_env_var"], ai_cfg["default_model"])
     api_key = os.environ.get(ai_cfg["api_key_env_var"])
-    if not api_key:
+    if not api_key or time.monotonic() < _cooldown_until:
         return None
 
+    general = os.environ.get(ai_cfg["model_env_var"]) or ai_cfg["default_model"]
+    model = ai_cfg.get("task_models", {}).get(task) or general
+    schema = _strict_schema(response_model)
     body = {
         "model": model,
+        "models": list(dict.fromkeys([model, general, *ai_cfg.get("fallback_models", [])])),
         "messages": [
-            {"role": "system", "content": system_prompt},
+            {
+                "role": "system",
+                "content": f"{system_prompt}\n\nRespond with only a JSON object matching this JSON "
+                f"schema, with every required field present:\n{json.dumps(schema)}",
+            },
             {"role": "user", "content": json.dumps(user_payload)},
         ],
         "response_format": {
             "type": "json_schema",
-            "json_schema": {
-                "name": response_model.__name__,
-                "schema": _strict_schema(response_model),
-                "strict": True,
-            },
+            "json_schema": {"name": response_model.__name__, "schema": schema, "strict": True},
         },
     }
-    headers = {"Authorization": f"Bearer {api_key}"}
+    if ai_cfg.get("disable_reasoning"):
+        body["reasoning"] = {"enabled": False}
 
+    cache_key = json.dumps(body, sort_keys=True)
+    if cache_key in _response_cache:
+        return _response_cache[cache_key]
+
+    headers = {"Authorization": f"Bearer {api_key}"}
     for _attempt in range(2):
         try:
             resp = httpx.post(
-                f"{ai_cfg['base_url']}/chat/completions", json=body, headers=headers, timeout=20.0
+                f"{ai_cfg['base_url']}/chat/completions",
+                json=body,
+                headers=headers,
+                timeout=ai_cfg.get("timeout_seconds", 25),
             )
-            resp.raise_for_status()
-            content = resp.json()["choices"][0]["message"]["content"]
-            return response_model.model_validate_json(content)
-        except (httpx.HTTPError, ValidationError, KeyError, json.JSONDecodeError, IndexError):
+        except httpx.HTTPError:
+            _cooldown_until = time.monotonic() + ai_cfg.get("cooldown_seconds", 60)
+            return None
+        if resp.status_code in (402, 429):
+            _cooldown_until = time.monotonic() + ai_cfg.get("cooldown_seconds", 120)
+            return None
+        if resp.status_code >= 400:
+            return None
+        try:
+            content = resp.json()["choices"][0]["message"]["content"] or ""
+            result = response_model.model_validate_json(_json_object(content))
+        except (ValidationError, KeyError, IndexError, TypeError, json.JSONDecodeError):
             continue
+        _response_cache[cache_key] = result
+        return result
     return None
 
 
@@ -234,10 +272,29 @@ AD_WASTE_SYSTEM_PROMPT = (
 BRAND_SUMMARY_SYSTEM_PROMPT = (
     "You write a short, factual weekly summary (3-5 sentences) of a brand's marketplace "
     "listing audit for its account manager. Use only the stats provided: issue counts, "
-    "approved/dismissed/open, the capped estimated daily loss in INR (write it as ₹ with "
-    "Indian digit grouping, per day) and the biggest item. Plain prose, no lists, no "
-    "headings, no advice you can't ground in the stats."
+    "approved/dismissed/open, the estimated daily loss and the biggest item. Money amounts "
+    "are given pre-formatted (e.g. ₹1,18,331/day): copy them exactly as written, never "
+    "reformat or recompute them. Plain prose, no lists, no headings, no advice you can't "
+    "ground in the stats."
 )
+
+_INR_AMOUNT = re.compile(r"₹\s?[\d,]+")
+
+
+_ALL_CRITICAL = re.compile(r"\ball\b[^.]{0,40}\bcritical", re.IGNORECASE)
+
+
+def _amounts_match(text: str, allowed: set[str]) -> bool:
+    """Every ₹ figure in AI text must be one we supplied; a model that drops a digit
+    group must not put a wrong number in front of the AM."""
+    return {re.sub(r"\s", "", a).rstrip(",") for a in _INR_AMOUNT.findall(text)} <= allowed
+
+
+def _summary_is_grounded(text: str, stats: dict, allowed_amounts: set[str]) -> bool:
+    """Free models were seen calling every issue critical when only some were."""
+    if stats["critical_count"] < stats["total_issues"] and _ALL_CRITICAL.search(text):
+        return False
+    return _amounts_match(text, allowed_amounts)
 
 
 def rewrite_content(brand: str, category: str, current_title: str, cfg: dict, ai_enabled: bool) -> tuple[ContentRewrite, bool]:
@@ -289,8 +346,19 @@ def summarize_brand_week(brand: str, stats: dict, cfg: dict, ai_enabled: bool) -
     """stats: total_issues, total_impact_inr (capped, per day), critical_count,
     approved_count, dismissed_count, open_count, top_item {sku, platform, label, impact_inr}."""
     if ai_enabled and stats["total_issues"] > 0:
-        result = _call_openrouter(BRAND_SUMMARY_SYSTEM_PROMPT, {"brand": brand, **stats}, BrandSummary, cfg)
-        if result is not None:
+        top = stats["top_item"]
+        payload = {
+            "brand": brand,
+            **{k: v for k, v in stats.items() if k not in ("total_impact_inr", "top_item")},
+            "non_critical_count": stats["total_issues"] - stats["critical_count"],
+            "estimated_daily_loss": f"{inr(stats['total_impact_inr'])}/day",
+            "biggest_item": {**{k: v for k, v in top.items() if k != "impact_inr"}, "daily_loss": f"{inr(top['impact_inr'])}/day"}
+            if top
+            else None,
+        }
+        allowed = {inr(stats["total_impact_inr"])} | ({inr(top["impact_inr"])} if top else set())
+        result = _call_openrouter(BRAND_SUMMARY_SYSTEM_PROMPT, payload, BrandSummary, cfg, task="brand_summary")
+        if result is not None and _summary_is_grounded(result.summary, stats, allowed):
             return result, True
     return (
         brand_summary_fallback(
@@ -322,6 +390,7 @@ def translate_reviews(texts: list[str], cfg: dict, ai_enabled: bool) -> dict[str
             {"reviews": [{"index": i, "text": t} for i, t in enumerate(pending)]},
             ReviewTranslations,
             cfg,
+            task="translate",
         )
         if result is not None:
             for tr in result.translations:

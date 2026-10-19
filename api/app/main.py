@@ -4,6 +4,7 @@ import os
 import re
 import sqlite3
 import tempfile
+import threading
 from collections import Counter, defaultdict
 from contextlib import asynccontextmanager
 from datetime import date, datetime, timedelta, timezone
@@ -60,13 +61,33 @@ def _now() -> str:
     return datetime.now(timezone.utc).isoformat()
 
 
-def _bootstrap(conn: sqlite3.Connection) -> None:
-    """First boot loads and audits the seed. A database from an older build that has data
-    but no snapshot row gets one, so the overview knows it is audited."""
+_ai_fill_lock = threading.Lock()
+
+
+def _fill_ai_drafts() -> None:
+    with _ai_fill_lock:
+        conn = get_connection()
+        try:
+            refresh_ai_dependent_text(conn, load_config())
+        finally:
+            conn.close()
+
+
+def _fill_ai_drafts_in_background() -> None:
+    """AI drafts replace template text a few seconds after an audit. Free models can be
+    slow or rate-limited, so no request (or server startup) waits on them."""
+    if ai_available(load_config()):
+        threading.Thread(target=_fill_ai_drafts, daemon=True).start()
+
+
+def _bootstrap(conn: sqlite3.Connection) -> bool:
+    """First boot loads and audits the seed, returning True. A database from an older
+    build that has data but no snapshot row gets one, so the overview knows it is audited."""
     if conn.execute("SELECT COUNT(*) FROM listings").fetchone()[0] == 0:
         ingest_csvs(conn, SEED_DIR / "listings.csv", SEED_DIR / "ads.csv", SEED_DIR / "reviews.csv")
-        run_audit(conn, load_config())
-    elif latest_snapshot(conn) is None:
+        run_audit(conn, load_config(), allow_ai=False)
+        return True
+    if latest_snapshot(conn) is None:
         counts = [conn.execute(f"SELECT COUNT(*) FROM {t}").fetchone()[0] for t in ("listings", "ads", "reviews")]
         conn.execute(
             "INSERT INTO snapshots (status, uploaded_at, audited_at, listings_rows, ads_rows, reviews_rows) "
@@ -74,6 +95,7 @@ def _bootstrap(conn: sqlite3.Connection) -> None:
             (_now(), _now(), *counts),
         )
         conn.commit()
+    return False
 
 
 @asynccontextmanager
@@ -81,9 +103,11 @@ async def lifespan(_app: FastAPI):
     conn = get_connection()
     try:
         init_db(conn)
-        _bootstrap(conn)
+        audited = _bootstrap(conn)
     finally:
         conn.close()
+    if audited:
+        _fill_ai_drafts_in_background()
     yield
 
 
@@ -726,7 +750,8 @@ def upload(
 def audit_run(conn: sqlite3.Connection = Depends(db)) -> AuditResultOut:
     if latest_snapshot(conn) is None:
         raise HTTPException(409, "Upload data before running an audit")
-    count = run_audit(conn, load_config())
+    count = run_audit(conn, load_config(), allow_ai=False)
+    _fill_ai_drafts_in_background()
     return AuditResultOut(issues_computed=count, snapshot=_snapshot_out(latest_snapshot(conn)))
 
 
@@ -734,5 +759,9 @@ def audit_run(conn: sqlite3.Connection = Depends(db)) -> AuditResultOut:
 def set_ai_setting(body: AiSettingIn, conn: sqlite3.Connection = Depends(db)) -> AiSettingOut:
     set_ai_enabled(conn, body.enabled)
     cfg = load_config()
-    updated = refresh_ai_dependent_text(conn, cfg)
+    if body.enabled and ai_available(cfg):
+        _fill_ai_drafts_in_background()
+        updated = 0
+    else:
+        updated = refresh_ai_dependent_text(conn, cfg)
     return AiSettingOut(enabled=body.enabled, available=ai_available(cfg), updated_count=updated)
