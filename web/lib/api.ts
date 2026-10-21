@@ -18,8 +18,28 @@ export type Brand = { name: string; slug: string; category: string };
 
 export const API_URL = process.env.API_URL ?? "http://127.0.0.1:8000";
 
+// Render's free plan puts the API to sleep when idle. While it wakes (up to about a
+// minute), its proxy answers 502/503/504 or drops the connection without the request
+// reaching the app, so those are retried until the API is up.
+const WAKING_STATUSES = new Set([502, 503, 504]);
+const WAKE_WINDOW_MS = 75_000;
+
+async function apiFetch(path: string, init: RequestInit): Promise<Response> {
+  const deadline = Date.now() + WAKE_WINDOW_MS;
+  for (let delay = 1_000; ; delay = Math.min(delay * 2, 8_000)) {
+    const outOfTime = () => Date.now() + delay > deadline;
+    try {
+      const res = await fetch(`${API_URL}${path}`, init);
+      if (!WAKING_STATUSES.has(res.status) || outOfTime()) return res;
+    } catch (err) {
+      if (outOfTime()) throw err;
+    }
+    await new Promise((resolve) => setTimeout(resolve, delay));
+  }
+}
+
 async function get<T>(path: string): Promise<T | null> {
-  const res = await fetch(`${API_URL}${path}`, { cache: "no-store" });
+  const res = await apiFetch(path, { cache: "no-store" });
   if (res.status === 404) return null;
   if (!res.ok) throw new Error(`API ${path} failed: ${res.status} ${await res.text()}`);
   return (await res.json()) as T;
@@ -57,14 +77,17 @@ export async function post<T>(path: string, body?: unknown): Promise<{ ok: boole
     init.body = JSON.stringify(body);
     init.headers = { "Content-Type": "application/json" };
   }
-  const res = await fetch(`${API_URL}${path}`, init);
+  let res: Response;
+  try {
+    res = await apiFetch(path, init);
+  } catch (err) {
+    console.error(`API POST ${path} unreachable:`, err);
+    return { ok: false, status: 0, data: null, error: "The API is not reachable right now. Try again in a minute." };
+  }
   const payload = await res.json().catch(() => null);
   if (res.ok) return { ok: true, status: res.status, data: payload as T, error: null };
   const detail = payload?.detail;
-  return {
-    ok: false,
-    status: res.status,
-    data: null,
-    error: typeof detail === "string" ? detail : `Request failed (${res.status})`,
-  };
+  const error = typeof detail === "string" ? detail : `Request failed (${res.status})`;
+  console.error(`API POST ${path} failed: ${res.status} ${error}`);
+  return { ok: false, status: res.status, data: null, error };
 }

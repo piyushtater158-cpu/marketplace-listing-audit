@@ -26,6 +26,8 @@ export const metadata: Metadata = {
 
 // Every page reads live data from the API; nothing is prerendered at build time.
 export const dynamic = "force-dynamic";
+// Leaves room for lib/api.ts to wait out an API cold start (up to 75s).
+export const maxDuration = 90;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
