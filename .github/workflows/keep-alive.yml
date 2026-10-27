@@ -1,6 +1,8 @@
-# Render's free plan sleeps after 15 idle minutes and takes ~1 minute to wake, which a
-# reviewer opening the demo link would see as a hang. A ping every 10 minutes keeps it up;
-# one always-on free service fits inside Render's 750 free hours a month.
+# The API keeps itself awake by pinging its own public URL (app/main.py). This is the
+# backup that wakes it if it ever does sleep. GitHub runs scheduled workflows on a
+# best-effort basis (observed: every 2-7 hours, not every 10 minutes), so this cannot be
+# the primary keep-alive. A cold start takes up to a minute and Render answers 502 while
+# it wakes, so curl keeps retrying for up to 3 minutes.
 name: Keep API awake
 
 on:
@@ -12,7 +14,10 @@ on:
 jobs:
   ping:
     runs-on: ubuntu-latest
-    timeout-minutes: 3
+    timeout-minutes: 5
     steps:
       - name: Ping health endpoint
-        run: curl --fail --silent --show-error --max-time 120 --retry 2 https://listing-audit-api.onrender.com/api/health
+        run: >-
+          curl --fail --silent --show-error --max-time 60
+          --retry 12 --retry-delay 15 --retry-max-time 180 --retry-all-errors
+          https://listing-audit-api.onrender.com/api/health

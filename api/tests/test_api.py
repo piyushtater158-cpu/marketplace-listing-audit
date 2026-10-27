@@ -1,11 +1,13 @@
 import csv
 import io
+import threading
 from pathlib import Path
 
 import pytest
 from fastapi.testclient import TestClient
 
 import app.db
+import app.main
 from app.ai import ComplaintThemes, _strict_schema, detect_language
 from app.config import load_config
 from app.detectors import ISSUE_CODES
@@ -440,3 +442,26 @@ def test_bad_upload_names_the_problem_and_keeps_existing_data(client):
     header_only = _upload(client, b"", b"", b"")
     assert header_only.status_code == 400
     assert client.get("/api/portfolio").json() == before
+
+
+def test_keep_awake_pings_own_health_only_on_render(tmp_path, monkeypatch):
+    pinged = threading.Event()
+    urls: list[str] = []
+
+    def fake_get(url, **_kwargs):
+        urls.append(url)
+        pinged.set()
+
+    monkeypatch.setattr(app.db, "DB_PATH", tmp_path / "test.db")
+    monkeypatch.delenv("OPENROUTER_API_KEY", raising=False)
+    monkeypatch.setattr(app.main, "KEEP_AWAKE_SECONDS", 0.01)
+    monkeypatch.setattr(app.main.httpx, "get", fake_get)
+
+    monkeypatch.delenv("RENDER_EXTERNAL_URL", raising=False)
+    with TestClient(fastapi_app):
+        assert not pinged.wait(0.2)
+
+    monkeypatch.setenv("RENDER_EXTERNAL_URL", "https://example.onrender.com/")
+    with TestClient(fastapi_app):
+        assert pinged.wait(2)
+    assert urls[0] == "https://example.onrender.com/api/health"

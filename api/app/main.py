@@ -10,6 +10,7 @@ from contextlib import asynccontextmanager
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
+import httpx
 from fastapi import Depends, FastAPI, File, HTTPException, Query, UploadFile
 from fastapi.responses import FileResponse
 
@@ -99,6 +100,20 @@ def _bootstrap(conn: sqlite3.Connection) -> bool:
     return False
 
 
+KEEP_AWAKE_SECONDS = 600
+
+
+def _keep_awake(base_url: str, stop: threading.Event) -> None:
+    """Render's free plan sleeps a service after 15 minutes without inbound traffic. A
+    request to the service's own public URL re-enters through Render's proxy, so it
+    counts as inbound traffic and keeps the instance up."""
+    while not stop.wait(KEEP_AWAKE_SECONDS):
+        try:
+            httpx.get(f"{base_url}/api/health", timeout=30)
+        except httpx.HTTPError as exc:
+            print(f"keep-awake ping failed: {exc!r}", flush=True)
+
+
 @asynccontextmanager
 async def lifespan(_app: FastAPI):
     conn = get_connection()
@@ -109,7 +124,11 @@ async def lifespan(_app: FastAPI):
         conn.close()
     if audited:
         _fill_ai_drafts_in_background()
+    stop_keep_awake = threading.Event()
+    if base_url := os.environ.get("RENDER_EXTERNAL_URL"):
+        threading.Thread(target=_keep_awake, args=(base_url.rstrip("/"), stop_keep_awake), daemon=True).start()
     yield
+    stop_keep_awake.set()
 
 
 app = FastAPI(title="Marketplace Listing Audit API", version="0.2.0", lifespan=lifespan)

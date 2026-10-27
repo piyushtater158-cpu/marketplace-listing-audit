@@ -29,8 +29,10 @@ Data lives in the `api-data` volume.
 pointing at the API) and the API on Render's free plan (`render.yaml` describes the
 service). Render's free plan has no persistent disk, so every restart reloads the seed:
 the demo always opens on clean sample data. Pushes to `main` redeploy Vercel directly and
-Render through `.github/workflows/deploy-api.yml`; `keep-alive.yml` pings the API every
-10 minutes so it never sleeps. The upload panel offers the sample CSVs for download and a
+Render through `.github/workflows/deploy-api.yml`. Render sleeps free services after 15
+idle minutes, so the API pings its own public URL (`RENDER_EXTERNAL_URL`) every 10
+minutes; `keep-alive.yml` is only a backup that wakes it, because GitHub runs scheduled
+workflows hours apart. The upload panel offers the sample CSVs for download and a
 "Reset to sample data" button.
 
 **Local development:**
@@ -40,7 +42,7 @@ Render through `.github/workflows/deploy-api.yml`; `keep-alive.yml` pings the AP
 cd api
 python -m venv .venv && .venv/Scripts/activate      # or: source .venv/bin/activate
 pip install -e ".[dev]"
-pytest                                               # 73 tests
+pytest                                               # 74 tests
 uvicorn app.main:app --port 8010
 
 # Web (Node 20+)
